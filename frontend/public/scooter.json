@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "title": "E2S",
+    "subtitle": "Ecowheelz",
+    "description": "Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride. ",
+    "price": "9.999 :-"
+  },
+  {
+    "id": 2,
+    "title": "E2S Lite",
+    "subtitle": "Ecowheelz",
+    "description": "Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available. ",
+    "price": "7.499 :-"
+  },
+  {
+    "id": 3,
+    "title": "E2S Cruiser",
+    "subtitle": "Ecowheelz",
+    "description": "Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.",
+    "price": "12.999 :-"
+  },
+  {
+    "id": 3,
+    "title": "E2S BP+",
+    "subtitle": "Ecowheelz",
+    "description": "Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.",
+    "price": "11.999 :-"
+  },
+  {
+    "id": 4,
+    "title": "E2S BP+",
+    "subtitle": "Ecowheelz",
+    "description": "Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.",
+    "price": "11.999 :-"
+  },
+  {
+    "id": 5,
+    "title": "Urban helmet",
+    "subtitle": "Ecowheelz",
+    "description": "Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.",
+    "price": "599 :-"
+  },
+  {
+    "id": 6,
+    "title": "Sport helmet",
+    "subtitle": "Ecowheelz",
+    "description": "Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.",
+    "price": "899 :-"
+  }
+]
