@@ -18,8 +18,8 @@ client.connect();
 const app = express();
 app.use(cors());
 
-app.listen(8080, () => {
-  console.log("port 8080");
+app.listen(8081, () => {
+  console.log("port 8081");
 });
 
 app.get("/", async (req: Request, res: Response) => {
