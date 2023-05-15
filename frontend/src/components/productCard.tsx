@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 
 interface Product {
   id: number;
-  name: string;
+  title: string;
+  subtitle: string;
   img: string;
+  price: number;
 }
 
 function Products() {
@@ -23,7 +25,28 @@ function Products() {
   }, []);
   return (
     <>
-      <h1>Hej</h1>
+      {products.length > 0 ? (
+        <ol className="Product-list">
+          {products.map((product) => (
+            <li key={product.id}>
+              <div className="Vegetables-container">
+                {/* <Link to={`/VegView/${product.name}`}> */}
+                <h1>{product.title}</h1>
+                <p>{product.subtitle}</p>
+                <p>{product.price}</p>
+                <img
+                  className="Product-image"
+                  src={product.img}
+                  alt={product.img}
+                />
+                {/* </Link> */}
+              </div>
+            </li>
+          ))}
+        </ol>
+      ) : null}
     </>
   );
 }
+
+export default Products;
