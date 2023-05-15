@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "img": "./images/Cruiser.png",
     "title": "E2S",
     "subtitle": "Ecowheelz",
     "description": "Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride. ",
@@ -8,6 +9,7 @@
   },
   {
     "id": 2,
+    "img": "./images/E2S_BP.png",
     "title": "E2S Lite",
     "subtitle": "Ecowheelz",
     "description": "Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available. ",
@@ -15,27 +17,24 @@
   },
   {
     "id": 3,
+    "img": "./images/E2S_Lite.png",
     "title": "E2S Cruiser",
     "subtitle": "Ecowheelz",
     "description": "Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.",
     "price": "12.999 :-"
   },
   {
-    "id": 3,
-    "title": "E2S BP+",
-    "subtitle": "Ecowheelz",
-    "description": "Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.",
-    "price": "11.999 :-"
-  },
-  {
     "id": 4,
+    "img": "E2S.png",
     "title": "E2S BP+",
     "subtitle": "Ecowheelz",
     "description": "Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.",
     "price": "11.999 :-"
   },
+
   {
     "id": 5,
+    "img": "./images/Turbo_helmet.png",
     "title": "Urban helmet",
     "subtitle": "Ecowheelz",
     "description": "Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.",
@@ -43,6 +42,7 @@
   },
   {
     "id": 6,
+    "img": "./images/Urban_helmet.png",
     "title": "Sport helmet",
     "subtitle": "Ecowheelz",
     "description": "Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.",
