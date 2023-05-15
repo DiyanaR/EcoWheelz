@@ -21,6 +21,9 @@ function Products() {
     };
     fetchData();
   }, []);
+  return (
+    <>
+      <h1>Hej</h1>
+    </>
+  );
 }
-
-return <></>;
