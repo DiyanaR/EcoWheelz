@@ -1,0 +1,26 @@
+.Product-image {
+  height: 342.28px;
+  width: 377.78px;
+}
+
+.Product-container {
+  background-color: #222222;
+  width: 380.32px;
+  height: 687px;
+  color: #faf9f8;
+  border-radius: 38.03px;
+}
+
+.Product-image {
+  height: 342.28px;
+  width: 377.78px;
+  border-top-left-radius: 38.03px;
+  border-top-right-radius: 38.03px;
+  object-fit: cover;
+}
+
+.Product-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
