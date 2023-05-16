@@ -4,12 +4,12 @@ import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 
 function Root() {
   return (
-    <div className="App">
+    <>
       <Navbar />
       <Outlet />
 
       {/* <Footer /> */}
-    </div>
+    </>
   );
 }
 
