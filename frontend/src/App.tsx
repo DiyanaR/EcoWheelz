@@ -1,6 +1,6 @@
-import Navbar from "./Components/Navbar";
+import Navbar from "./components/Navbar";
 import TestPage from "./Pages/TestPage";
-import { ContextProvider } from "./Components/ContextProvider";
+import { ContextProvider } from "./components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 
 function Root() {
