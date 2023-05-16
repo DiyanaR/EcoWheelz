@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "./components/ProductCard";
+// import ProductCard from "./components/ProductCard";
 import "./index.css";
 
 import {
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       {/* <Navbar /> */}
       <Outlet />
-      <ProductCard />
+      {/* <ProductCard /> */}
       {/* <Footer /> */}
     </div>
   );
