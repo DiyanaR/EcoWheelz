@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../css/ProductCard.css";
 
 interface Product {
@@ -10,7 +10,7 @@ interface Product {
   price: number;
 }
 
-function Products() {
+export default function ProductsCards() {
   const [products, setProducts] = useState<Product[]>([]);
   const [visibleProduct, setVisibleProduct] = useState<number>(3);
 
@@ -65,5 +65,3 @@ function Products() {
     </>
   );
 }
-
-export default Products;

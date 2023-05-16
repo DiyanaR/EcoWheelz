@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./Components/Navbar";
 import TestPage from "./Pages/TestPage";
 import "./index.css";
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+export default function Navbar() {
   return (
     <>
       <nav>
@@ -25,6 +25,4 @@ const Navbar = () => {
       </nav>
     </>
   );
-};
-
-export default Navbar;
+}
