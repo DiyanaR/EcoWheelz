@@ -1,7 +1,5 @@
 import Navbar from "./Components/Navbar";
 import TestPage from "./Pages/TestPage";
-import "./index.css";
-
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 
 function Root() {
