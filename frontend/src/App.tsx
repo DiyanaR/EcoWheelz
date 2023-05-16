@@ -1,24 +1,26 @@
-import React from "react";
-import ProductCard from "./components/ProductCard";
 import Navbar from "./components/Navbar";
+import TestPage from "./Pages/TestPage";
 import "./index.css";
 
-import {
-  HashRouter,
-  BrowserRouter,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
+import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 
-function App() {
+function Root() {
   return (
     <div className="App">
       <Navbar />
       <Outlet />
-      <ProductCard />
+
       {/* <Footer /> */}
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  const router = createHashRouter([
+    {
+      children: [{ element: <TestPage />, path: "/" }],
+      element: <Root />,
+    },
+  ]);
+  return <RouterProvider router={router} />;
+}
