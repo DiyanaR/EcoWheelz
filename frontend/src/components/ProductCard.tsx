@@ -46,10 +46,21 @@ export default function ProductsCards() {
                   />
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="Product-text">
-                    <h1 className="Product-title">{product.title}</h1>
-                    <p>{product.subtitle}</p>
-                    <p>{product.description}</p>
-                    <p className="Product-price">{product.price}</p>
+                    <div className="ProductCard-icon">
+                      <h1 className="Product-title">{product.title}</h1>
+                      <img
+                        className="Product-icon"
+                        src="./icons/placeholder.png"
+                        alt="icon"
+                      />
+                    </div>
+                    <hr className="Product-line" />
+                    {/* <p>{product.subtitle}</p> */}
+                    {/* <p>{product.description}</p> */}
+                    <div className="ProductCard-button">
+                      <p className="Product-price">{product.price}</p>
+                      <button className="Product-button">View product</button>
+                    </div>
                   </div>
 
                   {/* </Link> */}
