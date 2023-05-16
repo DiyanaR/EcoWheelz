@@ -33,31 +33,35 @@ function Products() {
 
   return (
     <>
-      {products.length > 0 ? (
-        <ol className="Product-list">
-          {products.slice(0, visibleProduct).map((product) => (
-            <li key={product.id}>
-              <div className="Product-container">
-                <img
-                  className="Product-image"
-                  src={product.img}
-                  alt={product.img}
-                />
-                {/* <Link to={`/VegView/${product.name}`}> */}
-                <h1>{product.title}</h1>
-                <p>{product.subtitle}</p>
-                <p>{product.description}</p>
-                <p>{product.price}</p>
+      <div className="Product-box">
+        {products.length > 0 ? (
+          <ol className="Product-list">
+            {products.slice(0, visibleProduct).map((product) => (
+              <li key={product.id}>
+                <div className="Product-container">
+                  <img
+                    className="Product-image"
+                    src={product.img}
+                    alt={product.img}
+                  />
+                  {/* <Link to={`/VegView/${product.name}`}> */}
+                  <div className="Product-text">
+                    <h1 className="Product-title">{product.title}</h1>
+                    <p>{product.subtitle}</p>
+                    <p>{product.description}</p>
+                    <p className="Product-price">{product.price}</p>
+                  </div>
 
-                {/* </Link> */}
-              </div>
-            </li>
-          ))}
-        </ol>
-      ) : null}
-      {visibleProduct < products.length && (
-        <button onClick={handleShowProducts}>Show more</button>
-      )}
+                  {/* </Link> */}
+                </div>
+              </li>
+            ))}
+          </ol>
+        ) : null}
+        {visibleProduct < products.length && (
+          <button onClick={handleShowProducts}>Show more</button>
+        )}
+      </div>
     </>
   );
 }
