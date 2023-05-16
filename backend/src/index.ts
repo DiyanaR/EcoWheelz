@@ -228,6 +228,15 @@ app.get("/validate-token", authorize, async (req, res) => {
   res.status(200).send(req.body.user);
 });
 
-app.get("/", async (req, res) => {
-  res.status(200).send(req.body.user);
+app.get("/products", async (req, res) => {
+  try {
+    const result = await client.query("SELECT * FROM products");
+    const products = result.rows;
+    res.status(200).json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching products" });
+  }
 });

@@ -197,6 +197,16 @@ app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 app.get("/validate-token", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).send(req.body.user);
 }));
-app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(200).send(req.body.user);
+app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield client.query("SELECT * FROM products");
+        const products = result.rows;
+        res.status(200).json(products);
+    }
+    catch (error) {
+        console.error("Error fetching products:", error);
+        res
+            .status(500)
+            .json({ error: "An error occurred while fetching products" });
+    }
 }));
