@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./components/ProductCard";
+import Navbar from "./components/Navbar";
 import "./index.css";
 
 import {
@@ -12,7 +13,7 @@ import {
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       <Outlet />
       <ProductCard />
       {/* <Footer /> */}
