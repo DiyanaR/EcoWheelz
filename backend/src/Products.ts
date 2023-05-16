@@ -47,6 +47,8 @@ INSERT INTO products (id, title, subtitle, description, price)
   }
 };
 
+const { rows } = await client.query("SELECT * FROM products");
+
 createTokensTable();
 products();
 

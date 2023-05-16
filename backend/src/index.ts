@@ -49,8 +49,38 @@ const createTokensTable = async () => {
   }
 };
 
-createUserTable();
+const createProductsTable = async () => {
+  try {
+    await `
+CREATE TABLE products(
+  id SERIAL PRIMARY KEY,
+  title INTEGER,
+  subtitle INTEGER,
+  price NUMERIC,
+  description TEXT
+)
+`;
+  } catch (error) {
+    console.error("Error creating tokens table:", error);
+  }
+};
+
 createTokensTable();
+createUserTable();
+createProductsTable();
+
+const products = async () => {
+  try {
+    const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S', 'Ecowheelz', Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
+    await client.query(query);
+    console.log("success");
+  } catch (error) {
+    console.error("fail");
+  }
+};
+products();
 
 app.listen(8081, () => {
   console.log("port 8081");
@@ -195,5 +225,9 @@ app.post("/login", async (req: express.Request, res: express.Response) => {
 });
 
 app.get("/validate-token", authorize, async (req, res) => {
+  res.status(200).send(req.body.user);
+});
+
+app.get("/", async (req, res) => {
   res.status(200).send(req.body.user);
 });
