@@ -1,14 +1,17 @@
 import Navbar from "./Components/Navbar";
 import TestPage from "./Pages/TestPage";
+import { ContextProvider } from "./Components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 
 function Root() {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <ContextProvider>
+        <Navbar />
+        <Outlet />
 
-      {/* <Footer /> */}
+        {/* <Footer /> */}
+      </ContextProvider>
     </>
   );
 }
