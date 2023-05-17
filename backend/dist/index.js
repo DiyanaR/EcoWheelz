@@ -30,7 +30,8 @@ const client = new Client({
 client.connect();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.use("/static", express_1.default.static(path.join(__dirname, "images")));
+console.log(path.join(__dirname, "images"));
+app.use(express_1.default.static(path.join(__dirname, "../images")));
 const createUserTable = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield client.query(`
@@ -208,7 +209,7 @@ const authorize = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         res.status(500).send("Internal server error");
     }
 });
-app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/users", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { rows } = yield client.query("SELECT * FROM users");
     res.send(rows);
 }));

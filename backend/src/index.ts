@@ -20,7 +20,8 @@ client.connect();
 
 app.use(cors());
 app.use(express.json());
-app.use("/static", express.static(path.join(__dirname, "images")));
+console.log(path.join(__dirname, "images"));
+app.use(express.static(path.join(__dirname, "../images")));
 
 const createUserTable = async () => {
   try {
@@ -217,7 +218,7 @@ const authorize = async (
   }
 };
 
-app.get("/", async (req: express.Request, res: express.Response) => {
+app.get("/users", async (req: express.Request, res: express.Response) => {
   const { rows } = await client.query("SELECT * FROM users");
   res.send(rows);
 });
