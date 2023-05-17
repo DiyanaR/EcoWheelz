@@ -89,8 +89,8 @@ products();
 const products1 = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499, './images/E2S_Lite.png')`;
     await client.query(query);
     console.log("success");
   } catch (error) {
@@ -102,8 +102,8 @@ products1();
 const products2 = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999  )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999, './images/E2S_BP.png'  )`;
     await client.query(query);
     console.log("success");
   } catch (error) {
@@ -115,8 +115,8 @@ products2();
 const products3 = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999, './images/E2S.png' )`;
     await client.query(query);
     console.log("success");
   } catch (error) {
@@ -128,8 +128,8 @@ products3();
 const products4 = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'Turbo helment', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999, './images/Turbo_helment.png' )`;
     await client.query(query);
     console.log("success");
   } catch (error) {
@@ -141,8 +141,8 @@ products4();
 const products5 = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'Urban helmet', 'Ecowheelz', 'Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.', 599 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'Urban helmet', 'Ecowheelz', 'Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.', 599, './images/Urban_helment.png' )`;
     await client.query(query);
     console.log("success");
   } catch (error) {
@@ -154,8 +154,8 @@ products5();
 const products6 = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'Sport helmet', 'Ecowheelz', 'Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.', 899 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'Sport helmet', 'Ecowheelz', 'Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.', 899, './images/Sport_helment.png'  )`;
     await client.query(query);
     console.log("success");
   } catch (error) {

@@ -84,8 +84,8 @@ createProductsTable();
 const products = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999, './images/cruiser.png' )`;
         yield client.query(query);
         console.log("success");
     }
@@ -97,8 +97,8 @@ products();
 const products1 = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499, './images/E2S_Lite.png')`;
         yield client.query(query);
         console.log("success");
     }
@@ -110,8 +110,8 @@ products1();
 const products2 = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999  )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999, './images/E2S_BP.png'  )`;
         yield client.query(query);
         console.log("success");
     }
@@ -123,8 +123,8 @@ products2();
 const products3 = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999, './images/E2S.png' )`;
         yield client.query(query);
         console.log("success");
     }
@@ -136,8 +136,8 @@ products3();
 const products4 = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'Turbo helment', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999, './images/Turbo_helment.png' )`;
         yield client.query(query);
         console.log("success");
     }
@@ -149,8 +149,8 @@ products4();
 const products5 = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'Urban helmet', 'Ecowheelz', 'Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.', 599 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'Urban helmet', 'Ecowheelz', 'Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.', 599, './images/Urban_helment.png' )`;
         yield client.query(query);
         console.log("success");
     }
@@ -162,8 +162,8 @@ products5();
 const products6 = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'Sport helmet', 'Ecowheelz', 'Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.', 899 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'Sport helmet', 'Ecowheelz', 'Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.', 899, './images/Sport_helment.png'  )`;
         yield client.query(query);
         console.log("success");
     }
