@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const { Client } = require("pg");
 const app = express();
 import cors from "cors";
-import { v4 as uuidv4 } from "uuid";
+import { v4: uuidv4 } from "uuid";
 
 dotenv.config();
 
@@ -54,8 +54,8 @@ const createProductsTable = async () => {
     await `
 CREATE TABLE products(
   id SERIAL PRIMARY KEY,
-  title INTEGER,
-  subtitle INTEGER,
+  title TEXT,
+  subtitle TEXT,
   price NUMERIC,
   description TEXT
 )
@@ -73,7 +73,7 @@ const products = async () => {
   try {
     const query = `
 INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S', 'Ecowheelz', Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
+        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
     await client.query(query);
     console.log("success");
   } catch (error) {
@@ -81,6 +81,58 @@ INSERT INTO products (id, title, subtitle, description, price)
   }
 };
 products();
+
+const products1 = async () => {
+  try {
+    const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499 )`;
+    await client.query(query);
+    console.log("success");
+  } catch (error) {
+    console.error("fail");
+  }
+};
+products1();
+
+const products2 = async () => {
+  try {
+    const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999  )`;
+    await client.query(query);
+    console.log("success");
+  } catch (error) {
+    console.error("fail");
+  }
+};
+products2();
+
+const products3 = async () => {
+  try {
+    const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+    await client.query(query);
+    console.log("success");
+  } catch (error) {
+    console.error("fail");
+  }
+};
+products3();
+
+const products4 = async () => {
+  try {
+    const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+    await client.query(query);
+    console.log("success");
+  } catch (error) {
+    console.error("fail");
+  }
+};
+products4();
 
 app.listen(8081, () => {
   console.log("port 8081");

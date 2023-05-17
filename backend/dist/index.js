@@ -63,8 +63,8 @@ const createProductsTable = () => __awaiter(void 0, void 0, void 0, function* ()
         yield `
 CREATE TABLE products(
   id SERIAL PRIMARY KEY,
-  title INTEGER,
-  subtitle INTEGER,
+  title TEXT,
+  subtitle TEXT,
   price NUMERIC,
   description TEXT
 )
@@ -81,7 +81,7 @@ const products = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = `
 INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S', 'Ecowheelz', Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
+        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
         yield client.query(query);
         console.log("success");
     }
@@ -90,6 +90,58 @@ INSERT INTO products (id, title, subtitle, description, price)
     }
 });
 products();
+const products1 = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499 )`;
+        yield client.query(query);
+        console.log("success");
+    }
+    catch (error) {
+        console.error("fail");
+    }
+});
+products1();
+const products2 = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999  )`;
+        yield client.query(query);
+        console.log("success");
+    }
+    catch (error) {
+        console.error("fail");
+    }
+});
+products2();
+const products3 = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+        yield client.query(query);
+        console.log("success");
+    }
+    catch (error) {
+        console.error("fail");
+    }
+});
+products3();
+const products4 = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const query = `
+INSERT INTO products (id, title, subtitle, description, price)
+        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+        yield client.query(query);
+        console.log("success");
+    }
+    catch (error) {
+        console.error("fail");
+    }
+});
+products4();
 app.listen(8081, () => {
     console.log("port 8081");
 });
@@ -182,7 +234,7 @@ app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
         else {
             // Else make a new token and return it along with username
-            const newToken = (yield client.query("INSERT INTO tokens (user_id, token) VALUES ($1, $2) RETURNING *", [userInfo[0].id, (0, uuid_1.v4)()])).rows;
+            const newToken = (yield client.query("INSERT INTO tokens (user_id, token) VALUES ($1, $2) RETURNING *", [userInfo[0].id, (0, uuid_1.uuidv4)()])).rows;
             console.log(newToken);
             res.status(201).json({
                 username: userInfo[0].username,
