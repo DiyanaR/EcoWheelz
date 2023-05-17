@@ -4,13 +4,11 @@ import ProductCard from "../components/ProductCard";
 
 function LandingPage() {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", fontFamily: "Red Hat Display" }}>
       <img
         src={LandingImage}
         alt="Min bild"
         style={{
-          // top: '-10px',
-          // left: '-10px',
           width: "1460px",
           height: "1044px",
         }}
