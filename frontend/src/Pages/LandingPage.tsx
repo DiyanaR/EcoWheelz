@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 import React from "react";
-import LandingImage from "../LandingImage/page.png";
+import LandingImage from "../LandingImage/header.png";
 import ProductCard from "../components/ProductCard";
-=======
-import React from 'react';
-import LandingImage from '../LandingImage/header.png';
->>>>>>> 0ef36c5449410230f74b6b55cd02f93d2c6929fa
 
 function LandingPage() {
   return (
-<<<<<<< HEAD
     <div style={{ position: "relative" }}>
       <img
         src={LandingImage}
@@ -19,17 +13,6 @@ function LandingPage() {
           // left: '-10px',
           width: "1460px",
           height: "1044px",
-=======
-    <div style={{ position: 'relative' }}>
-
-      <img src={LandingImage} alt="Min bild"
-      style={{
-        // top: '-10px',
-        // left: '-10px',
-        width: '1440px',
-        height: '1080px',
-
->>>>>>> 0ef36c5449410230f74b6b55cd02f93d2c6929fa
         }}
       />
 
