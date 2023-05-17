@@ -76,8 +76,8 @@ createProductsTable();
 const products = async () => {
   try {
     const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
+INSERT INTO products (id, title, subtitle, description, price, img)
+        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999, './images/cruiser.png' )`;
     await client.query(query);
     console.log("success");
   } catch (error) {
