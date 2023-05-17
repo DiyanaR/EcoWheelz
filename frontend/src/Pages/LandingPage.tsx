@@ -1,5 +1,5 @@
 import React from 'react';
-import LandingImage from '../LandingImage/page.png';
+import LandingImage from '../LandingImage/header.png';
 
 
 function LandingPage(){
@@ -10,8 +10,9 @@ function LandingPage(){
       style={{
         // top: '-10px',
         // left: '-10px',
-        width: '1460px',
-        height: '1044px',
+        width: '1440px',
+        height: '1080px',
+
         }}
       />
 
@@ -37,6 +38,7 @@ function LandingPage(){
         <div style={{ color: 'white', fontSize: '24px', textAlign: 'center' }}>
           Sustainable transport made easy. Your green ride awaits!
         </div>
+        <div> buttons</div>
       </div>
     </div>
 
