@@ -3,7 +3,8 @@ const dotenv = require("dotenv");
 const { Client } = require("pg");
 const app = express();
 import cors from "cors";
-import { v4: uuidv4 } from "uuid";
+// import { v4: uuidv4 } from "uuid";
+const path = require("path");
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ client.connect();
 
 app.use(cors());
 app.use(express.json());
+app.use("/static", express.static(path.join(__dirname, "images")));
 
 const createUserTable = async () => {
   try {
@@ -51,15 +53,15 @@ const createTokensTable = async () => {
 
 const createProductsTable = async () => {
   try {
-    await `
-CREATE TABLE products(
+    await client.query(`
+CREATE TABLE IF NOT EXISTS products(
   id SERIAL PRIMARY KEY,
   title TEXT,
   subtitle TEXT,
   price NUMERIC,
   description TEXT
 )
-`;
+`);
   } catch (error) {
     console.error("Error creating tokens table:", error);
   }
@@ -69,73 +71,75 @@ createTokensTable();
 createUserTable();
 createProductsTable();
 
-const products = async () => {
-  try {
-    const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
-    await client.query(query);
-    console.log("success");
-  } catch (error) {
-    console.error("fail");
-  }
-};
-products();
+// const products = async () => {
+//   try {
+//     const query = `
+// INSERT INTO products (id, title, subtitle, description, price)
+//         VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999 )`;
+//     await client.query(query);
+//     console.log("success");
+//   } catch (error) {
+//     console.error("fail");
+//   }
+// };
+// products();
 
-const products1 = async () => {
-  try {
-    const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499 )`;
-    await client.query(query);
-    console.log("success");
-  } catch (error) {
-    console.error("fail");
-  }
-};
-products1();
+// const products1 = async () => {
+//   try {
+//     const query = `
+// INSERT INTO products (id, title, subtitle, description, price)
+//         VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499 )`;
+//     await client.query(query);
+//     console.log("success");
+//   } catch (error) {
+//     console.error("fail");
+//   }
+// };
+// products1();
 
-const products2 = async () => {
-  try {
-    const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999  )`;
-    await client.query(query);
-    console.log("success");
-  } catch (error) {
-    console.error("fail");
-  }
-};
-products2();
+// const products2 = async () => {
+//   try {
+//     const query = `
+// INSERT INTO products (id, title, subtitle, description, price)
+//         VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999  )`;
+//     await client.query(query);
+//     console.log("success");
+//   } catch (error) {
+//     console.error("fail");
+//   }
+// };
+// products2();
 
-const products3 = async () => {
-  try {
-    const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
-    await client.query(query);
-    console.log("success");
-  } catch (error) {
-    console.error("fail");
-  }
-};
-products3();
+// const products3 = async () => {
+//   try {
+//     const query = `
+// INSERT INTO products (id, title, subtitle, description, price)
+//         VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+//     await client.query(query);
+//     console.log("success");
+//   } catch (error) {
+//     console.error("fail");
+//   }
+// };
+// products3();
 
-const products4 = async () => {
-  try {
-    const query = `
-INSERT INTO products (id, title, subtitle, description, price)
-        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
-    await client.query(query);
-    console.log("success");
-  } catch (error) {
-    console.error("fail");
-  }
-};
-products4();
+// const products4 = async () => {
+//   try {
+//     const query = `
+// INSERT INTO products (id, title, subtitle, description, price)
+//         VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999 )`;
+//     await client.query(query);
+//     console.log("success");
+//   } catch (error) {
+//     console.error("fail");
+//   }
+// };
+// products4();
 
-app.listen(8081, () => {
-  console.log("port 8081");
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  console.log(`Redo på http://localhost:${port}/`);
 });
 
 const authorize = async (
@@ -218,63 +222,63 @@ app.post("/signup", async (req: express.Request, res: express.Response) => {
   }
 });
 
-app.post("/login", async (req: express.Request, res: express.Response) => {
-  const { username, password } = req.body;
+// app.post("/login", async (req: express.Request, res: express.Response) => {
+//   const { username, password } = req.body;
 
-  // if the information is incomplete
-  if (!username || !password) {
-    return res.status(400).send("Bad request");
-  }
+//   // if the information is incomplete
+//   if (!username || !password) {
+//     return res.status(400).send("Bad request");
+//   }
 
-  try {
-    //Retrieve user information by username
-    const userInfo = (
-      await client.query("SELECT * FROM users WHERE username = $1", [username])
-    ).rows;
+//   try {
+//     //Retrieve user information by username
+//     const userInfo = (
+//       await client.query("SELECT * FROM users WHERE username = $1", [username])
+//     ).rows;
 
-    // if no user is found then userInfo will be undefined
-    if (!userInfo) {
-      return res.status(404).json({ error: "Username doesn't exists" });
-    }
+//     // if no user is found then userInfo will be undefined
+//     if (!userInfo) {
+//       return res.status(404).json({ error: "Username doesn't exists" });
+//     }
 
-    //Check if passwords match
-    if (userInfo[0].password !== password) {
-      return res.status(401).json({ error: "Incorrect password" });
-    }
+//     //Check if passwords match
+//     if (userInfo[0].password !== password) {
+//       return res.status(401).json({ error: "Incorrect password" });
+//     }
 
-    //Check if user already has a login token
-    const existingToken = (
-      await client.query("SELECT * FROM tokens WHERE user_id = $1", [
-        userInfo[0].id,
-      ])
-    ).rows;
+//     //Check if user already has a login token
+//     const existingToken = (
+//       await client.query("SELECT * FROM tokens WHERE user_id = $1", [
+//         userInfo[0].id,
+//       ])
+//     ).rows;
 
-    // If it does return the existing token with the username
-    if (existingToken.length !== 0) {
-      res.status(200).json({
-        username: userInfo[0].username,
-        token: existingToken[0].token,
-      });
-    } else {
-      // Else make a new token and return it along with username
-      const newToken = (
-        await client.query(
-          "INSERT INTO tokens (user_id, token) VALUES ($1, $2) RETURNING *",
-          [userInfo[0].id, uuidv4()]
-        )
-      ).rows;
+//     // If it does return the existing token with the username
+//     if (existingToken.length !== 0) {
+//       res.status(200).json({
+//         username: userInfo[0].username,
+//         token: existingToken[0].token,
+//       });
+//     } else {
+//       // Else make a new token and return it along with username
+//       const newToken = (
+//         await client.query(
+//           "INSERT INTO tokens (user_id, token) VALUES ($1, $2) RETURNING *",
+//           [userInfo[0].id, uuidv4()]
+//         )
+//       ).rows;
 
-      console.log(newToken);
+//       console.log(newToken);
 
-      res.status(201).json({
-        username: userInfo[0].username,
-        token: newToken[0].token,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
+//       res.status(201).json({
+//         username: userInfo[0].username,
+//         token: newToken[0].token,
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 app.get("/validate-token", authorize, async (req, res) => {
   res.status(200).send(req.body.user);
