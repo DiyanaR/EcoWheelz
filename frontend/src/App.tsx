@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import TestPage from "./pages/TestPage";
 import { ContextProvider } from "./components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function Root() {
   return (
@@ -9,8 +10,7 @@ function Root() {
       <ContextProvider>
         <Navbar />
         <Outlet />
-
-        {/* <Footer /> */}
+        <Footer />
       </ContextProvider>
     </>
   );

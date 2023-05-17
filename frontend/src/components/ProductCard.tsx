@@ -33,6 +33,7 @@ export default function ProductsCards() {
 
   return (
     <>
+      <h1 className="Product-header">Our products</h1>
       <div className="Product-box">
         {products.length > 0 ? (
           <ol className="Product-list">
@@ -44,10 +45,11 @@ export default function ProductsCards() {
                     src={product.img}
                     alt={product.img}
                   />
+
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="Product-text">
                     <div className="ProductCard-icon">
-                      <h1 className="Product-title">{product.title}</h1>
+                      <h2 className="Product-title">{product.title}</h2>
                       <img
                         className="Product-icon"
                         src="./icons/placeholder.png"
@@ -70,7 +72,11 @@ export default function ProductsCards() {
           </ol>
         ) : null}
         {visibleProduct < products.length && (
-          <button onClick={handleShowProducts}>Show more</button>
+          <div className="Product-show-more">
+            <button className="Product-button" onClick={handleShowProducts}>
+              Show more
+            </button>
+          </div>
         )}
       </div>
     </>
