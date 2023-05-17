@@ -1,32 +1,30 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import "../css/Footer.css";
 
 function Footer() {
   return (
-    <>
-      <hr className="Product-line" />
-
-      <div className="dropdown">
-        <select className="Footer-contact">
-          <option value="">Contact</option>
-          <option value="option1">+46 745 343 21</option>
-          <option value="option2">Gloryroad 1</option>
-          <option value="option3">service@ecowheelz.com</option>
-        </select>
-        <select>
-          <option value="">About us</option>
-          <option value="option1">Work with us</option>
-          <option value="option2">Privacy policy</option>
-          <option value="option3">Terms and conditions</option>
-        </select>
-        <select>
-          <option value="">FAQ</option>
-          <option value="option1">Shipping and returns</option>
-          <option value="option2">Store policy</option>
-          <option value="option3">Payments</option>
-        </select>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-column">
+          <h3 className="footer-heading">About Us</h3>
+          <p className="footer-link">work with us</p>
+          <p className="footer-link">privacy Policy</p>
+          <p className="footer-link">terms and conditions</p>
+        </div>
+        <div className="footer-column">
+          <h3 className="footer-heading">FAQ</h3>
+          <p className="footer-link">shipping and returns</p>
+          <p className="footer-link">store policy</p>
+          <p className="footer-link">Payments</p>
+        </div>
+        <div className="footer-column">
+          <h3 className="footer-heading">Contact</h3>
+          <p className="footer-link">939399393</p>
+          <p className="footer-link">-----</p>
+          <p className="footer-link">-----</p>
+        </div>
       </div>
-    </>
+    </footer>
   );
 }
 

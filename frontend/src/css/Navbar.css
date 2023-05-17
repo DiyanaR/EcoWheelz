@@ -1,0 +1,48 @@
+nav {
+  padding: 10px 0;
+  width: 1440px;
+  height: 92px;
+  /* position: absolute; */
+  /* left: 18245px;
+  top: 1435px; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  background-color: #222222;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centrera innehållet vertikalt */
+}
+
+nav li {
+  padding: 0 32px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+}
+
+.logo-image {
+  /* margin-right: 10px; */
+  width: 50px; /* Justera storleken efter behov */
+  height: 50px;
+}
+
+.logo-text {
+  /* font-size: 16px;
+  font-weight: bold; */
+  margin-left: 10px;
+}

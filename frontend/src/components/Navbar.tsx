@@ -1,5 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../css/Navbar.css";
+// import logo from '../logo/logo-desktop.png';
+
+
+
 
 export default function Navbar() {
   return (
@@ -7,7 +12,20 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Eqowheelz</Link>
+            <Link to="/">
+            <div className="logo-container">
+            {/* <span className="logo-text">EcoWheelz</span> */}
+
+              {/* <img src={logo} alt="Logo" className="logo-image"/> */}
+                <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
+                <span className="logo-text">EcoWheelz</span>
+                </div>
+
+
+
+            </Link>
+
+
           </li>
           <li>
             <Link to="/product">Product</Link>
