@@ -38,7 +38,7 @@ export default function ProductsCards() {
       <div className="Product-box">
         {products.length > 0 ? (
           <ol className="Product-list">
-            {products.map((product) => (
+            {products.slice(0, 3).map((product) => (
               <li key={product.id}>
                 <div className="Product-container">
                   <img
@@ -75,7 +75,9 @@ export default function ProductsCards() {
 
                     <div className="ProductCard-button">
                       <p className="Product-price">{product.price}</p>
-                      <button className="Product-button">View product</button>
+                      <Link to={`/detailpage/${product.title}`}>
+                        <button className="Product-button">View product</button>
+                      </Link>
                     </div>
                   </div>
 
