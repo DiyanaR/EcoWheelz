@@ -1,3 +1,3 @@
 export default function DetailPage() {
-  return <h1>hej</h1>;
+  return <h1>Detailpage</h1>;
 }

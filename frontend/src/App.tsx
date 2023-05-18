@@ -6,7 +6,8 @@ import Footer from "./components/Footer";
 import { ContextProvider } from "./components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-
+import ProductPage from "./pages/ProductPage";
+import DetailPage from "./pages/DetailPage";
 
 function Root() {
   return (
@@ -26,8 +27,9 @@ export default function App() {
     {
       children: [
         { element: <LandingPage />, path: "/" },
+        { element: <ProductPage />, path: "/productpage" },
+        { element: <DetailPage />, path: "/detailpage" },
         // { element: <Product />, path: "/product" }
-
       ],
       element: <Root />,
     },

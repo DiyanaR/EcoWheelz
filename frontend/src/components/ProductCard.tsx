@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../css/ProductCard.css";
 
 interface Product {
@@ -48,8 +49,10 @@ export default function ProductsCards() {
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="Product-text">
+                    <hr className="Product-line" />
                     <div className="ProductCard-icon">
                       <h2 className="Product-title">{product.title}</h2>
+
                       <button onClick={handleShowText}>
                         <img
                           className="Product-icon"
@@ -58,11 +61,14 @@ export default function ProductsCards() {
                         />
                       </button>
 
-                      <hr className="Product-line" />
                       {showText && (
                         <div>
                           {<p>{product.subtitle}</p>}
-                          {<p>{product.description}</p>}
+                          {
+                            <p className="Product-description">
+                              {product.description}
+                            </p>
+                          }
                         </div>
                       )}
                     </div>
@@ -81,9 +87,11 @@ export default function ProductsCards() {
         ) : null}
         {/* {visibleProduct < products.length && ( */}
         <div className="Product-show-more">
-          <button className="Product-button" onClick={handleShowText}>
-            Show more
-          </button>
+          <Link to={`/productpage`}>
+            <button className="Product-button" onClick={handleShowText}>
+              Show more
+            </button>
+          </Link>
         </div>
         {/* )} */}
       </div>
