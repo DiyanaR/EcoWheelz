@@ -33,7 +33,6 @@ function ProductPage() {
 
   return (
     <>
-      <h1 className="Product-header">Our products</h1>
       <div className="Product-box">
         {products.length > 0 ? (
           <ol className="Product-list">
@@ -50,7 +49,7 @@ function ProductPage() {
                   <div className="Product-text">
                     <hr className="Product-line" />
                     <div className="ProductCard-icon">
-                      <h2 className="Product-title">{product.title}</h2>
+                      <h1 className="Product-title">{product.title}</h1>
 
                       <button onClick={handleShowText}>
                         <img
@@ -74,7 +73,7 @@ function ProductPage() {
 
                     <div className="ProductCard-button">
                       <p className="Product-price">{product.price}</p>
-                      <Link to={`/detailpage`}>
+                      <Link to={`/detailpage/${product.title}`}>
                         <button className="Product-button">View product</button>
                       </Link>
                     </div>

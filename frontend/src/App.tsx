@@ -28,7 +28,7 @@ export default function App() {
       children: [
         { element: <LandingPage />, path: "/" },
         { element: <ProductPage />, path: "/productpage" },
-        { element: <DetailPage />, path: "/detailpage" },
+        { element: <DetailPage />, path: "/detailpage/:title" },
         // { element: <Product />, path: "/product" }
       ],
       element: <Root />,
