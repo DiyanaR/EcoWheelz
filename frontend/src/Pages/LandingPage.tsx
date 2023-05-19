@@ -1,6 +1,10 @@
 import React from "react";
 import LandingImage from "../LandingImage/header.png";
 import ProductCard from "../components/ProductCard";
+import { Link } from "react-router-dom";
+
+
+
 
 function LandingPage() {
   return (
@@ -46,7 +50,27 @@ function LandingPage() {
         <div style={{ color: "white", fontSize: "24px", textAlign: "center" }}>
           Sustainable transport made easy. Your green ride awaits!
         </div>
-        <div> buttons</div>
+        <Link to="/productpage">
+          <button style={{
+            fontFamily: "Red Hat Display",
+            fontSize: "14px",
+            lineHeight: "19px",
+            textAlign: "left",
+            verticalAlign: "top",
+            color: "#faf9f8",
+            width: "109px",
+            height: "39px",
+            borderRadius: "16px",
+            borderColor: "#9ae5bd",
+            backgroundColor: "transparent",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+            Explore more
+          </button>
+        </Link>
+
       </div>
       <ProductCard />
     </div>

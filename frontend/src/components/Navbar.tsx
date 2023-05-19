@@ -28,7 +28,7 @@ export default function Navbar() {
 
           </li>
           <li>
-            <Link to="/product">Product</Link>
+            <Link to="/productpage">Products</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
