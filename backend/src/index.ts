@@ -19,6 +19,7 @@ const client = new Client({
 client.connect();
 
 app.use(cors());
+
 app.use(express.json());
 console.log(path.join(__dirname, "images"));
 app.use(express.static(path.join(__dirname, "../images")));
