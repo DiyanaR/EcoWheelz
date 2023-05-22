@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/ProductCard.css";
 
+// import "bootstrap/dist/css/bootstrap.min.css";
+
 interface Product {
   id: number;
   title: string;
@@ -52,14 +54,13 @@ export default function ProductsCards() {
                     <hr className="Product-line" />
                     <div className="ProductCard-icon">
                       <h2 className="Product-title">{product.title}</h2>
-
-                      <button onClick={handleShowText}>
+                      <div className="Product-iconBox" onClick={handleShowText}>
                         <img
                           className="Product-icon"
                           src="./icons/placeholder.png"
                           alt="icon"
                         />
-                      </button>
+                      </div>
 
                       {showText && (
                         <div>
@@ -95,6 +96,7 @@ export default function ProductsCards() {
             </button>
           </Link>
         </div>
+
         {/* )} */}
       </div>
     </>
