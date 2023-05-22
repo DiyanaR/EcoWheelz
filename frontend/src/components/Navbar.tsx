@@ -2,11 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 // import logo from '../logo/logo-desktop.png';
-
+import SearchBar from "../components/SearchBar";
 
 
 
 export default function Navbar() {
+  const handleSearch = (searchTerm: string) => {
+    // lägga söklogiken här
+    console.log("Sökterm:", searchTerm);
+  };
   return (
     <>
       <nav>
@@ -40,6 +44,7 @@ export default function Navbar() {
             <Link to="/faq">FAQ</Link>
           </li>
         </ul>
+        {/* <SearchBar onSearch={handleSearch} /> */}
       </nav>
     </>
   );

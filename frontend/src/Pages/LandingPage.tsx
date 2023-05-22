@@ -1,12 +1,10 @@
-import React from "react";
+
 import LandingImage from "../LandingImage/header.png";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 
-
-
-
 function LandingPage() {
+
   return (
     <div style={{ position: "relative", fontFamily: "Red Hat Display" }}>
       <img
@@ -15,6 +13,8 @@ function LandingPage() {
         style={{
           width: "1460px",
           height: "1044px",
+          zIndex:0,
+
         }}
       />
 
@@ -32,24 +32,30 @@ function LandingPage() {
           alignItems: "center",
           justifyContent: "center",
         }}
-      >
+        >
+
+
         <div
           style={{
             color: "white",
             fontSize: "48px",
             textAlign: "center",
-            width: "873px",
-            height: "306px",
+            // width: "873px",
+            // height: "306px",
             top: "352px",
             placeItems: "center",
+            marginBottom: "20px",
           }}
         >
           Silent. Green. Ecowheelz.
-        </div>
+          </div>
 
-        <div style={{ color: "white", fontSize: "24px", textAlign: "center" }}>
+
+
+        <div style={{ color: "white", fontSize: "16px", marginRight:"130px" }}>
           Sustainable transport made easy. Your green ride awaits!
         </div>
+
         <Link to="/productpage">
           <button style={{
             fontFamily: "Red Hat Display",
@@ -66,12 +72,17 @@ function LandingPage() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: "20px",
+
+
           }}>
             Explore more
           </button>
         </Link>
 
-      </div>
+
+       </div>
+
       <ProductCard />
     </div>
   );
