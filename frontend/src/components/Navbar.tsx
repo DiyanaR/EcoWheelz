@@ -8,7 +8,7 @@ import SearchBar from "../components/SearchBar";
 
 export default function Navbar() {
   const handleSearch = (searchTerm: string) => {
-    // lägga söklogiken här
+
     console.log("Sökterm:", searchTerm);
   };
   return (
@@ -44,7 +44,7 @@ export default function Navbar() {
             <Link to="/faq">FAQ</Link>
           </li>
         </ul>
-        {/* <SearchBar onSearch={handleSearch} /> */}
+        <SearchBar onSearch={handleSearch} />
       </nav>
     </>
   );
