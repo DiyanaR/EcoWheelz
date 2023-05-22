@@ -5,9 +5,9 @@ import Footer from "./components/Footer";
 // import TestPage from "./pages/TestPage";
 import { ContextProvider } from "./components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import ProductPage from "./pages/ProductPage";
-import DetailPage from "./pages/DetailPage";
+import LandingPage from "./Pages/LandingPage";
+import ProductPage from "./Pages/ProductPage";
+import DetailPage from "./Pages/DetailPage";
 
 function Root() {
   return (

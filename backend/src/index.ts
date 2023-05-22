@@ -21,8 +21,8 @@ client.connect();
 app.use(cors());
 
 app.use(express.json());
-console.log(path.join(__dirname, "images"));
-app.use(express.static(path.join(__dirname, "../images")));
+// app.use("/static", express.static("public"));
+app.use("/images", express.static(path.join(__dirname, "../images")));
 
 const createUserTable = async () => {
   try {
