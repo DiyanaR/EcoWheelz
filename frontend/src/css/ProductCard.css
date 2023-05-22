@@ -88,7 +88,7 @@
   align-items: center;
   padding: 0px;
   gap: 68px;
-  width: 302px;
+
   height: 32px;
   flex: none;
   order: 4;
@@ -136,4 +136,37 @@
 .Product-description {
   margin-top: 10px;
   font-size: 14px;
+}
+
+/* .ProductCard-iconBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ProductCard-icon {
+  /* position: absolute; */
+/* right: 0; */
+/* } */
+
+@media (min-width: 600px) {
+  .Product-image {
+    width: 499.48px;
+    height: 499.48px;
+  }
+  .Product-text {
+    width: 499.48px;
+    height: 229.85px;
+    /* background-color: #222222; */
+  }
+
+  .Product-container {
+    width: 499.48px;
+    height: 687px;
+  }
+
+  .Product-list {
+    display: flex;
+    flex-direction: row;
+  }
 }

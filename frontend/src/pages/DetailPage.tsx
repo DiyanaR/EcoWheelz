@@ -68,7 +68,7 @@ export default function DetailPage() {
             <h2>Specifikations</h2>
           </div>
           <div className="DetailPage-box">
-            <h1 className="Product-header">Our products</h1>
+            <h1 className="Product-header">Other products</h1>
             {products.length > 0 ? (
               <ol className="Product-list">
                 {products.slice(0, 3).map((product) => (
