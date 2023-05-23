@@ -38,12 +38,12 @@ function ProductPage() {
 
   return (
     <>
-      <div className="Product-box">
+      <div className="ProductPage-box">
         {products.length > 0 ? (
           <ol className="Product-list">
             {products.map((product) => (
               <li key={product.id}>
-                <div className="Product-container">
+                <div className="ProductPage-container">
                   <img
                     className="Product-image"
                     src={product.img}
@@ -56,13 +56,13 @@ function ProductPage() {
                       <div className="ProductCard-icon">
                         <h1 className="Product-title">{product.title}</h1>
 
-                        <button onClick={handleShowText}>
+                        <div onClick={handleShowText}>
                           <img
                             className="Product-icon"
                             src="./icons/placeholder.png"
                             alt="icon"
                           />
-                        </button>
+                        </div>
 
                         {showText && (
                           <div>

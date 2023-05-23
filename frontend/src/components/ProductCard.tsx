@@ -19,6 +19,9 @@ interface Product {
 export default function ProductsCards() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showText, setShowText] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,8 +36,12 @@ export default function ProductsCards() {
     fetchData();
   }, []);
 
-  const handleShowText = () => {
-    setShowText(!showText);
+  const handleShowText = (productId: number) => {
+    setSelectedProductId(productId);
+  };
+
+  const closeModal = () => {
+    setSelectedProductId(null);
   };
 
   return (
@@ -55,33 +62,34 @@ export default function ProductsCards() {
                   <div className="Product-text">
                     <div className="ProductCard-icon">
                       <h2 className="Product-title">{product.title}</h2>
-                      <div className="Product-iconBox" onClick={handleShowText}>
-                        <img
-                          className="Product-icon"
-                          src="./icons/placeholder.png"
-                          alt="icon"
-                        />
-                      </div>
-                      {showText && (
-                        <ShowInfoModal
-                          subtitle={product.subtitle}
-                          shortdescription={product.shortdescription}
-                        />
+                      {selectedProductId === null ? (
+                        <div
+                          className="Product-iconBox"
+                          onClick={() => handleShowText(product.id)}
+                        >
+                          <img
+                            className="Product-icon"
+                            src="./icons/placeholder.png"
+                            alt="icon"
+                          />
+                        </div>
+                      ) : (
+                        <div className="Modal-show">
+                          {/* <hr className="Product-line" /> */}
+                          {selectedProductId === product.id && (
+                            <ShowInfoModal
+                              subtitle={product.subtitle}
+                              shortdescription={product.shortdescription}
+                              closeModal={closeModal}
+                            />
+                          )}
+                        </div>
                       )}
-
-                      {/* <div>
-                        {<p>{product.subtitle}</p>}
-                        {
-                          <p className="Product-description">
-                            {product.shortdescription}
-                          </p>
-                        }
-                      </div> */}
                     </div>
 
                     <div className="ProductCard-button">
                       <p className="Product-price">{product.price}</p>
-                      <hr className="Product-line" />
+
                       <Link to={`/detailpage/${product.title}`}>
                         <button className="Product-button">View product</button>
                       </Link>
@@ -92,10 +100,12 @@ export default function ProductsCards() {
             ))}
           </ol>
         ) : null}
-        {/* {visibleProduct < products.length && ( */}
         <div className="Product-show-more">
           <Link to={`/productpage`}>
-            <button className="Product-button" onClick={handleShowText}>
+            <button
+              className="Product-button"
+              onClick={() => setShowText(!showText)}
+            >
               Show more
             </button>
           </Link>

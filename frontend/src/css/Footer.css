@@ -155,6 +155,15 @@ li {
   width: 1440px;
   height: 254px;
   font-family: "Red Hat Display";
+  margin-top: auto;
+
+  /* position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #222222;
+  padding: 40px 0;
+  font-family: "Red Hat Display"; */
 }
 
 .footer-container {
