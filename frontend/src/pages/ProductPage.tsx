@@ -24,7 +24,7 @@ function ProductPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/products");
+        const response = await fetch("/scooter.json");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -43,16 +43,16 @@ function ProductPage() {
       <div className="ProductPage-box">
         {products.length > 0 ? (
           <ol className="ProductPage-list">
-            {products.map((product) => (
+            {products.slice(0, 3).map((product) => (
               <li key={product.id}>
                 <div className="ProductPage-container">
-                  <div>
-                    <img
-                      className="ProductPage-image"
-                      src={product.img}
-                      alt={product.img}
-                    />
-                  </div>
+                  {/* <div> */}
+                  <img
+                    className="ProductPage-image"
+                    src={product.img}
+                    alt={product.img}
+                  />
+                  {/* </div> */}
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="ProductPage-info">
@@ -103,6 +103,16 @@ function ProductPage() {
         {/* {visibleProduct < products.length && ( */}
         <div className="Product-show-more"></div>
         {/* )} */}
+      </div>
+      <div className="Product-show-more">
+        <Link to={`/productpage`}>
+          <button
+            className="Product-button"
+            onClick={() => setShowText(!showText)}
+          >
+            Show more
+          </button>
+        </Link>
       </div>
     </>
   );

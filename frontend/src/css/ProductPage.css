@@ -40,17 +40,16 @@
 }
 
 .ProductPage-info {
-  background-color: #222222;
+  /* background-color: #222222; */
   width: 645px;
-  height: 499.48px;
   display: flex;
-  align-items: center;
+  justify-content: center;
   border-radius: 30px;
 }
 
 .ProductPage-image {
-  width: 644px;
-  height: 579.6px;
+  width: 544px;
+  height: 479.6px;
   border-top-left-radius: 8px;
   /* border-top-right-radius: 8px; */
   object-fit: cover;
@@ -65,8 +64,9 @@
   .ProductPage-container {
     display: flex;
     flex-direction: row;
-    width: 1312px;
-    height: 579.6px;
+
+    /* width: 1312px;
+    height: 579.6px; */
   }
 }
 
