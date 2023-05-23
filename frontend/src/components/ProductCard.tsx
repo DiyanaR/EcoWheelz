@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/ProductCard.css";
+import ShowInfoModal from "./ShowInfoModal";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,7 +9,9 @@ interface Product {
   id: number;
   title: string;
   subtitle: string;
-  description: string;
+  shortdescription: string;
+  longdescription: string;
+  specification: string;
   img: string;
   price: number;
 }
@@ -20,7 +23,7 @@ export default function ProductsCards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/scooter.json");
+        const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -49,9 +52,7 @@ export default function ProductsCards() {
                     alt={product.img}
                   />
 
-                  {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="Product-text">
-                    <hr className="Product-line" />
                     <div className="ProductCard-icon">
                       <h2 className="Product-title">{product.title}</h2>
                       <div className="Product-iconBox" onClick={handleShowText}>
@@ -61,28 +62,31 @@ export default function ProductsCards() {
                           alt="icon"
                         />
                       </div>
-
                       {showText && (
-                        <div>
-                          {<p>{product.subtitle}</p>}
-                          {
-                            <p className="Product-description">
-                              {product.description}
-                            </p>
-                          }
-                        </div>
+                        <ShowInfoModal
+                          subtitle={product.subtitle}
+                          shortdescription={product.shortdescription}
+                        />
                       )}
+
+                      {/* <div>
+                        {<p>{product.subtitle}</p>}
+                        {
+                          <p className="Product-description">
+                            {product.shortdescription}
+                          </p>
+                        }
+                      </div> */}
                     </div>
 
                     <div className="ProductCard-button">
                       <p className="Product-price">{product.price}</p>
+                      <hr className="Product-line" />
                       <Link to={`/detailpage/${product.title}`}>
                         <button className="Product-button">View product</button>
                       </Link>
                     </div>
                   </div>
-
-                  {/* </Link> */}
                 </div>
               </li>
             ))}
@@ -96,8 +100,6 @@ export default function ProductsCards() {
             </button>
           </Link>
         </div>
-
-        {/* )} */}
       </div>
     </>
   );

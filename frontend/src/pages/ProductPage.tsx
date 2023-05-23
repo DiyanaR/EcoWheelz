@@ -22,7 +22,7 @@ function ProductPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/scooter.json");
+        const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -53,7 +53,6 @@ function ProductPage() {
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div>
                     <div className="Product-text">
-                      <hr className="Product-line" />
                       <div className="ProductCard-icon">
                         <h1 className="Product-title">{product.title}</h1>
 
@@ -80,6 +79,7 @@ function ProductPage() {
                       <div className="ProductCard-button">
                         <p className="Product-price">{product.price}</p>
                         <Link to={`/detailpage/${product.title}`}>
+                          <hr className="Product-line" />
                           <button className="Product-button">
                             View product
                           </button>
