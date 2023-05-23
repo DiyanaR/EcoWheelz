@@ -20,11 +20,13 @@ interface Product {
 function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showText, setShowText] = useState(false);
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/scooter.json");
+        const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -34,16 +36,26 @@ function ProductPage() {
     fetchData();
   }, []);
 
-  // const handleShowText = () => {
-  //   setShowText(!showText);
-  // };
+  useEffect(() => {
+    console.log("Showmore", showMore);
+    console.log("products", products);
+    if (showMore) {
+      setVisibleProducts(products);
+    } else {
+      setVisibleProducts(products.slice(0, 3));
+    }
+  }, [showMore, products]);
+
+  const handleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
   return (
     <>
       <div className="ProductPage-box">
         {products.length > 0 ? (
           <ol className="ProductPage-list">
-            {products.slice(0, 3).map((product) => (
+            {visibleProducts.map((product) => (
               <li key={product.id}>
                 <div className="ProductPage-container">
                   {/* <div> */}
@@ -99,19 +111,20 @@ function ProductPage() {
             ))}
           </ol>
         ) : null}
-
-        {/* {visibleProduct < products.length && ( */}
-        <div className="Product-show-more"></div>
-        {/* )} */}
+        {/*
+        {!visibleProduct && (
+          <div className="Product-show-more">
+            <button className="productButton" onClick={handleShowMore}></button>
+          </div>
+        )} */}
       </div>
       <div className="Product-show-more">
         <Link to={`/productpage`}>
-          <button
-            className="Product-button"
-            onClick={() => setShowText(!showText)}
-          >
-            Show more
-          </button>
+          {!showMore && (
+            <button className="Product-button" onClick={handleShowMore}>
+              View more
+            </button>
+          )}
         </Link>
       </div>
     </>
