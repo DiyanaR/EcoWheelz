@@ -14,6 +14,7 @@ interface Product {
 }
 
 export default function DetailPage() {
+  // const { id } = useParams<{ id: string }>();
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProduct, setFilteredProduct] = useState<Product[]>([]);
   // const title = products.length > 0 ? products[0].title : "";

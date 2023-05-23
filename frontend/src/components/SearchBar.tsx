@@ -1,7 +1,9 @@
 
 import React, { useState, ChangeEvent, useEffect } from "react";
-import SearchResults from "./searchResults";
 import "../css/SearchBar.css";
+import { Link } from "react-router-dom";
+// import SearchResults from "./searchResults";
+
 
 interface SearchBarProps {
   onSearch: (searchQuery: string) => void;
@@ -19,10 +21,13 @@ interface Product {
 }
 
 function SearchBar({ onSearch }: SearchBarProps) {
+
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
-  const [searchNotFound, setSearchNotFound] = useState(false);
+  // const [searchNotFound, setSearchNotFound] = useState(false);
+
+
 
   useEffect(() => {
 
@@ -40,18 +45,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
     fetchProducts();
   }, [searchQuery]);
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchQuery = event.target.value;
-    setSearchQuery(searchQuery);
-    performSearch(searchQuery);
-  };
-
-  const handleFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    performSearch(searchQuery);
-  };
-
-
 
 
   const performSearch = (searchQuery: string) => {
@@ -61,16 +54,37 @@ function SearchBar({ onSearch }: SearchBarProps) {
       );
       setResults(filteredResults);
       onSearch(searchQuery);
-      setSearchNotFound(filteredResults.length === 0);
+      // setSearchNotFound(searchQuery.length >= 2 &&  filteredResults.length === 0);
     } else {
       setResults([]);
       onSearch("");
-      setSearchNotFound(false);
+      // setSearchNotFound(false);
     }
   };
 
-  return (
-    <form className="search-bar" onSubmit={handleFormSubmit}>
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const searchQuery = event.target.value;
+    setSearchQuery(searchQuery);
+    if (searchQuery.length >= 2) {
+    performSearch(searchQuery);
+  }else {
+    setResults([]);
+    onSearch("");
+    // setSearchNotFound(false);
+  }
+};
+
+
+  const handleLinkClick = () => {
+    setResults([]);
+    setSearchQuery("");
+  };
+
+
+
+return (
+  <>
+    <form className="search-bar">
       <input
         type="text"
         id="searchQuery"
@@ -80,14 +94,38 @@ function SearchBar({ onSearch }: SearchBarProps) {
         placeholder="Search..."
       />
 
-      {searchNotFound && results.length === 0 && <p>Your search was not found.</p>}
-      {/* <div className="search-results-container"> */}
-      {/* <div style={{ backgroundColor: "black" }}> */}
-      {results.length > 0 && <SearchResults results={results} />}
-      {/* </div> */}
+      {searchQuery && searchQuery.length >= 2 && (
+        <div className="dropdown-menu">
+          {results.length > 0 ? (
+            results.map((product) => (
+              <Link
+                key={product.id}
+                to={`/detailpage/${product.title}`}
+                className="dropdown-item"
+                onClick={handleLinkClick}
+              >
+                <img
+                  src={product.img}
+                  alt={product.title}
+                  className="product-image"
+                />
+                <div className=" product-info">
+                  <h3>{product.title}</h3>
+                  <p>{product.subtitle}</p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p className="dropdown-item">Your search was not Found</p>
+          )}
+        </div>
+      )}
+      {/* {searchNotFound && results.length === 0 && (
+        <p className="dropdown-item">Your search was not found.</p>
+      )} */}
     </form>
-
-  );
+  </>
+);
 }
 
 export default SearchBar;

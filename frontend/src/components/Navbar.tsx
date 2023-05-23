@@ -9,7 +9,7 @@ import SearchBar from "../components/SearchBar";
 export default function Navbar() {
   const handleSearch = (searchTerm: string) => {
 
-    console.log("Sökterm:", searchTerm);
+    console.log("Sökt:", searchTerm);
   };
   return (
     <>
