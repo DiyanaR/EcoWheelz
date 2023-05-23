@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LandingImage from "../LandingImage/header.png";
+import HeroImg from "../assets/header.png";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 
@@ -8,53 +8,18 @@ export default function LandingPage() {
     <>
       <Main>
         <div style={{ position: "relative", fontFamily: "Red Hat Display" }}>
-          <img className="hero-image" src={LandingImage} alt="Min bild" />
+          <div className="hero-image">
+            <div className="hero-text-banner">
+              <div>Silent. Green. Ecowheelz.</div>
 
-          <div className="hero-headline">
-            <div
-              style={{
-                color: "white",
-                fontSize: "48px",
-                textAlign: "center",
-                // width: "873px",
-                // height: "306px",
-                top: "352px",
-                placeItems: "center",
-                marginBottom: "20px",
-              }}
-            >
-              Silent. Green. Ecowheelz.
+              <div>
+                Sustainable transport made easy. Your green ride awaits!
+              </div>
+
+              <Link to="/productpage">
+                <button>Explore more</button>
+              </Link>
             </div>
-
-            <div
-              style={{ color: "white", fontSize: "16px", marginRight: "130px" }}
-            >
-              Sustainable transport made easy. Your green ride awaits!
-            </div>
-
-            <Link to="/productpage">
-              <button
-                style={{
-                  fontFamily: "Red Hat Display",
-                  fontSize: "14px",
-                  lineHeight: "19px",
-                  textAlign: "left",
-                  verticalAlign: "top",
-                  color: "#faf9f8",
-                  width: "109px",
-                  height: "39px",
-                  borderRadius: "16px",
-                  borderColor: "#9ae5bd",
-                  backgroundColor: "transparent",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: "20px",
-                }}
-              >
-                Explore more
-              </button>
-            </Link>
           </div>
 
           <ProductCard />
@@ -66,9 +31,12 @@ export default function LandingPage() {
 
 const Main = styled.div`
   .hero-image {
-    width: 1460px;
-    height: 1044px;
-    z-index: 0;
+    background: url(${HeroImg}), #080d11;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: calc(100dvh - 92px);
+    max-height: 1024px;
   }
 
   .hero-headline {

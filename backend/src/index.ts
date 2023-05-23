@@ -392,3 +392,18 @@ app.get("/products", async (req, res) => {
       .json({ error: "An error occurred while fetching products" });
   }
 });
+
+
+app.get("/products", async (req: express.Request, res: express.Response) => {
+  const searchQuery = req.query.search;
+
+  try {
+
+    const result = await client.query("SELECT * FROM products WHERE name ILIKE $1", [`%${searchQuery}%`]);
+    const products = result.rows;
+    res.status(200).json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res.status(500).json({ error: "An error occurred while fetching products" });
+  }
+});
