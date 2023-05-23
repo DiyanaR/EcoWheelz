@@ -1,3 +1,80 @@
 .custom-carousel {
   background-color: #222222;
 }
+
+.ProductPage-container {
+  background-color: #222222;
+  width: 326px;
+  color: #faf9f8;
+  border-radius: 8px;
+  gap: 10.14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px;
+  padding: 0px, 0px, 41px, 0px;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.ProductPage-text {
+  padding: 0px 15.2126px;
+  height: 136px;
+  position: relative;
+}
+
+.ProductPage-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (min-width: 600px) {
+  .ProductPage-box {
+    display: flex;
+  }
+
+  .ProductPage-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 1312px;
+height: 579.6px;
+
+background: #222222;
+border-radius: 30px; */
+
+/* Inside auto layout */
+
+/* flex: none;
+order: 0;
+flex-grow: 0; */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 1312px;
+height: 579.6px;
+
+background: #222222;
+border-radius: 30px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;

@@ -5,6 +5,7 @@ import Carousel from "react-bootstrap/Carousel";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "../css/ProductPage.css";
+import "../css/ProductCard.css";
 
 interface Product {
   id: number;
@@ -22,7 +23,7 @@ function ProductPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/scooter.json");
+        const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -38,12 +39,12 @@ function ProductPage() {
 
   return (
     <>
-      <div className="Product-box">
+      <div className="ProductPage-box">
         {products.length > 0 ? (
           <ol className="Product-list">
             {products.map((product) => (
               <li key={product.id}>
-                <div className="Product-container">
+                <div className="ProductPage-container">
                   <img
                     className="Product-image"
                     src={product.img}
@@ -52,18 +53,17 @@ function ProductPage() {
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div>
-                    <div className="Product-text">
-                      <hr className="Product-line" />
+                    <div className="ProductPage-text">
                       <div className="ProductCard-icon">
                         <h1 className="Product-title">{product.title}</h1>
 
-                        <button onClick={handleShowText}>
+                        <div onClick={handleShowText}>
                           <img
                             className="Product-icon"
                             src="./icons/placeholder.png"
                             alt="icon"
                           />
-                        </button>
+                        </div>
 
                         {showText && (
                           <div>
@@ -80,6 +80,7 @@ function ProductPage() {
                       <div className="ProductCard-button">
                         <p className="Product-price">{product.price}</p>
                         <Link to={`/detailpage/${product.title}`}>
+                          <hr className="Product-line" />
                           <button className="Product-button">
                             View product
                           </button>

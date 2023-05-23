@@ -8,7 +8,9 @@ interface Product {
   id: number;
   title: string;
   subtitle: string;
-  description: string;
+  shortdescription: string;
+  longdescription: string;
+  specification: string;
   img: string;
   price: number;
 }
@@ -23,7 +25,7 @@ export default function DetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/scooter.json");
+        const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -60,15 +62,17 @@ export default function DetailPage() {
                 filteredProduct[0].title.slice(1)}
             </h1>
             <p>{filteredProduct[0].subtitle}</p>
-            <p>{filteredProduct[0].description}</p>
+            <p>{filteredProduct[0].longdescription}</p>
             <h2>{filteredProduct[0].price}</h2>
             <div className="DetailPage-container">
               <img src="../icons/stars.png" alt="icon" />
               <button className="Product-button">Add to Cart</button>
             </div>
-            <h2>Specifikations</h2>
-          </div>
-          <div className="DetailPage-box">
+            <div className="DetailPage-specification">
+              <h2>Specifikations</h2>
+              <p>{filteredProduct[0].specification}</p>
+            </div>
+            <div className="DetailPage-box"></div>
             <h1 className="Product-header">Other products</h1>
             {products.length > 0 ? (
               <ol className="Product-list">
