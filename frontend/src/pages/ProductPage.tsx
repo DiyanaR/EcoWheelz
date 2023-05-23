@@ -11,7 +11,8 @@ interface Product {
   id: number;
   title: string;
   subtitle: string;
-  description: string;
+  shortdescription: string;
+  longdescription: string;
   img: string;
   price: number;
 }
@@ -33,31 +34,35 @@ function ProductPage() {
     fetchData();
   }, []);
 
-  const handleShowText = () => {
-    setShowText(!showText);
-  };
+  // const handleShowText = () => {
+  //   setShowText(!showText);
+  // };
 
   return (
     <>
       <div className="ProductPage-box">
         {products.length > 0 ? (
-          <ol className="Product-list">
+          <ol className="ProductPage-list">
             {products.map((product) => (
               <li key={product.id}>
                 <div className="ProductPage-container">
-                  <img
-                    className="Product-image"
-                    src={product.img}
-                    alt={product.img}
-                  />
+                  <div>
+                    <img
+                      className="ProductPage-image"
+                      src={product.img}
+                      alt={product.img}
+                    />
+                  </div>
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
-                  <div>
+                  <div className="ProductPage-info">
                     <div className="ProductPage-text">
-                      <div className="ProductCard-icon">
+                      <div className="ProductCardPage-icon">
                         <h1 className="Product-title">{product.title}</h1>
+                        <h2>{product.subtitle}</h2>
+                        <p>{product.shortdescription}</p>
 
-                        <div onClick={handleShowText}>
+                        {/* <div onClick={handleShowText}>
                           <img
                             className="Product-icon"
                             src="./icons/placeholder.png"
@@ -74,13 +79,12 @@ function ProductPage() {
                               </p>
                             }
                           </div>
-                        )}
+                        )} */}
                       </div>
 
                       <div className="ProductCard-button">
                         <p className="Product-price">{product.price}</p>
                         <Link to={`/detailpage/${product.title}`}>
-                          <hr className="Product-line" />
                           <button className="Product-button">
                             View product
                           </button>

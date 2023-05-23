@@ -50,61 +50,70 @@ export default function DetailPage() {
     <>
       {filteredProduct.length > 0 && (
         <div className="DetailPage-box">
-          <img
-            className="DetailPage-image"
-            src={filteredProduct[0].img}
-            alt={filteredProduct[0].img}
-          />
-          <div className="DetailPage-text">
-            <h1>
-              {filteredProduct[0].title.charAt(0).toUpperCase() +
-                filteredProduct[0].title.slice(1)}
-            </h1>
-            <p>{filteredProduct[0].subtitle}</p>
-            <p>{filteredProduct[0].longdescription}</p>
-            <h2>{filteredProduct[0].price}</h2>
-            <div className="DetailPage-container">
-              <img src="../icons/stars.png" alt="icon" />
-              <button className="Product-button">Add to Cart</button>
+          <div className="DetailPage-info">
+            <img
+              className="DetailPage-image"
+              src={filteredProduct[0].img}
+              alt={filteredProduct[0].img}
+            />
+            <div className="DetailPage-text">
+              {/* <div className="DetailPage-shortText"> */}
+              <h1>
+                {filteredProduct[0].title.charAt(0).toUpperCase() +
+                  filteredProduct[0].title.slice(1)}
+              </h1>
+              <p>{filteredProduct[0].subtitle}</p>
+              <p>{filteredProduct[0].longdescription}</p>
+              <h2>{filteredProduct[0].price}</h2>
+              <div className="DetailPage-container">
+                <img src="../icons/stars.png" alt="icon" />
+                <button className="Product-button">Add to Cart</button>
+              </div>
             </div>
-            <div className="DetailPage-specification">
-              <h2>Specifikations</h2>
-              <p>{filteredProduct[0].specification}</p>
-            </div>
-            <div className="DetailPage-box"></div>
-            <h1 className="Product-header">Other products</h1>
-            {products.length > 0 ? (
-              <ol className="Product-list">
-                {products.slice(0, 3).map((product) => (
-                  <li key={product.id}>
-                    <div className="Product-container">
-                      <img
-                        className="Product-image"
-                        src={product.img}
-                        alt={product.img}
-                      />
-                      <div className="Product-text">
-                        <hr className="Product-line" />
-                        <div className="ProductCard-icon">
-                          <h2 className="Product-title">{product.title}</h2>
-                        </div>
+          </div>
+          <div className="DetailPage-specification">
+            <h2>Specifikations</h2>
+            <ul>
+              <li>
+                {filteredProduct[0].specification.split(",").map((spec) => (
+                  <li>{spec}</li>
+                ))}
+              </li>
+            </ul>
+          </div>
 
-                        <div className="ProductCard-button">
-                          <p className="Product-price">{product.price}</p>
-                          <Link to={`/detailpage/${product.title}`}>
-                            <button className="Product-button">
-                              View product
-                            </button>
-                          </Link>
-                        </div>
+          <h1 className="Product-header">Other products</h1>
+          {products.length > 0 ? (
+            <ol className="Product-list">
+              {products.slice(0, 3).map((product) => (
+                <li key={product.id}>
+                  <div className="OtherProduct-container">
+                    <img
+                      className="OtherProduct-image"
+                      src={product.img}
+                      alt={product.img}
+                    />
+                    <div className="Product-text">
+                      <hr className="OtherProduct-line" />
+                      <div className="ProductCard-icon">
+                        <h2 className="Product-title">{product.title}</h2>
+                      </div>
+
+                      <div className="ProductCard-button">
+                        <p className="Product-price">{product.price}</p>
+                        <Link to={`/detailpage/${product.title}`}>
+                          <button className="Product-button">
+                            View product
+                          </button>
+                        </Link>
                       </div>
                     </div>
-                  </li>
-                ))}
-              </ol>
-            ) : null}
-            <div className="Product-show-more"></div>
-          </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          ) : null}
+          <div className="Product-show-more"></div>
         </div>
       )}
     </>
