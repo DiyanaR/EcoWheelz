@@ -5,6 +5,7 @@ import Carousel from "react-bootstrap/Carousel";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "../css/ProductPage.css";
+import "../css/ProductCard.css";
 
 interface Product {
   id: number;
@@ -52,7 +53,7 @@ function ProductPage() {
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div>
-                    <div className="Product-text">
+                    <div className="ProductPage-text">
                       <div className="ProductCard-icon">
                         <h1 className="Product-title">{product.title}</h1>
 
