@@ -1,27 +1,94 @@
-import React from "react";
+// import React from "react";
+// import "../css/Footer.css";
+
+// function Footer() {
+//   return (
+//     <footer className="footer">
+//       <div className="footer-container">
+//         <div className="footer-column">
+//           <h3 className="footer-heading">About Us</h3>
+//           <p className="footer-link">work with us</p>
+//           <p className="footer-link">privacy Policy</p>
+//           <p className="footer-link">terms and conditions</p>
+//         </div>
+//         <div className="footer-column">
+//           <h3 className="footer-heading">FAQ</h3>
+//           <p className="footer-link">shipping and returns</p>
+//           <p className="footer-link">store policy</p>
+//           <p className="footer-link">Payments</p>
+//         </div>
+//         <div className="footer-column">
+//           <h3 className="footer-heading">Contact</h3>
+//           <p className="footer-link">939399393</p>
+//           <p className="footer-link">-----</p>
+//           <p className="footer-link">-----</p>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
+
+// export default Footer;
+
+
+import React, { useState } from "react";
 import "../css/Footer.css";
 
 function Footer() {
+  const [aboutUsOpen, setAboutUsOpen] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+
+  const toggleAboutUs = () => {
+    setAboutUsOpen(!aboutUsOpen);
+  };
+
+  const toggleFaq = () => {
+    setFaqOpen(!faqOpen);
+  };
+
+  const toggleContact = () => {
+    setContactOpen(!contactOpen);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-column">
-          <h3 className="footer-heading">About Us</h3>
-          <p className="footer-link">work with us</p>
-          <p className="footer-link">privacy Policy</p>
-          <p className="footer-link">terms and conditions</p>
+          <h3 className="footer-heading" onClick={toggleAboutUs}>
+            About Us
+          </h3>
+          {aboutUsOpen && (
+            <ul className="footer-dropdown">
+              <li className="footer-link">work with us</li>
+              <li className="footer-link">privacy Policy</li>
+              <li className="footer-link">terms and conditions</li>
+            </ul>
+          )}
         </div>
         <div className="footer-column">
-          <h3 className="footer-heading">FAQ</h3>
-          <p className="footer-link">shipping and returns</p>
-          <p className="footer-link">store policy</p>
-          <p className="footer-link">Payments</p>
+          <h3 className="footer-heading" onClick={toggleFaq}>
+            FAQ
+          </h3>
+          {faqOpen && (
+            <ul className="footer-dropdown">
+              <li className="footer-link">shipping and returns</li>
+              <li className="footer-link">store policy</li>
+              <li className="footer-link">Payments</li>
+            </ul>
+          )}
         </div>
         <div className="footer-column">
-          <h3 className="footer-heading">Contact</h3>
-          <p className="footer-link">939399393</p>
-          <p className="footer-link">-----</p>
-          <p className="footer-link">-----</p>
+          <h3 className="footer-heading" onClick={toggleContact}>
+            Contact
+          </h3>
+          {contactOpen && (
+            <ul className="footer-dropdown">
+              <li className="footer-link">939399393</li>
+              <li className="footer-link">-----</li>
+              <li className="footer-link">-----</li>
+            </ul>
+          )}
         </div>
       </div>
     </footer>

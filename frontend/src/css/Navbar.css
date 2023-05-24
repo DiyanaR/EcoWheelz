@@ -1,11 +1,9 @@
 nav {
   font-family: "Red Hat Display";
-  padding: 10px 0;
+  /* padding: 10px 0; */
   width: 1440px;
   height: 92px;
-  /* position: absolute; */
-  /* left: 18245px;
-  top: 1435px; */
+
   display: flex;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
@@ -17,7 +15,7 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Centrera innehållet vertikalt */
+  align-items: center;
 }
 
 nav li {
@@ -37,13 +35,25 @@ nav a {
 }
 
 .logo-image {
-  /* margin-right: 10px; */
-  width: 50px; /* Justera storleken efter behov */
+  width: 50px;
   height: 50px;
 }
 
 .logo-text {
-  /* font-size: 16px;
-  font-weight: bold; */
   margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  nav {
+    align-items: center;
+    padding: 10px;
+  }
+
+  nav ul {
+    margin: 10px 0;
+  }
+
+  nav li {
+    padding: 15px;
+  }
 }
