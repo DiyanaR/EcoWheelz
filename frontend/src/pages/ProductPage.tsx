@@ -20,6 +20,8 @@ interface Product {
 function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showText, setShowText] = useState(false);
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,25 +36,35 @@ function ProductPage() {
     fetchData();
   }, []);
 
-  // const handleShowText = () => {
-  //   setShowText(!showText);
-  // };
+  useEffect(() => {
+    console.log("Showmore", showMore);
+    console.log("products", products);
+    if (showMore) {
+      setVisibleProducts(products);
+    } else {
+      setVisibleProducts(products.slice(0, 3));
+    }
+  }, [showMore, products]);
+
+  const handleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
   return (
     <>
       <div className="ProductPage-box">
         {products.length > 0 ? (
           <ol className="ProductPage-list">
-            {products.map((product) => (
+            {visibleProducts.map((product) => (
               <li key={product.id}>
                 <div className="ProductPage-container">
-                  <div>
-                    <img
-                      className="ProductPage-image"
-                      src={product.img}
-                      alt={product.img}
-                    />
-                  </div>
+                  {/* <div> */}
+                  <img
+                    className="ProductPage-image"
+                    src={product.img}
+                    alt={product.img}
+                  />
+                  {/* </div> */}
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="ProductPage-info">
@@ -99,10 +111,21 @@ function ProductPage() {
             ))}
           </ol>
         ) : null}
-
-        {/* {visibleProduct < products.length && ( */}
-        <div className="Product-show-more"></div>
-        {/* )} */}
+        {/*
+        {!visibleProduct && (
+          <div className="Product-show-more">
+            <button className="productButton" onClick={handleShowMore}></button>
+          </div>
+        )} */}
+      </div>
+      <div className="Product-show-more">
+        <Link to={`/productpage`}>
+          {!showMore && (
+            <button className="Product-button" onClick={handleShowMore}>
+              View more
+            </button>
+          )}
+        </Link>
       </div>
     </>
   );

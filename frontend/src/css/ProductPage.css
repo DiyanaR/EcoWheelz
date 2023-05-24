@@ -1,7 +1,3 @@
-.custom-carousel {
-  background-color: #222222;
-}
-
 .ProductPage-container {
   background-color: #222222;
   /* width: 326px; */
@@ -23,6 +19,13 @@
   margin-bottom: 64px; */
 }
 
+.Product-show-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 128px;
+  margin-bottom: 128px;
+}
+
 .ProductPage-text {
   padding: 0px 15.2126px;
   height: 136px;
@@ -40,17 +43,16 @@
 }
 
 .ProductPage-info {
-  background-color: #222222;
+  /* background-color: #222222; */
   width: 645px;
-  height: 499.48px;
   display: flex;
-  align-items: center;
+  justify-content: center;
   border-radius: 30px;
 }
 
 .ProductPage-image {
-  width: 644px;
-  height: 579.6px;
+  width: 544px;
+  height: 479.6px;
   border-top-left-radius: 8px;
   /* border-top-right-radius: 8px; */
   object-fit: cover;
@@ -65,8 +67,9 @@
   .ProductPage-container {
     display: flex;
     flex-direction: row;
-    width: 1312px;
-    height: 579.6px;
+
+    /* width: 1312px;
+    height: 579.6px; */
   }
 }
 

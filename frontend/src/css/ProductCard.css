@@ -179,8 +179,8 @@
 
 @media (min-width: 600px) {
   .Product-image {
-    width: 499.48px;
-    height: 499.48px;
+    width: 399.48px;
+    height: 399.48px;
   }
   .Product-text {
     /* width: 499.48px; */
@@ -189,7 +189,7 @@
   }
 
   .Product-container {
-    width: 499.48px;
+    width: 399.48px;
     height: 687px;
   }
 

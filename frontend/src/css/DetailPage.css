@@ -1,6 +1,5 @@
-.DetailPage-box {
-  /* display: flex; */
-  justify-content: center;
+.DetailPage-info {
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 64px;
@@ -14,20 +13,47 @@
   margin-top: 64px;
 }
 
-.OtherProduct-image {
-  width: 298px;
-}
-
 .DetailPage-text {
   color: #faf9f8;
   width: 326px;
-  height: 599px;
-  top: 358px;
-  gap: 24px;
+  margin-top: 64px;
+  font-family: "Red Hat Display";
+}
+
+.DetailPage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.DetailPage-specification {
+  color: #faf9f8;
   font-family: "Red Hat Display";
   margin-top: 64px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  margin-left: 220px;
+}
+
+.OtherProduct-container {
+  background-color: #222222;
+  color: #faf9f8;
+  border-radius: 8px;
+  gap: 10.14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px;
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.OtherProduct-image {
+  width: 298px;
+  height: 298px;
+  object-fit: cover;
 }
 
 .OtherProduct-line {
@@ -40,91 +66,102 @@
   border-width: 0;
   border-top-width: 2px;
   border-radius: 1px;
-  /* width: 302px; */
 }
 
-.DetailPage-container {
+.Product-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.DetailPage-specification {
-  color: #faf9f8;
-  font-family: "Red Hat Display";
-}
-
-.DetailPage-info {
-  margin-top: 64px;
-}
-
-.OtherProduct-container {
-  background-color: #222222;
-  /* width: 326px; */
-  color: #faf9f8;
-  border-radius: 8px;
-  gap: 10.14px;
-  font-family: "Red Hat Display";
-  font-style: normal;
-  font-weight: 600;
-  line-height: 34px;
-  padding: 0px, 0px, 41px, 0px;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  width: 298px;
-  /* height: 344.3px;  */
-}
-
-.OtherProduct-image {
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
+.OtherProduct-text {
+  padding: 20px;
 }
 
 @media (min-width: 600px) {
-  .DetailPage-box {
-    /* display: flex; */
-    /* flex-direction: row; */
+  .DetailPage-info {
+    flex-direction: row;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
     margin-top: 64px;
   }
 
   .DetailPage-image {
     width: 500px;
     height: 500px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-radius: 30px;
   }
 
   .DetailPage-text {
     width: 507px;
-    height: 622px;
+    margin-top: 64px;
     margin-left: 20px;
+  }
+
+  .DetailPage-container {
+    margin-top: 20px;
+  }
+
+  .DetailPage-specification {
+    margin-top: 40px;
+    margin-bottom: 64px;
+    width: 499px;
+    line-height: 40px;
+  }
+
+  .OtherProduct-container {
+    width: 374.45px;
+    position: relative;
+  }
+
+  .OtherProduct-image {
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    width: 374.45px;
+    height: 374.45px;
+  }
+
+  .Product-list {
+    margin-top: 20px;
+  }
+
+  .OtherProductCard-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0px;
+    gap: 150px;
+    height: 32px;
+    flex: none;
+    order: 4;
+    align-self: stretch;
+    flex-grow: 0;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 47px;
   }
 
   .OtherProduct-container {
     width: 374.45px;
   }
 
-  .DetailPage-info {
-    display: flex;
-    flex-direction: row;
-    margin-top: 64px;
-    justify-content: center;
+  .OtherProduct-description {
+    line-height: 27px;
   }
-  .DetailPage-specification {
-    /* width: 499px;
-    height: 480px; */
-    color: #faf9f8;
-    font-family: "Red Hat Display";
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    margin-top: 64px;
+  .OtherProduct-text {
+    height: 326.7px;
   }
 
-  .OtherProduct-image {
-    width: 374.45px;
+  .OtherProductCard-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .Product-title {
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    margin-top: 0;
   }
 }
