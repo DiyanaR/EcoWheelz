@@ -102,8 +102,10 @@
   }
 
   .DetailPage-specification {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 64px;
+    width: 499px;
+    line-height: 40px;
   }
 
   .OtherProduct-container {
