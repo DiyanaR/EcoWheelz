@@ -72,8 +72,11 @@ export default function DetailPage() {
               </div>
             </div>
           </div>
+
           <div className="DetailPage-specification">
-            <h2>Specifikations</h2>
+            <div className="Specification-header">
+              <h2>Specifikations</h2>
+            </div>
             <ul>
               <li>
                 {filteredProduct[0].specification.split(",").map((spec) => (
@@ -86,7 +89,7 @@ export default function DetailPage() {
           <h1 className="Product-header">Other products</h1>
           {products.length > 0 ? (
             <ol className="Product-list">
-              {products.slice(0, 3).map((product) => (
+              {products.slice(0, 2).map((product) => (
                 <li key={product.id}>
                   <div className="OtherProduct-container">
                     <img
@@ -94,13 +97,18 @@ export default function DetailPage() {
                       src={product.img}
                       alt={product.img}
                     />
-                    <div className="Product-text">
-                      <hr className="OtherProduct-line" />
-                      <div className="ProductCard-icon">
+
+                    <div className="OtherProduct-text">
+                      <div className="OtherProductCard-icon">
                         <h2 className="Product-title">{product.title}</h2>
+                        <h3>{product.subtitle}</h3>
                       </div>
 
-                      <div className="ProductCard-button">
+                      <p className="OtherProduct-description">
+                        {product.shortdescription}
+                      </p>
+
+                      <div className="OtherProductCard-button">
                         <p className="Product-price">{product.price}</p>
                         <Link to={`/detailpage/${product.title}`}>
                           <button className="Product-button">
