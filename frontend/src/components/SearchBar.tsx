@@ -99,8 +99,9 @@ return (
         id="searchQuery"
         name="searchQuery"
         value={searchQuery}
-          onChange={handleInputChange}
-        placeholder="Search..."
+        onChange={handleInputChange}
+          placeholder="Search..."
+          className="search-bar-input"
       />
 
       {searchQuery && searchQuery.length >= 1 &&(
