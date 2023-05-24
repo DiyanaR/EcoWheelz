@@ -54,6 +54,7 @@ function SearchBar({ onSearch }: SearchBarProps) {
       );
       setResults(filteredResults);
       onSearch(searchQuery);
+
       // setSearchNotFound(searchQuery.length >= 2 &&  filteredResults.length === 0);
     } else {
       setResults([]);
@@ -65,11 +66,14 @@ function SearchBar({ onSearch }: SearchBarProps) {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchQuery = event.target.value;
     setSearchQuery(searchQuery);
-    if (searchQuery.length >= 2) {
-    performSearch(searchQuery);
+    if (searchQuery.length >= 1) {
+      performSearch(searchQuery);
+
   }else {
     setResults([]);
-    onSearch("");
+      onSearch("");
+
+
     // setSearchNotFound(false);
   }
 };
@@ -78,23 +82,28 @@ function SearchBar({ onSearch }: SearchBarProps) {
   const handleLinkClick = () => {
     setResults([]);
     setSearchQuery("");
+
   };
+
 
 
 
 return (
   <>
+
+    <div className="container">
+
     <form className="search-bar">
       <input
         type="text"
         id="searchQuery"
         name="searchQuery"
         value={searchQuery}
-        onChange={handleInputChange}
+          onChange={handleInputChange}
         placeholder="Search..."
       />
 
-      {searchQuery && searchQuery.length >= 2 && (
+      {searchQuery && searchQuery.length >= 1 &&(
         <div className="dropdown-menu">
           {results.length > 0 ? (
             results.map((product) => (
@@ -109,7 +118,7 @@ return (
                   alt={product.title}
                   className="product-image"
                 />
-                <div className=" product-info">
+                <div className= "product-info">
                   <h3>{product.title}</h3>
                   <p>{product.subtitle}</p>
                 </div>
@@ -123,7 +132,8 @@ return (
       {/* {searchNotFound && results.length === 0 && (
         <p className="dropdown-item">Your search was not found.</p>
       )} */}
-    </form>
+      </form>
+    </div>
   </>
 );
 }

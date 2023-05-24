@@ -1,10 +1,36 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 8px 0;
+}
+
+.divider::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+
 .search-bar {
-  width: 449px;
-  height: 49px;
+  width: 448px;
+  height: 48px;
   position: absolute;
   top: 140px;
-  left: 440px;
-  transform: rotate(0);
+  /* left: 440px; */
+  left: 50%;
+  transform: translateX(-50%);
+  /* transform: rotate(0); */
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.4);
   border: none;
@@ -31,26 +57,26 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   left: 0;
-  z-index: 1;
   width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #313030;
   border-top: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 101;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
 }
 
 .dropdown-item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  color: black;
+  padding: 15px;
+  color: white;
 }
 
 .product-image {
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   margin-right: 10px;
 }
 
@@ -67,4 +93,15 @@
 .product-info p {
   margin: 0;
   font-size: 14px;
+}
+
+@media (max-width: 815px) {
+  .search-bar {
+    width: 90%;
+    max-width: 400px;
+    left: 50%; /* Justera positionen till mitten horisontellt */
+    transform: translateX(
+      -50%
+    ); /* Flytta elementet till vänster med 50% av sin bredd */
+  }
 }
