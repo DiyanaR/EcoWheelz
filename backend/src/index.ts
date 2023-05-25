@@ -393,17 +393,41 @@ app.get("/products", async (req, res) => {
   }
 });
 
-
 app.get("/products", async (req: express.Request, res: express.Response) => {
   const searchQuery = req.query.search;
 
   try {
-
-    const result = await client.query("SELECT * FROM products WHERE name ILIKE $1", [`%${searchQuery}%`]);
+    const result = await client.query(
+      "SELECT * FROM products WHERE name ILIKE $1",
+      [`%${searchQuery}%`]
+    );
     const products = result.rows;
     res.status(200).json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
-    res.status(500).json({ error: "An error occurred while fetching products" });
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching products" });
+  }
+});
+
+app.get("/products/:title", async (req, res) => {
+  const title = req.params.title;
+
+  try {
+    const result = await client.query(
+      "SELECT * FROM products WHERE title is $1",
+      [title]
+    );
+    const product = result.rows[0];
+
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).json({ error: "Produkten hittades inte" });
+    }
+  } catch (error) {
+    console.error("Error");
+    res.status(500).json({ error: "fel inträffade vid hämtning av produkten" });
   }
 });

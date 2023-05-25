@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../css/DetailPage.css";
 import "../css/ProductCard.css";
 import { useParams } from "react-router-dom";
+import { useRef } from "react";
 
 interface Product {
   id: number;
@@ -20,7 +21,8 @@ export default function DetailPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProduct, setFilteredProduct] = useState<Product[]>([]);
   // const title = products.length > 0 ? products[0].title : "";
-  const { title } = useParams();
+  const { title } = useParams<{ title: string }>();
+  const productRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +48,12 @@ export default function DetailPage() {
     console.log(filteredProduct);
     console.log(title);
   }, [products, title]);
+
+  const handleClickProduct = () => {
+    if (productRef.current) {
+      productRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -110,7 +118,10 @@ export default function DetailPage() {
 
                       <div className="OtherProductCard-button">
                         <p className="Product-price">{product.price}</p>
-                        <Link to={`/detailpage/${product.title}`}>
+                        <Link
+                          to={`/detailpage/${product.title}`}
+                          onClick={handleClickProduct}
+                        >
                           <button className="Product-button">
                             View product
                           </button>
