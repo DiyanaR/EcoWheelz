@@ -7,6 +7,7 @@ import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
+// import CartPage from "./Pages/CartPage";
 
 function Root() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         { element: <SignupPage />, path: "/signup" },
         { element: <LoginPage />, path: "/login" },
         // { element: <Product />, path: "/product" }
+        // { element: <CartPage />, path: "/cart" },
       ],
       element: <Root />,
     },

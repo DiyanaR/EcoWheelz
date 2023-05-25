@@ -17,6 +17,7 @@ interface Product {
 export default function ProductsCards() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showText, setShowText] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const [selectedProductId, setSelectedProductId] = useState<number | null>(
     null
   );
@@ -58,20 +59,21 @@ export default function ProductsCards() {
                   />
 
                   <div className="Product-text">
-                    <h2 className="Product-title">{product.title}</h2>
+                    <div className="Product-iconBox">
+                      <h2 className="Product-title">{product.title}</h2>
+                      <img
+                        className="Product-icon"
+                        src="./icons/placeholder.png"
+                        alt="icon"
+                        onClick={() => handleShowText(product.id)}
+                      />
+                      {/* ) : ( */}{" "}
+                    </div>
                     <hr className="Product-line" />
                     <div className="ProductCard-icon">
-                      {selectedProductId === null ? (
-                        // <div className="Product-iconBox">
-                        <img
-                          className="Product-icon"
-                          src="./icons/placeholder.png"
-                          alt="icon"
-                          onClick={() => handleShowText(product.id)}
-                        />
-                      ) : (
-                        // </div>
+                      {/* {selectedProductId === null ? ( */}
 
+                      {showModal && (
                         <div className="Modal-show">
                           {selectedProductId === product.id && (
                             <ShowInfoModal
@@ -82,6 +84,7 @@ export default function ProductsCards() {
                           )}
                         </div>
                       )}
+                      {/* // )} */}
                     </div>
                     <div></div>
                     <h3 className="Product-subtitle">{product.subtitle}</h3>

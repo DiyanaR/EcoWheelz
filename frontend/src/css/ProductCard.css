@@ -177,6 +177,13 @@
   display: none;
 }
 
+/* .Product-iconBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+} */
+
 /* .Modal-show {
   position: absolute;
   left: 50px;
@@ -230,7 +237,7 @@
 
   .Product-container {
     width: 399.48px;
-    height: 687px;
+    /* height: 687px; */
   }
 
   .Product-list {
