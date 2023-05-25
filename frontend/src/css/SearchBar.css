@@ -1,10 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .search-bar {
-  width: 449px;
-  height: 49px;
+  width: 400px;
+  height: 40px;
   position: absolute;
   top: 140px;
-  left: 440px;
-  transform: rotate(0);
+
+  left: 50%;
+  transform: translateX(-50%);
+
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.4);
   border: none;
@@ -27,4 +36,53 @@
 .search-bar input[type="text"]:focus {
   outline: none;
   box-shadow: 0 0 0 3px #9ae5bd;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  background-color: #313030;
+  border-top: none;
+  z-index: 101;
+  border-radius: 10px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+}
+
+.product-image {
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 475px) {
+  .container {
+    display: flex;
+  }
+
+  .search-bar {
+    display: flex;
+  }
 }

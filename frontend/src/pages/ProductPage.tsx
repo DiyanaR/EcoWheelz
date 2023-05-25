@@ -11,7 +11,8 @@ interface Product {
   id: number;
   title: string;
   subtitle: string;
-  description: string;
+  shortdescription: string;
+  longdescription: string;
   img: string;
   price: number;
 }
@@ -19,6 +20,8 @@ interface Product {
 function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showText, setShowText] = useState(false);
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,54 +36,48 @@ function ProductPage() {
     fetchData();
   }, []);
 
-  const handleShowText = () => {
-    setShowText(!showText);
+  useEffect(() => {
+    console.log("Showmore", showMore);
+    console.log("products", products);
+    if (showMore) {
+      setVisibleProducts(products);
+    } else {
+      setVisibleProducts(products.slice(0, 3));
+    }
+  }, [showMore, products]);
+
+  const handleShowMore = () => {
+    setShowMore(!showMore);
   };
 
   return (
     <>
       <div className="ProductPage-box">
         {products.length > 0 ? (
-          <ol className="Product-list">
-            {products.map((product) => (
+          <ol className="ProductPage-list">
+            {visibleProducts.map((product) => (
               <li key={product.id}>
                 <div className="ProductPage-container">
+                  {/* <div> */}
                   <img
-                    className="Product-image"
+                    className="ProductPage-image"
                     src={product.img}
                     alt={product.img}
                   />
+                  {/* </div> */}
 
                   {/* <Link to={`/VegView/${product.name}`}> */}
-                  <div>
+                  <div className="ProductPage-info">
                     <div className="ProductPage-text">
-                      <div className="ProductCard-icon">
+                      <div className="ProductCardPage-icon">
                         <h1 className="Product-title">{product.title}</h1>
-
-                        <div onClick={handleShowText}>
-                          <img
-                            className="Product-icon"
-                            src="./icons/placeholder.png"
-                            alt="icon"
-                          />
-                        </div>
-
-                        {showText && (
-                          <div>
-                            {<p>{product.subtitle}</p>}
-                            {
-                              <p className="Product-description">
-                                {product.description}
-                              </p>
-                            }
-                          </div>
-                        )}
+                        <h2>{product.subtitle}</h2>
+                        <p>{product.shortdescription}</p>
                       </div>
 
                       <div className="ProductCard-button">
                         <p className="Product-price">{product.price}</p>
                         <Link to={`/detailpage/${product.title}`}>
-                          <hr className="Product-line" />
                           <button className="Product-button">
                             View product
                           </button>
@@ -95,10 +92,15 @@ function ProductPage() {
             ))}
           </ol>
         ) : null}
-
-        {/* {visibleProduct < products.length && ( */}
-        <div className="Product-show-more"></div>
-        {/* )} */}
+      </div>
+      <div className="Product-show-more">
+        <Link to={`/productpage`}>
+          {!showMore && (
+            <button className="Product-button" onClick={handleShowMore}>
+              View more
+            </button>
+          )}
+        </Link>
       </div>
     </>
   );
