@@ -12,11 +12,18 @@
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 600;
-  line-height: 34px;
+  /* line-height: 34px; */
   padding: 0px, 0px, 41px, 0px;
   align-items: center;
   flex-direction: column;
   position: relative;
+  transition: height 0.3s;
+  min-height: 500px; /* Increase the height as desired */
+  /* height: 462px; */
+}
+
+.Product-container:target {
+  height: 462px;
 }
 
 .Product-image {
@@ -43,16 +50,26 @@
 
 .Product-text {
   padding: 0px 15.2126px;
-  height: 136px;
+
   position: relative;
+  /*
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center; */
 }
 
 .Product-price {
-  font-size: 30.43px;
+  font-size: 24px;
 }
 
 .Product-title {
-  font-size: 25.35px;
+  font-size: 24px;
+  /* position: absolute; */
+  /* right: 300px; */
 }
 
 .Product-line {
@@ -65,7 +82,11 @@
   border-width: 0;
   border-top-width: 2px;
   border-radius: 1px;
-  width: 463px;
+  width: 302px;
+  display: block;
+  position: absoulte;
+  bottom: 0;
+  left: 0;
 }
 
 .Product-button {
@@ -89,7 +110,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   padding: 0px;
   gap: 68px;
   height: 32px;
@@ -97,17 +118,7 @@
   order: 4;
   align-self: stretch;
   flex-grow: 0;
-  margin-top: 20px;
-
-  /* padding: 0px;
-  gap: 68px;
-  width: 302px;
-  height: 32px;
-  flex: none;
-  order: 4;
-  align-self: stretch;
-  flex-grow: 0;
-  margin-top: 20px; */
+  padding-bottom: 30px;
 }
 
 .ProductCard-icon {
@@ -115,6 +126,7 @@
   justify-content: space-between;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .Product-icon {
@@ -161,6 +173,10 @@
   margin-top: 10px;
 }
 
+.Product-subtitle {
+  display: none;
+}
+
 /* .Modal-show {
   position: absolute;
   left: 50px;
@@ -176,6 +192,30 @@
   /* position: absolute; */
 /* right: 0; */
 /* } */
+
+/* .ProductCard-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ProductCard-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+} */
+
+/* .Modal-show {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+}
+
+.ProductCard-button {
+  position: relative;
+  z-index: 2;
+} */
 
 @media (min-width: 600px) {
   .Product-image {
@@ -196,5 +236,16 @@
   .Product-list {
     display: flex;
     flex-direction: row;
+  }
+
+  .Product-line {
+    display: none;
+  }
+
+  .Product-icon {
+    display: none;
+  }
+  .Product-subtitle {
+    display: block;
   }
 }

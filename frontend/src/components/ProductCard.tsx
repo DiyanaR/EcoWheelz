@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import "../css/ProductCard.css";
 import ShowInfoModal from "./ShowInfoModal";
 
-// import "bootstrap/dist/css/bootstrap.min.css";
-
 interface Product {
   id: number;
   title: string;
@@ -46,7 +44,7 @@ export default function ProductsCards() {
 
   return (
     <>
-      <h1 className="Product-header">Our products</h1>
+      <h1 className="Product-header">Popular products</h1>
       <div className="Product-box">
         {products.length > 0 ? (
           <ol className="Product-list">
@@ -60,22 +58,21 @@ export default function ProductsCards() {
                   />
 
                   <div className="Product-text">
+                    <h2 className="Product-title">{product.title}</h2>
+                    <hr className="Product-line" />
                     <div className="ProductCard-icon">
-                      <h2 className="Product-title">{product.title}</h2>
                       {selectedProductId === null ? (
-                        <div
-                          className="Product-iconBox"
+                        // <div className="Product-iconBox">
+                        <img
+                          className="Product-icon"
+                          src="./icons/placeholder.png"
+                          alt="icon"
                           onClick={() => handleShowText(product.id)}
-                        >
-                          <img
-                            className="Product-icon"
-                            src="./icons/placeholder.png"
-                            alt="icon"
-                          />
-                        </div>
+                        />
                       ) : (
+                        // </div>
+
                         <div className="Modal-show">
-                          {/* <hr className="Product-line" /> */}
                           {selectedProductId === product.id && (
                             <ShowInfoModal
                               subtitle={product.subtitle}
@@ -86,7 +83,8 @@ export default function ProductsCards() {
                         </div>
                       )}
                     </div>
-
+                    <div></div>
+                    <h3 className="Product-subtitle">{product.subtitle}</h3>
                     <div className="ProductCard-button">
                       <p className="Product-price">{product.price}</p>
 
@@ -106,7 +104,7 @@ export default function ProductsCards() {
               className="Product-button"
               onClick={() => setShowText(!showText)}
             >
-              Show more
+              View all products
             </button>
           </Link>
         </div>

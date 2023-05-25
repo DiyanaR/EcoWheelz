@@ -73,25 +73,6 @@ function ProductPage() {
                         <h1 className="Product-title">{product.title}</h1>
                         <h2>{product.subtitle}</h2>
                         <p>{product.shortdescription}</p>
-
-                        {/* <div onClick={handleShowText}>
-                          <img
-                            className="Product-icon"
-                            src="./icons/placeholder.png"
-                            alt="icon"
-                          />
-                        </div>
-
-                        {showText && (
-                          <div>
-                            {<p>{product.subtitle}</p>}
-                            {
-                              <p className="Product-description">
-                                {product.description}
-                              </p>
-                            }
-                          </div>
-                        )} */}
                       </div>
 
                       <div className="ProductCard-button">
@@ -111,12 +92,6 @@ function ProductPage() {
             ))}
           </ol>
         ) : null}
-        {/*
-        {!visibleProduct && (
-          <div className="Product-show-more">
-            <button className="productButton" onClick={handleShowMore}></button>
-          </div>
-        )} */}
       </div>
       <div className="Product-show-more">
         <Link to={`/productpage`}>
