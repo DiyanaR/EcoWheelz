@@ -27,8 +27,9 @@ export default function DetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/products");
+        const response = await fetch(`http://localhost:8080/products/${title}`);
         const data = await response.json();
+        console.log(data);
         setProducts(data);
       } catch (error) {
         console.error(error);
@@ -55,6 +56,11 @@ export default function DetailPage() {
     }
   };
 
+  const addProduct = () => {
+    const result = [];
+    result.push(products);
+  };
+
   return (
     <>
       {filteredProduct.length > 0 && (
@@ -76,22 +82,24 @@ export default function DetailPage() {
               <h2>{filteredProduct[0].price}</h2>
               <div className="DetailPage-container">
                 <img src="../icons/stars.png" alt="icon" />
-                <button className="Product-button">Add to Cart</button>
+                <button onClick={addProduct} className="Product-button">
+                  Add to Cart
+                </button>
+              </div>
+
+              <div className="DetailPage-specification">
+                <div className="Specification-header">
+                  <h2>Specifikations</h2>
+                </div>
+                <ul>
+                  <li>
+                    {filteredProduct[0].specification.split(",").map((spec) => (
+                      <li>{spec}</li>
+                    ))}
+                  </li>
+                </ul>
               </div>
             </div>
-          </div>
-
-          <div className="DetailPage-specification">
-            <div className="Specification-header">
-              <h2>Specifikations</h2>
-            </div>
-            <ul>
-              <li>
-                {filteredProduct[0].specification.split(",").map((spec) => (
-                  <li>{spec}</li>
-                ))}
-              </li>
-            </ul>
           </div>
 
           <h1 className="Product-header">Other products</h1>
@@ -111,10 +119,6 @@ export default function DetailPage() {
                         <h2 className="Product-title">{product.title}</h2>
                         <h3>{product.subtitle}</h3>
                       </div>
-
-                      <p className="OtherProduct-description">
-                        {product.shortdescription}
-                      </p>
 
                       <div className="OtherProductCard-button">
                         <p className="Product-price">{product.price}</p>

@@ -8,6 +8,7 @@ import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
+// import CartPage from "./Pages/CartPage";
 
 function Root() {
   return (
@@ -29,7 +30,7 @@ export default function App() {
         { element: <LandingPage />, path: "/" },
         { element: <ProductPage />, path: "/productpage" },
         { element: <DetailPage />, path: "/detailpage/:title" },
-        // { element: <Product />, path: "/product" }
+        // { element: <CartPage />, path: "/cart" },
       ],
       element: <Root />,
     },

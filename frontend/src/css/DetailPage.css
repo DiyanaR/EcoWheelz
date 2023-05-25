@@ -1,8 +1,9 @@
 .DetailPage-info {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   margin-top: 64px;
+  align-items: center;
 }
 
 .DetailPage-image {
@@ -32,13 +33,12 @@
   color: #faf9f8;
   font-family: "Red Hat Display";
   margin-top: 64px;
-  margin-left: 220px;
 }
 
 .OtherProduct-container {
   background-color: #222222;
   color: #faf9f8;
-  border-radius: 8px;
+  border-radius: 30px;
   gap: 10.14px;
   font-family: "Red Hat Display";
   font-style: normal;
@@ -48,11 +48,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 326px;
 }
 
 .OtherProduct-image {
-  width: 298px;
-  height: 298px;
+  width: 326px;
+  height: 326px;
   object-fit: cover;
 }
 

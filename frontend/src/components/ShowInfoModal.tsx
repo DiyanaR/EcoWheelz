@@ -12,11 +12,11 @@ function ShowInfoModal(props: ShowInfoModalProps) {
     <div className="Modal-container">
       <p>{props.subtitle}</p>
       <p>{props.shortdescription}</p>
-      <img
+      {/* <img
         onClick={props.closeModal}
         alt={props.subtitle}
         src="./icons/placeholder.png"
-      />
+      /> */}
     </div>
   );
 }

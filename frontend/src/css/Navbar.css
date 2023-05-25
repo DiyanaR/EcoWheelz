@@ -1,7 +1,7 @@
 nav {
   font-family: "Red Hat Display";
   /* padding: 10px 0; */
-  width: 1440px;
+  max-width: 1440px;
   height: 92px;
 
   display: flex;
