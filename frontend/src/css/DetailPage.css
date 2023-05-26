@@ -57,6 +57,7 @@ html {
   flex-direction: column;
   /* align-items: flex-end; */
   width: 326px;
+  height: 671px;
 }
 
 .OtherProduct-image {
@@ -86,7 +87,8 @@ html {
 }
 
 .OtherProduct-text {
-  padding: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 @media (min-width: 1000px) {
@@ -143,9 +145,9 @@ html {
   .OtherProductCard-button {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0px;
-    gap: 150px;
+    /* gap: 150px; */
     height: 32px;
     flex: none;
     order: 4;
@@ -175,6 +177,11 @@ html {
 
   .Product-title {
     margin-bottom: 5px;
+    margin-top: 0;
+  }
+
+  .OtherProduct-shortdescription {
+    margin-top: 10.85px;
   }
 
   h3 {

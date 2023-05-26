@@ -159,6 +159,7 @@ export default function DetailPage() {
                       <div className="OtherProductCard-icon">
                         <h2 className="Product-title">{product.title}</h2>
                         <h3>{product.subtitle}</h3>
+                        <p className="OtherProduct-shortdescription">{product.shortdescription}</p>
                       </div>
 
                       <div className="OtherProductCard-button">

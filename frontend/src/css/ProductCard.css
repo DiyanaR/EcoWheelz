@@ -115,28 +115,25 @@
 }
 
 .Product-button {
-  font-family: "Red Hat Display";
-  font-size: 14px;
-  line-height: 19px;
-  text-align: left;
-  vertical-align: top;
-  color: #faf9f8;
-  width: 116px;
-  /* width: 228px; */
-  height: 32px;
-  border-radius: 16px;
-  border-color: #9ae5bd;
   background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: 2px solid #9ae5bd;
+
+  padding: 10px 12px;
+  border-radius: 20px;
+  margin: 0 12px;
+
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
 .ProductCard-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   padding: 0px;
   gap: 68px;
   height: 32px;
