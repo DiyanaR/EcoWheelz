@@ -1,10 +1,12 @@
 import { Formik } from "formik";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LoginContext } from "../components/ContextProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../assets/errorIcon.svg";
 import CheckIcon from "../assets/checkIcon.svg";
 import styled from "styled-components";
 import axios from "axios";
+import ErrorPopup from "../components/ErrorPopup";
 
 interface FormErrors {
   invalidLogin?: string;
@@ -23,6 +25,30 @@ interface MyFormProps {
 
 export default function SignupPage() {
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(false);
+  const { login, setLogin } = useContext(LoginContext);
+
+  // useEffect(() => {
+  //   // Redirect user from login to homepage if the user is already logged in
+  //   if (login) {
+  //     navigate("/");
+  //   }
+  // }, []);
+
+  async function logoutUser() {
+    if (login) {
+      setLogin(null);
+      localStorage.removeItem("token");
+
+      try {
+        await axios.post("http://localhost:8080/logout", {
+          headers: { Authorization: `Bearer ${login.token}` },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   return (
     <FormSignup>
@@ -39,46 +65,52 @@ export default function SignupPage() {
 
           try {
             const res = await axios.post("http://localhost:8080/login", {
-              username: values.email,
+              email: values.email,
               password: values.password,
             });
 
-            if (res.status === 201 || res.status === 200) {
-              sessionStorage.setItem("token", res.data);
+            console.log(res);
 
+            if (res.status === 201 || res.status === 200) {
+              // Save the user information in useContext state
+              setLogin({
+                email: res.data.email,
+                firstName: res.data.firstName,
+                lastName: res.data.lastName,
+                token: res.data.token,
+              });
+
+              //Store the token in localstorage to remember the user when revisiting the site
               if (values.check) {
-                localStorage.setItem("token", res.data);
+                localStorage.setItem("token", res.data.token);
               }
             } else {
               errors.invalidLogin = "Incorrect username or password";
             }
           } catch (error) {
-            // Error has to be any here, other wise its a roundabout way to deal with typescript
+            //If password is wrong
             if (error?.response?.status === 401) {
               errors.invalidLogin = "Incorrect username or password";
             } else {
-              errors.somethingWentWrong =
-                "Something went wrong, please try again";
+              // else message that an error code 500 occured
+              setErrorMsg(true);
+
+              setTimeout(() => {
+                setErrorMsg(false);
+              }, 2500);
             }
           }
 
           return errors;
         }}
         onSubmit={() => {
-          // TODO UPDATE USE CONTEXT FOR USER INFORMATION
-
-          navigate("/login");
+          // if all validation succeeds get sent to homepage
+          // navigate("/");
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleBlur,
-          handleSubmit,
-          handleChange,
-        }) => (
+        {({ values, errors, handleSubmit, handleChange }) => (
           <>
+            {login && <button onClick={logoutUser}>Logout</button>}
             <span className="headline">Sign in</span>
             <div className="form-border">
               <form onSubmit={handleSubmit}>
@@ -96,9 +128,7 @@ export default function SignupPage() {
                     name="email"
                     className="valid-input"
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     value={values.email}
-                    placeholder="example@gmail.com"
                     required
                   />
                 </div>
@@ -109,7 +139,6 @@ export default function SignupPage() {
                     type="text"
                     name="password"
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     value={values.password}
                     required
                   />
@@ -132,6 +161,11 @@ export default function SignupPage() {
                 </p>
               </form>
             </div>
+
+            <ErrorPopup
+              errorMsg={errorMsg}
+              errorText="Something went wrong, please try again later"
+            />
           </>
         )}
       </Formik>

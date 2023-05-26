@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../assets/errorIcon.svg";
 import styled from "styled-components";
 import axios from "axios";
+import { useState } from "react";
+import ErrorPopup from "../components/ErrorPopup";
 
 interface FormErrors {
   invalidFirstName?: string;
@@ -30,6 +32,7 @@ interface MyFormProps {
 
 export default function SignupPage() {
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(false);
 
   function nameValidation(input: string) {
     return input.replace(/[!@#$%^&*()_+\-={}\[\]|\\:";'<>.,\/?0-9]/g, "");
@@ -87,23 +90,23 @@ export default function SignupPage() {
               errors.notMatchingEmail = " •  Emails do not match";
             }
 
-            // TODO verify unique email
+            if (values.email.length > 0 && emailValidation) {
+              try {
+                const checkAvaliableEmail = await axios.get(
+                  `http://localhost:8080/validate-email?email=${values.email.toLowerCase()}`
+                );
 
-            // Needs improvemnt, could lead to heavy load on server (requests on every keydown)
-            // if (values.email.length > 0) {
-            //   try {
-            //     const checkAvaliableUsername = await axios.get(
-            //       `http://localhost:8080/user?usercheck=${values.email}`
-            //     );
+                if (checkAvaliableEmail.data >= 1) {
+                  errors.invalidEmail = " •  Email already in use";
+                }
+              } catch {
+                setErrorMsg(true);
 
-            //     if (checkAvaliableUsername.data.length >= 1) {
-            //       errors.userExists = " •  Email already in use";
-            //     }
-            //   } catch {
-            //     errors.somethingWentWrong =
-            //       " •  Something went wrong, please try again";
-            //   }
-            // }
+                setTimeout(() => {
+                  setErrorMsg(false);
+                }, 2500);
+              }
+            }
           }
 
           if (values.password !== values.confirmPassword) {
@@ -113,32 +116,24 @@ export default function SignupPage() {
           return errors;
         }}
         onSubmit={async (values) => {
-          // const res = await axios.post("http://localhost:8080/signup", {
-          // firstName: values.firstName,
-          // lastName: values.lastName,
-          // phoneNumber: values.phoneNumber,
-          // email: values.email,
-          // confirmEmail: values.confirmEmail,
-          // password: values.password,
-          // confirmPassword: values.confirmPassword
-          // });
-          // if (res.status === 201) {
-          //   navigate("/login");
-          // } else {
-          //   // setPopup(!popup);
-          // }
-          console.log({
-            firstName: values.firstName,
-            lastName: values.lastName,
-            phoneNumber: values.phoneNumber,
-            email: values.email,
-            confirmEmail: values.confirmEmail,
-            password: values.password,
-            confirmPassword: values.confirmPassword,
-          });
+          try {
+            await axios.post("http://localhost:8080/signup", {
+              email: values.email,
+              password: values.password,
+              firstName: values.firstName,
+              lastName: values.lastName,
+              phoneNumber: values.phoneNumber,
+            });
 
-          // If created signup is successful
-          navigate("/login");
+            navigate("/login");
+          } catch (error) {
+            console.log(error);
+            setErrorMsg(true);
+
+            setTimeout(() => {
+              setErrorMsg(false);
+            }, 2500);
+          }
         }}
       >
         {({
@@ -224,7 +219,7 @@ export default function SignupPage() {
                     placeholder="Jane.Doe@example.com"
                     required
                   />
-                  {errors.invalidEmail && touched.email && (
+                  {errors.invalidEmail && (
                     <div className="error-user">
                       <ErrorIcon />
                       <span>{errors.invalidEmail}</span>
@@ -283,6 +278,11 @@ export default function SignupPage() {
                 </p>
               </form>
             </div>
+
+            <ErrorPopup
+              errorMsg={errorMsg}
+              errorText="Something went wrong, please try again later"
+            />
           </>
         )}
       </Formik>
@@ -385,6 +385,8 @@ const FormSignup = styled.div`
 
     display: block;
     margin: 34px auto;
+
+    cursor: pointer;
   }
 
   .login {
