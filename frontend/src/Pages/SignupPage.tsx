@@ -291,6 +291,9 @@ export default function SignupPage() {
 }
 
 const FormSignup = styled.div`
+  * {
+    box-sizing: border-box;
+  }
   min-height: calc(100dvh - 112px);
   background: linear-gradient(
     180deg,
@@ -357,19 +360,19 @@ const FormSignup = styled.div`
     display: flex;
     justify-content: space-between;
     input {
-      width: 370px;
+      width: 402px;
     }
   }
 
   .phoneNumber-container {
     input {
-      width: 370px;
+      width: 402px;
     }
   }
 
   .details-container {
     input {
-      width: 500px;
+      width: 602px;
     }
   }
 
@@ -391,7 +394,7 @@ const FormSignup = styled.div`
 
   .login {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     color: #ffffffd5;
     a {
@@ -400,6 +403,59 @@ const FormSignup = styled.div`
       &:hover {
         color: #9ae5bd;
       }
+    }
+  }
+
+  @media (max-width: 880px) {
+    input[type="text"] {
+      padding: 12px 18px;
+      font-size: 14px;
+    }
+
+    .form-border {
+      width: 80%;
+    }
+
+    .name-container {
+      display: block;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .phoneNumber-container {
+      input {
+        width: 100%;
+      }
+    }
+
+    .details-container {
+      input {
+        width: 100%;
+      }
+    }
+
+    .headline {
+      font-size: 48px;
+    }
+
+    .form-border {
+      width: 90%;
+    }
+
+    label {
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    button {
+      font-size: 16px;
+    }
+
+    .login {
+      font-size: 14px;
+      margin-top: 60px;
     }
   }
 `;

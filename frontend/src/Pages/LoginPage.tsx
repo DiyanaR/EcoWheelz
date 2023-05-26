@@ -174,6 +174,10 @@ export default function SignupPage() {
 }
 
 const FormSignup = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+
   min-height: calc(100dvh - 112px);
   background: linear-gradient(
     180deg,
@@ -193,7 +197,7 @@ const FormSignup = styled.div`
   padding-bottom: 80px;
 
   .form-border {
-    width: 480px;
+    width: 500px;
   }
 
   .error-user {
@@ -335,6 +339,79 @@ const FormSignup = styled.div`
       &:hover {
         color: #14f87f;
       }
+    }
+  }
+
+  @media (max-width: 600px) {
+    input[type="text"] {
+      padding: 12px 18px;
+      font-size: 14px;
+    }
+
+    .remember-container {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+
+      .remember {
+        appearance: none;
+        border: 2px solid #faf9f8;
+
+        padding: 5px;
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+        margin: 0 4px;
+        cursor: pointer;
+
+        position: relative;
+
+        &:checked {
+          border: 2px solid white;
+
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+
+      .active {
+        &:before {
+          content: "";
+          background-image: url("${CheckIcon}");
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          display: block;
+          width: 11px;
+          height: 11px;
+          transition: all 0.3s;
+        }
+      }
+    }
+
+    .headline {
+      font-size: 48px;
+    }
+
+    .form-border {
+      width: 90%;
+    }
+
+    label {
+      font-size: 14px;
+    }
+
+    button {
+      font-size: 16px;
+    }
+
+    .signup {
+      font-size: 14px;
+      margin-top: 60px;
     }
   }
 `;
