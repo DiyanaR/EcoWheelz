@@ -50,12 +50,26 @@
   text-decoration: underline;
 }
 
+.arrow-icon {
+  margin-bottom: 50px;
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* ----------- */
 
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
   }
 
   .footer-column {
