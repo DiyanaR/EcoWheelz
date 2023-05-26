@@ -19,6 +19,8 @@ interface Product {
 export default function DetailPage() {
   // const { id } = useParams<{ id: string }>();
   const [products, setProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<Product[]>([]);
+
   const [filteredProduct, setFilteredProduct] = useState<Product[]>([]);
   // const title = products.length > 0 ? products[0].title : "";
   const { title } = useParams<{ title: string }>();
@@ -36,7 +38,7 @@ export default function DetailPage() {
       }
     };
     fetchData();
-  }, []);
+  }, [title]);
 
   useEffect(() => {
     if (products.length > 0 && title) {
@@ -53,18 +55,58 @@ export default function DetailPage() {
   const handleClickProduct = () => {
     if (productRef.current) {
       productRef.current.scrollIntoView({ behavior: "smooth" });
+      window.scrollTo(0, 0);
     }
   };
 
-  const addProduct = () => {
-    const result = [];
-    result.push(products);
-  };
+  // const addProduct = () => {
+  //   const result = [];
+  //   result.push(products);
+  // };
 
   return (
     <>
+      {/* {true === true ? (<div></div>) : (<img></img>)} */}
+
+      {/* {product !== null && product.length > 0 */}
+      {/* <div className="DetailPage-info">
+        <img
+          className="DetailPage-image"
+          src={product[0].img}
+          alt={product[0].img}
+        />
+        <div className="DetailPage-text">
+          <h1>
+            {product[0].title.charAt(0).toUpperCase() +
+              product[0].title.slice(1)}
+          </h1>
+          <p>{product[0].subtitle}</p>
+          <p>{product[0].longdescription}</p>
+          <h2>{product[0].price}:-</h2>
+          <div className="DetailPage-container">
+            <img src="../icons/stars.png" alt="icon" />
+            <button onClick={addProduct} className="Product-button">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="DetailPage-specification">
+        <div className="Specification-header">
+          <h2>Specifikations</h2>
+        </div>
+        <ul>
+          <li>
+            {product[0].specification.split(",").map((spec) => (
+              <li>{spec}</li>
+            ))}
+          </li>
+        </ul>
+      </div>  */}
+
       {filteredProduct.length > 0 && (
-        <div className="DetailPage-box">
+        <div id="top " className="DetailPage-box">
           <div className="DetailPage-info">
             <img
               className="DetailPage-image"
@@ -72,34 +114,33 @@ export default function DetailPage() {
               alt={filteredProduct[0].img}
             />
             <div className="DetailPage-text">
-              {/* <div className="DetailPage-shortText"> */}
-              <h1>
-                {filteredProduct[0].title.charAt(0).toUpperCase() +
-                  filteredProduct[0].title.slice(1)}
-              </h1>
-              <p>{filteredProduct[0].subtitle}</p>
-              <p>{filteredProduct[0].longdescription}</p>
-              <h2>{filteredProduct[0].price}</h2>
-              <div className="DetailPage-container">
-                <img src="../icons/stars.png" alt="icon" />
-                <button onClick={addProduct} className="Product-button">
-                  Add to Cart
-                </button>
-              </div>
-
-              <div className="DetailPage-specification">
-                <div className="Specification-header">
-                  <h2>Specifikations</h2>
+              <div className="DetailPage-shortText">
+                <h1>
+                  {filteredProduct[0].title.charAt(0).toUpperCase() +
+                    filteredProduct[0].title.slice(1)}
+                </h1>
+                <p>{filteredProduct[0].subtitle}</p>
+                <p>{filteredProduct[0].longdescription}</p>
+                <h2>{filteredProduct[0].price}:-</h2>
+                <div className="DetailPage-container">
+                  <img src="../icons/stars.png" alt="icon" />
+                  <button className="Product-button">Add to Cart</button>
                 </div>
-                <ul>
-                  <li>
-                    {filteredProduct[0].specification.split(",").map((spec) => (
-                      <li>{spec}</li>
-                    ))}
-                  </li>
-                </ul>
               </div>
             </div>
+          </div>
+
+          <div className="DetailPage-specification">
+            <div className="Specification-header">
+              <h2>Specifikations</h2>
+            </div>
+            <ul>
+              <li>
+                {filteredProduct[0].specification.split(",").map((spec) => (
+                  <li>{spec}</li>
+                ))}
+              </li>
+            </ul>
           </div>
 
           <h1 className="Product-header">Other products</h1>
@@ -121,14 +162,16 @@ export default function DetailPage() {
                       </div>
 
                       <div className="OtherProductCard-button">
-                        <p className="Product-price">{product.price}</p>
+                        <p className="Product-price">{product.price}:-</p>
                         <Link
                           to={`/detailpage/${product.title}`}
                           onClick={handleClickProduct}
                         >
-                          <button className="Product-button">
-                            View product
-                          </button>
+                          <a href="#top">
+                            <button className="Product-button">
+                              View product
+                            </button>
+                          </a>
                         </Link>
                       </div>
                     </div>

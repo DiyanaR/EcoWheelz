@@ -22,6 +22,31 @@
   /* height: 462px; */
 }
 
+.ProductViewMore-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 5.36364px;
+  gap: 13.41px;
+
+  width: 228px;
+  height: 59px;
+
+  border: 2.68182px solid #9ae5bd;
+  border-radius: 21.4545px;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  background-color: transparent;
+  color: #faf9f8;
+  font-family: Red Hat Display;
+  font-weight: 700px;
+  font-size: 21.45px;
+  line-height: 28.38px;
+}
+
 .Product-container:target {
   height: 462px;
 }
@@ -96,8 +121,9 @@
   text-align: left;
   vertical-align: top;
   color: #faf9f8;
-  width: 109px;
-  height: 39px;
+  width: 116px;
+  /* width: 228px; */
+  height: 32px;
   border-radius: 16px;
   border-color: #9ae5bd;
   background-color: transparent;
@@ -132,6 +158,7 @@
 .Product-icon {
   width: 25px;
   height: 25px;
+  align-items: center;
 }
 
 .Product-header {
@@ -165,10 +192,6 @@
   margin-top: 10px;
 }
 
-.Product-button {
-  margin-top: 10px;
-}
-
 .ShowInfoModal {
   margin-top: 10px;
 }
@@ -177,52 +200,12 @@
   display: none;
 }
 
-/* .Product-iconBox {
+.Product-iconBox {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  text-align: center;
-} */
-
-/* .Modal-show {
-  position: absolute;
-  left: 50px;
-} */
-
-/* .ProductCard-iconBox {
-  position: relative;
-  display: flex;
   align-items: center;
 }
-
-.ProductCard-icon {
-  /* position: absolute; */
-/* right: 0; */
-/* } */
-
-/* .ProductCard-icon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ProductCard-icon-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-} */
-
-/* .Modal-show {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  width: 100%;
-}
-
-.ProductCard-button {
-  position: relative;
-  z-index: 2;
-} */
 
 @media (min-width: 600px) {
   .Product-image {

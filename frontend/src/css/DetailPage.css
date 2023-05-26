@@ -1,9 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .DetailPage-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 64px;
-  align-items: center;
 }
 
 .DetailPage-image {
@@ -19,11 +22,13 @@
   width: 326px;
   margin-top: 64px;
   font-family: "Red Hat Display";
+  margin-left: 32px;
+  margin-right: 32px;
 }
 
 .DetailPage-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
@@ -33,6 +38,9 @@
   color: #faf9f8;
   font-family: "Red Hat Display";
   margin-top: 64px;
+  line-height: 40px;
+  margin-left: 32px;
+  width: 326px;
 }
 
 .OtherProduct-container {
@@ -43,11 +51,11 @@
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 600;
-  line-height: 34px;
+  line-height: 26.46px;
   /* padding: 20px; */
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   width: 326px;
 }
 
@@ -55,6 +63,8 @@
   width: 326px;
   height: 326px;
   object-fit: cover;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
 }
 
 .OtherProduct-line {
@@ -79,11 +89,12 @@
   padding: 20px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
   .DetailPage-info {
     flex-direction: row;
     justify-content: center;
     margin-top: 64px;
+    align-items: center;
   }
 
   .DetailPage-image {
@@ -96,6 +107,7 @@
     width: 507px;
     margin-top: 64px;
     margin-left: 20px;
+    align-items: center;
   }
 
   .DetailPage-container {
@@ -108,7 +120,8 @@
     margin-top: 40px;
     margin-bottom: 64px;
     width: 499px;
-    line-height: 40px;
+    line-height: 26.46px;
+    margin-left: 220px;
   }
 
   .OtherProduct-container {
@@ -139,7 +152,7 @@
     align-self: stretch;
     flex-grow: 0;
     margin-top: 20px;
-    position: absolute;
+    /* position: absolute; */
     bottom: 47px;
   }
 
