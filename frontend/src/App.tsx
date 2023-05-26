@@ -1,13 +1,12 @@
 import Navbar from "./components/Navbar";
-
 import Footer from "./components/Footer";
-
-// import TestPage from "./pages/TestPage";
 import { ContextProvider } from "./components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
+import SignupPage from "./Pages/SignupPage";
+import LoginPage from "./Pages/LoginPage";
 // import CartPage from "./Pages/CartPage";
 
 function Root() {
@@ -30,6 +29,9 @@ export default function App() {
         { element: <LandingPage />, path: "/" },
         { element: <ProductPage />, path: "/productpage" },
         { element: <DetailPage />, path: "/detailpage/:title" },
+        { element: <SignupPage />, path: "/signup" },
+        { element: <LoginPage />, path: "/login" },
+        // { element: <Product />, path: "/product" }
         // { element: <CartPage />, path: "/cart" },
       ],
       element: <Root />,

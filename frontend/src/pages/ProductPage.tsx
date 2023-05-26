@@ -6,6 +6,7 @@ import Carousel from "react-bootstrap/Carousel";
 import React from "react";
 import "../css/ProductPage.css";
 import "../css/ProductCard.css";
+import ShowInfoModal from "../components/ShowInfoModal";
 
 interface Product {
   id: number;
@@ -22,6 +23,10 @@ function ProductPage() {
   const [showText, setShowText] = useState(false);
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [showMore, setShowMore] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(
+    null
+  );
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +55,20 @@ function ProductPage() {
     setShowMore(!showMore);
   };
 
+  const handleShowText = (productId: number) => {
+    if (selectedProductId === productId) {
+      // Clicked on the same icon, close the modal
+      setSelectedProductId(null);
+    } else {
+      // Clicked on a different icon, show the modal for the selected product
+      setSelectedProductId(productId);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedProductId(null);
+  };
+
   return (
     <>
       <div className="ProductPage-box">
@@ -58,25 +77,42 @@ function ProductPage() {
             {visibleProducts.map((product) => (
               <li key={product.id}>
                 <div className="ProductPage-container">
-                  {/* <div> */}
                   <img
                     className="ProductPage-image"
                     src={product.img}
                     alt={product.img}
                   />
-                  {/* </div> */}
 
-                  {/* <Link to={`/VegView/${product.name}`}> */}
                   <div className="ProductPage-info">
                     <div className="ProductPage-text">
                       <div className="ProductCardPage-icon">
                         <h1 className="Product-title">{product.title}</h1>
-                        <h2>{product.subtitle}</h2>
-                        <p>{product.shortdescription}</p>
+                        <img
+                          className="Product-icon"
+                          src="./icons/placeholder.png"
+                          alt="icon"
+                          onClick={() => handleShowText(product.id)}
+                        />
                       </div>
+                      <hr className="Product-line" />
+                      {showModal && (
+                        <div className="Modal-show">
+                          {selectedProductId === product.id && (
+                            <ShowInfoModal
+                              subtitle={product.subtitle}
+                              shortdescription={product.shortdescription}
+                              closeModal={closeModal}
+                            />
+                          )}
+                        </div>
+                      )}
+                      <h2 className="subtitle">{product.subtitle}</h2>
+                      <p className="short-description">
+                        {product.shortdescription}
+                      </p>
 
                       <div className="ProductCard-button">
-                        <p className="Product-price">{product.price}</p>
+                        <p className="Product-price">{product.price}:-</p>
                         <Link to={`/detailpage/${product.title}`}>
                           <button className="Product-button">
                             View product
@@ -85,8 +121,6 @@ function ProductPage() {
                       </div>
                     </div>
                   </div>
-
-                  {/* </Link> */}
                 </div>
               </li>
             ))}

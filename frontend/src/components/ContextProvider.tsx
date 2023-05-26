@@ -1,7 +1,11 @@
-import { createContext, useState, ReactNode } from "react";
+import axios from "axios";
+import { createContext, useState, ReactNode, useEffect } from "react";
+import ErrorPopup from "./ErrorPopup";
 
 export interface Login {
-  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
   token: string;
 }
 
@@ -10,7 +14,7 @@ export interface LoginContextValue {
   setLogin: React.Dispatch<React.SetStateAction<Login | null>>;
 }
 
-export const CombinedContext = createContext<LoginContextValue>({
+export const LoginContext = createContext<LoginContextValue>({
   login: null,
   setLogin: () => {},
 });
@@ -21,10 +25,39 @@ interface Props {
 
 export function ContextProvider({ children }: Props) {
   const [login, setLogin] = useState<Login | null>(null);
+  const [errorMsg, setErrorMsg] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const rememberedLoginToken = localStorage.getItem("token");
+
+      if (rememberedLoginToken) {
+        try {
+          const rememberedUser = await axios.get(
+            "http://localhost:8080/validate-token",
+            {
+              headers: { Authorization: `Bearer ${rememberedLoginToken}` },
+            }
+          );
+
+          const { email, firstName, lastName, token } = rememberedUser.data;
+
+          setLogin({ email, firstName, lastName, token });
+        } catch (error) {
+          setErrorMsg(true);
+
+          setTimeout(() => {
+            setErrorMsg(false);
+          }, 2500);
+        }
+      }
+    })();
+  }, []);
 
   return (
-    <CombinedContext.Provider value={{ login, setLogin }}>
+    <LoginContext.Provider value={{ login, setLogin }}>
       {children}
-    </CombinedContext.Provider>
+      <ErrorPopup errorMsg={errorMsg} errorText="Error couldn't login user" />
+    </LoginContext.Provider>
   );
 }
