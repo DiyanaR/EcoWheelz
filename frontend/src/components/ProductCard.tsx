@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/ProductCard.css";
-import ShowInfoModal from "./ShowInfoModal";
+import ShowInfoModal from "../components/ShowInfoModal";
 
 interface Product {
   id: number;
@@ -17,7 +17,7 @@ interface Product {
 export default function ProductsCards() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showText, setShowText] = useState(false);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<number | null>(
     null
   );
@@ -36,7 +36,13 @@ export default function ProductsCards() {
   }, []);
 
   const handleShowText = (productId: number) => {
-    setSelectedProductId(productId);
+    if (selectedProductId === productId) {
+      // Clicked on the same icon, close the modal
+      setSelectedProductId(null);
+    } else {
+      // Clicked on a different icon, show the modal for the selected product
+      setSelectedProductId(productId);
+    }
   };
 
   const closeModal = () => {
@@ -61,35 +67,35 @@ export default function ProductsCards() {
                   <div className="Product-text">
                     <div className="Product-iconBox">
                       <h2 className="Product-title">{product.title}</h2>
-                      <img
-                        className="Product-icon"
-                        src="./icons/placeholder.png"
-                        alt="icon"
-                        onClick={() => handleShowText(product.id)}
-                      />
-                      {/* ) : ( */}{" "}
+                      {!showModal ? (
+                        <img
+                          className="Product-icon"
+                          src={"./icons/placeholder.png"}
+                          alt="icon"
+                          onClick={() => handleShowText(product.id)}
+                        />
+                      ) : (
+                        <img src="./icons/placeholderUp.png" alt="icon" />
+                      )}
                     </div>
                     <hr className="Product-line" />
                     <div className="ProductCard-icon">
                       {/* {selectedProductId === null ? ( */}
 
-                      {showModal && (
-                        <div className="Modal-show">
-                          {selectedProductId === product.id && (
-                            <ShowInfoModal
-                              subtitle={product.subtitle}
-                              shortdescription={product.shortdescription}
-                              closeModal={closeModal}
-                            />
-                          )}
-                        </div>
+                      {selectedProductId === product.id && (
+                        <ShowInfoModal
+                          subtitle={product.subtitle}
+                          shortdescription={product.shortdescription}
+                          closeModal={closeModal}
+                        />
                       )}
+
                       {/* // )} */}
                     </div>
                     <div></div>
                     <h3 className="Product-subtitle">{product.subtitle}</h3>
                     <div className="ProductCard-button">
-                      <p className="Product-price">{product.price}</p>
+                      <p className="Product-price">{product.price}:-</p>
 
                       <Link to={`/detailpage/${product.title}`}>
                         <button className="Product-button">View product</button>
@@ -104,7 +110,7 @@ export default function ProductsCards() {
         <div className="Product-show-more">
           <Link to={`/productpage`}>
             <button
-              className="Product-button"
+              className="ProductViewMore-button"
               onClick={() => setShowText(!showText)}
             >
               View all products

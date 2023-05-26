@@ -44,16 +44,18 @@ nav a {
 }
 
 @media (max-width: 600px) {
-  nav {
-    align-items: center;
-    padding: 10px;
-  }
-
   nav ul {
-    margin: 10px 0;
+    display: none;
   }
 
-  nav li {
-    padding: 15px;
+  .hamburger-menu {
+    display: block;
   }
+}
+
+.hamburger-menu {
+  display: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
 }
