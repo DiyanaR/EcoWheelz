@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContextProvider } from "./components/ContextProvider";
 import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
@@ -14,14 +15,26 @@ import LoginPage from "./Pages/LoginPage";
 // import CartPage from "./Pages/CartPage";
 
 function Root() {
+  const [showMobile, setShowMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <ContextProvider>
         <Navbar />
         <Outlet />
-
-        <Footer />
-        <FooterMobile />
+        <div>{showMobile ? <FooterMobile /> : <Footer />}</div>
       </ContextProvider>
     </>
   );

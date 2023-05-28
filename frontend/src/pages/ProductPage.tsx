@@ -88,7 +88,9 @@ function ProductPage() {
                       <div className="ProductCardPage-icon">
                         <h1 className="ProductPage-title">{product.title}</h1>
                         <img
-                          className="Product-icon"
+                          className={
+                            showModal ? "Product-icon rotate" : "Product-icon"
+                          }
                           src="./icons/placeholder.png"
                           alt="icon"
                           onClick={() => handleShowText(product.id)}
