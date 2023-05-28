@@ -109,17 +109,3 @@ label {
     margin-bottom: 20px;
   }
 }
-
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 0px;
-gap: 34px;
-
-position: absolute;
-width: 300px;
-height: 229px;
-left: calc(50% - 300px / 2);
-top: 29px;
-
-border: 1px solid hsla(148, 59%, 75%, 1);
