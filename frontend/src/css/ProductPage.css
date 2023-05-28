@@ -30,7 +30,7 @@
   align-self: stretch;
   flex-grow: 0;
   padding-bottom: 30px;
-  margin-top: auto;
+  margin-top: 24px;
   /* width: 116px; */
   /* height: 700px; */
 }
@@ -49,7 +49,7 @@
   border-width: 0;
   border-top-width: 2px;
   border-radius: 1px;
-  width: 302px;
+  width: 100%;
   display: block;
   position: absoulte;
   bottom: 0;
@@ -117,6 +117,7 @@
 .ProductPage-title {
   margin-top: 0;
   margin-bottom: 12px;
+  font-size: 24px;
 }
 
 @media (min-width: 600px) {
@@ -155,6 +156,7 @@
   }
   .ProductPage-info {
     width: 645px;
+    height: 270px;
   }
   .Product-line {
     display: none;

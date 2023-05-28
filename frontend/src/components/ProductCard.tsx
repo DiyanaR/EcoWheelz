@@ -116,7 +116,7 @@ export default function ProductsCards() {
       <div className="Product-show-more">
         <Link to={`/productpage`}>
           <button
-            className="ProductViewMore-button"
+            className="Product-button"
             onClick={() => setShowText(!showText)}
           >
             View all products

@@ -83,6 +83,7 @@
 .Product-text {
   padding: 0px 15.2126px;
   position: relative;
+  width: 302px;
   /* display: flex;
   justify-content: space-between; */
 
@@ -127,14 +128,11 @@
 .Product-button {
   background-color: transparent;
   border: 2px solid #9ae5bd;
-
   padding: 10px 12px;
   border-radius: 20px;
-
   color: white;
   font-size: 16px;
   font-weight: 700;
-
   cursor: pointer;
 }
 

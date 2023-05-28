@@ -1,5 +1,5 @@
 .footer {
-  display: flex;
+  /* display: flex; */
   background-color: #222222;
   padding: 40px 0;
   font-family: "Red Hat Display";
@@ -11,6 +11,9 @@
   width: 1440px;
   height: 220px; */
   /* margin-top: auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-container {
@@ -63,6 +66,34 @@ html {
   scroll-behavior: smooth;
 }
 
+.dropdrown-boxes {
+  border: 1px solid hsla(148, 59%, 75%, 1);
+}
+
+label {
+  color: white;
+}
+
+.footer-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  width: 300px;
+  height: 229px;
+}
+
+.dropdown-boxes {
+  width: 225px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 12px;
+  gap: 12px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid hsla(148, 59%, 75%, 1);
+}
+
 /* ----------- */
 
 @media (max-width: 768px) {
@@ -78,3 +109,17 @@ html {
     margin-bottom: 20px;
   }
 }
+
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 34px;
+
+position: absolute;
+width: 300px;
+height: 229px;
+left: calc(50% - 300px / 2);
+top: 29px;
+
+border: 1px solid hsla(148, 59%, 75%, 1);

@@ -38,7 +38,7 @@ html {
 .DetailPage-text {
   color: #faf9f8;
   width: 326px;
-  margin-top: 64px;
+  /* margin-top: 64px; */
   font-family: "Red Hat Display";
   margin-left: 32px;
   margin-right: 32px;

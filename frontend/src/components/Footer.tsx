@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/Footer.css";
+import { useState, useEffect } from "react";
 
 function Footer() {
   const scrollToTop = () => {
@@ -8,6 +9,7 @@ function Footer() {
       behavior: "smooth",
     });
   };
+
   return (
     <>
       <a href="#top" className="arrow-container" onClick={scrollToTop}>
@@ -38,71 +40,4 @@ function Footer() {
     </>
   );
 }
-
 export default Footer;
-
-// import React, { useState } from "react";
-// import "../css/Footer.css";
-
-// function Footer() {
-//   const [aboutUsOpen, setAboutUsOpen] = useState(false);
-//   const [faqOpen, setFaqOpen] = useState(false);
-//   const [contactOpen, setContactOpen] = useState(false);
-
-//   const toggleAboutUs = () => {
-//     setAboutUsOpen(!aboutUsOpen);
-//   };
-
-//   const toggleFaq = () => {
-//     setFaqOpen(!faqOpen);
-//   };
-
-//   const toggleContact = () => {
-//     setContactOpen(!contactOpen);
-//   };
-
-//   return (
-//     <footer className="footer">
-//       <div className="footer-container">
-//         <div className="footer-column">
-//           <h3 className="footer-heading" onClick={toggleAboutUs}>
-//             About Us
-//           </h3>
-//           {aboutUsOpen && (
-//             <ul className="footer-dropdown">
-//               <li className="footer-link">work with us</li>
-//               <li className="footer-link">privacy Policy</li>
-//               <li className="footer-link">terms and conditions</li>
-//             </ul>
-//           )}
-//         </div>
-//         <div className="footer-column">
-//           <h3 className="footer-heading" onClick={toggleFaq}>
-//             FAQ
-//           </h3>
-//           {faqOpen && (
-//             <ul className="footer-dropdown">
-//               <li className="footer-link">shipping and returns</li>
-//               <li className="footer-link">store policy</li>
-//               <li className="footer-link">Payments</li>
-//             </ul>
-//           )}
-//         </div>
-//         <div className="footer-column">
-//           <h3 className="footer-heading" onClick={toggleContact}>
-//             Contact
-//           </h3>
-//           {contactOpen && (
-//             <ul className="footer-dropdown">
-//               <li className="footer-link">939399393</li>
-//               <li className="footer-link">-----</li>
-//               <li className="footer-link">-----</li>
-//             </ul>
-//           )}
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
-// export default Footer;
