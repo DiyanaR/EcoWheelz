@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 const dotenv = require("dotenv");
 const { Client } = require("pg");
 const app = express();
@@ -24,68 +24,13 @@ app.use(express.json());
 // app.use("/", express.static(path.join(__dirname, "public"));
 app.use("/images", express.static(path.join(__dirname, "../images")));
 
-const createUserTable = async () => {
-  try {
-    await client.query(`
-      CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
-        username TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
-      );
-    `);
-  } catch (error) {
-    console.error("Error creating users table:", error);
-  }
-};
-
-const createTokensTable = async () => {
-  try {
-    await client.query(`
-      CREATE TABLE IF NOT EXISTS tokens (
-        id SERIAL PRIMARY KEY,
-        user_id INTEGER,
-        token TEXT UNIQUE,
-        FOREIGN KEY(user_id) REFERENCES users(id)
-      );
-    `);
-  } catch (error) {
-    console.error("Error creating tokens table:", error);
-  }
-};
-
-const createProductsTable = async () => {
-  try {
-    await client.query(`
-CREATE TABLE IF NOT EXISTS products(
-  id SERIAL PRIMARY KEY,
-  title TEXT,
-  subtitle TEXT,
-  price NUMERIC,
-  shortdescription TEXT,
-  longdescription TEXT,
-  specification TEXT,
-  img TEXT)
-`);
-  } catch (error) {
-    console.error("Error creating tokens table:", error);
-  }
-};
-
-// createTokensTable();
-// createUserTable();
-// createProductsTable();
-
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Redo på http://localhost:${port}/`);
 });
 
-const authorize = async (
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
-) => {
+const authorize = async (req: Request, res: Response, next: NextFunction) => {
   const token =
     req.headers?.authorization?.replace("Bearer ", "") ||
     req.body.headers?.Authorization?.replace("Bearer ", "");
@@ -117,11 +62,13 @@ const authorize = async (
       return res.status(404).send("User not found");
     }
 
-    // Not 100% what to send along to the next process
     req.body.user = {
-      username: user[0].username,
+      email: user[0].email,
+      firstName: user[0].firstName,
+      lastName: user[0].lastName,
       token: validationToken[0].token,
     };
+
     next();
   } catch (error) {
     console.error(error);
@@ -129,29 +76,29 @@ const authorize = async (
   }
 };
 
-app.get("/users", async (req: express.Request, res: express.Response) => {
+app.get("/users", async (req: Request, res: Response) => {
   const { rows } = await client.query("SELECT * FROM users");
   res.send(rows);
 });
 
-app.post("/signup", async (req: express.Request, res: express.Response) => {
-  const { username, password } = req.body;
+app.post("/signup", async (req: Request, res: Response) => {
+  const { email, password, firstName, lastName, phoneNumber } = req.body;
 
   // if the information is incomplete
-  if (!username || !password) {
+  if (!email || !password || !firstName || !lastName || !phoneNumber) {
     return res.status(400).send("Bad request");
   }
 
   try {
     await client.query(
-      "INSERT INTO users (username, password) VALUES ($1, $2)",
-      [username, password]
+      "INSERT INTO users (email, password, firstName, lastName, phoneNumber) VALUES ($1, $2, $3, $4, $5)",
+      [email.toLowerCase(), password, firstName, lastName, phoneNumber]
     );
 
     res.status(201).json("User successfully created");
   } catch (error) {
     if (error?.code === "23505") {
-      return res.status(409).json({ error: "Username already exists" });
+      return res.status(409).json({ error: "email already exists" });
     } else {
       console.error("Error creating user:", error);
       res
@@ -161,18 +108,20 @@ app.post("/signup", async (req: express.Request, res: express.Response) => {
   }
 });
 
-app.post("/login", async (req: express.Request, res: express.Response) => {
-  const { username, password } = req.body;
+app.post("/login", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
 
   // if the information is incomplete
-  if (!username || !password) {
+  if (!email || !password) {
     return res.status(400).send("Bad request");
   }
 
   try {
-    //Retrieve user information by username
+    //Retrieve user information by email
     const userInfo = (
-      await client.query("SELECT * FROM users WHERE username = $1", [username])
+      await client.query("SELECT * FROM users WHERE email = $1", [
+        email.toLowerCase(),
+      ])
     ).rows;
 
     // if no user is found then userInfo will be undefined
@@ -195,7 +144,7 @@ app.post("/login", async (req: express.Request, res: express.Response) => {
     // If it does return the existing token with the username
     if (existingToken.length !== 0) {
       res.status(200).json({
-        username: userInfo[0].username,
+        email: userInfo[0].email,
         token: existingToken[0].token,
       });
     } else {
@@ -207,15 +156,47 @@ app.post("/login", async (req: express.Request, res: express.Response) => {
         )
       ).rows;
 
-      console.log(newToken);
-
       res.status(201).json({
-        username: userInfo[0].username,
+        email: userInfo[0].email,
+        firstName: userInfo[0].firstName,
+        lastName: userInfo[0].lastName,
         token: newToken[0].token,
       });
     }
   } catch (error) {
     console.log(error);
+  }
+});
+
+app.post("/logout", authorize, async (req: Request, res: Response) => {
+  const { token } = req.body.user;
+
+  try {
+    const userInfo = (
+      await client.query("DELETE FROM tokens WHERE token = $1", [token])
+    ).rows;
+
+    console.log(userInfo);
+
+    res.end();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/validate-email", async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    if (email) {
+      const checkExistingEmail = (
+        await client.query("SELECT * FROM users WHERE email = $1", [email])
+      ).rows;
+
+      res.status(200).json(checkExistingEmail.length);
+    } else res.status(400).send({ error: "Bad request" });
+  } catch (error) {
+    res.status(500).send({ error: "Internal server error" });
   }
 });
 
@@ -236,7 +217,7 @@ app.get("/products", async (req, res) => {
   }
 });
 
-app.get("/products", async (req: express.Request, res: express.Response) => {
+app.get("/products", async (req: Request, res: Response) => {
   const searchQuery = req.query.search;
 
   try {

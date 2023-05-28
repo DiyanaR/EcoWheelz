@@ -11,7 +11,3 @@ body {
   font-family: Red Hat Display;
   src: url(../assets/Red_Hat_Display/static/RedHatDisplay-Regular.ttf);
 }
-
-html {
-  scroll-behavior: smooth;
-}
