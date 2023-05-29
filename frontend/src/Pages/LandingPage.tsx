@@ -42,7 +42,7 @@ const Main = styled.div`
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    max-width: 1630px;
+    max-width: 2000px;
     height: calc(100dvh - 92px);
 
     display: flex;
