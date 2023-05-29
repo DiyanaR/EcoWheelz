@@ -96,9 +96,9 @@
 .navbar-desktop .nav-links-desktop {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 32px;
   list-style: none;
-  margin: 0;
+  margin: 0 0 0 32px;
   padding: 0;
   width: 100%;
 }
@@ -161,7 +161,7 @@ a {
   gap: 32px;
 }
 
-@media (min-width: 730px) {
+@media (min-width: 830px) {
   .menu-icon {
     display: none;
   }
@@ -175,7 +175,7 @@ a {
   }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 830px) {
   .navbar-desktop {
     height: 72px;
   }
