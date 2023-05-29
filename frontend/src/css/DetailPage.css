@@ -2,6 +2,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.DetailPage-box {
+  max-width: 1200px;
+  margin: auto;
+}
+
 .OtherProductCard-button {
   display: flex;
   flex-direction: row;
