@@ -73,7 +73,7 @@
   gap: 64px;
   flex-wrap: wrap;
   align-items: center;
-
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -145,7 +145,7 @@
   align-items: center;
   padding: 0px;
   /* gap: 68px; */
-  height: 32px;
+  /* height: 32px; */
   flex: none;
   order: 4;
   align-self: stretch;
@@ -235,6 +235,11 @@
 @media (min-width: 600px) {
   .PopularProduct-shortdescription {
     display: block;
+  }
+
+  .Product-list {
+    display: flex;
+    flex-direction: row;
   }
 
   .Product-image {
