@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .navbar {
   display: flex;
   justify-content: flex-end;
@@ -26,17 +30,31 @@
 
 .slide-menu {
   position: fixed;
-  top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #f2f2f2;
+  top: 72px;
+  left: 0;
+  width: 100%;
+
+  height: 0;
+  overflow: hidden;
+
+  background-color: #222222;
   transition: right 0.3s ease;
   z-index: 999;
+
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+
+  transition: all 0.2s ease;
+}
+
+.slide-menu a {
+  color: #faf9f8 !important;
 }
 
 .slide-menu.open {
-  right: 0;
+  /* CHANGE IF MORE ITEMS ARE ADDED OR REMOVED*/
+  height: 302px;
   z-index: 999;
 }
 
@@ -63,32 +81,16 @@
   display: none;
 }
 
-@media (min-width: 601px) {
-  .menu-icon {
-    display: none;
-  }
-
-  .slide-menu {
-    display: none;
-  }
-
-  .menu-icon-open {
-    display: none;
-  }
-}
-
 .navbar-desktop {
   font-family: "Red Hat Display";
   display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 10px 32px;
   gap: 10px;
-  width: 1440px;
   height: 92px;
-  top: 1435px;
-  left: 18245px;
   background: #222222;
+
+  width: 100%;
 }
 
 .navbar-desktop .nav-links-desktop {
@@ -98,12 +100,14 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .navbar-desktop .nav-links-desktop a {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  font-weight: 700;
   padding: 10px;
 }
 
@@ -114,8 +118,26 @@
 .navbar-desktop .logo-container {
   display: flex;
   align-items: center;
-  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+  color: #9ae5bd;
   margin-right: auto;
+}
+
+.account-icon {
+  width: 24px;
+  height: 24px;
+  fill: #faf9f8;
+}
+
+.cart-icon {
+  width: 22px;
+  height: 22px;
+  fill: #faf9f8;
+}
+
+a {
+  text-decoration: none;
 }
 
 .navbar-desktop .logo-image {
@@ -131,8 +153,65 @@
   width: 25px;
   height: 25px;
 }
-@media (max-width: 600px) {
+
+.side-push {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 32px;
+}
+
+@media (min-width: 730px) {
+  .menu-icon {
+    display: none;
+  }
+
+  .slide-menu {
+    display: none;
+  }
+
+  .menu-icon-open {
+    display: none;
+  }
+}
+
+@media (max-width: 730px) {
+  .navbar-desktop {
+    height: 72px;
+  }
+
+  .menu-icon {
+    width: 100%;
+    align-items: center;
+    display: flex;
+  }
+
+  .push {
+    margin-left: auto;
+  }
+
+  .nav-icon {
+    width: 30px !important;
+    height: 30px !important;
+    fill: #9ae5bd;
+    margin-left: 16px;
+  }
+
+  .cart-size {
+    width: 33px !important;
+    height: 33px !important;
+  }
+
+  .logo-image {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
   .navbar-desktop .nav-links-desktop {
     display: none; /* dölj länkrr i mobil */
+  }
+
+  .logo-text {
+    display: none;
   }
 }

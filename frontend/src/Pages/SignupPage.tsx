@@ -272,7 +272,7 @@ export default function SignupPage() {
                   )}
                 </div>
 
-                <button type="submit">Confirm</button>
+                <button type="submit">Sign in</button>
                 <p className="login">
                   Already have an account? <Link to="/login">Login!</Link>
                 </p>

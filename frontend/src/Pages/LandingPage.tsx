@@ -147,7 +147,7 @@ const Main = styled.div`
     }
 
     .explore-btn {
-      bottom: 35px;
+      bottom: 16px;
     }
   }
 `;
