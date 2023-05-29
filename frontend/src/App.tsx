@@ -11,6 +11,7 @@ import FooterMobile from "./components/FooterMobile";
 
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
+import OrdersPage from "./Pages/OrdersPage";
 
 // import CartPage from "./Pages/CartPage";
 
@@ -49,6 +50,7 @@ export default function App() {
         { element: <DetailPage />, path: "/detailpage/:title" },
         { element: <SignupPage />, path: "/signup" },
         { element: <LoginPage />, path: "/login" },
+        { element: <OrdersPage />, path: "/orders" },
         // { element: <Product />, path: "/product" }
         // { element: <CartPage />, path: "/cart" },
       ],

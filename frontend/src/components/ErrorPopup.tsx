@@ -5,13 +5,14 @@ interface prop {
   errorText: string;
 }
 
-export default function ErrorPopup({ errorMsg, errorText }: prop) {
+export default function ErrorPopup({ errorMsg }: prop) {
   return (
     <>
       {errorMsg && (
         <Popup>
           <span>
-            {errorText} <span className="float-right">(error code 500)</span>
+            An error occured, You have been logged out{" "}
+            <span className="float-right">(error code 500)</span>
           </span>
         </Popup>
       )}
@@ -33,9 +34,14 @@ const Popup = styled.div`
   border: 3px solid #9ae5bd;
   border-radius: 16px;
 
+  color: white;
+  font-weight: 700;
+  font-family: "Red Hat Display";
+  font-size: 20px;
+
   position: fixed;
   left: 50%;
-  bottom: 24px;
+  bottom: 100px;
   transform: translateX(-50%);
 
   .float-right {

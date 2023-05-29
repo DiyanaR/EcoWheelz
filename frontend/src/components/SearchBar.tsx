@@ -1,9 +1,7 @@
-
 import React, { useState, ChangeEvent, useEffect } from "react";
 import "../css/SearchBar.css";
 import { Link } from "react-router-dom";
 // import SearchResults from "./searchResults";
-
 
 interface SearchBarProps {
   onSearch: (searchQuery: string) => void;
@@ -21,19 +19,17 @@ interface Product {
 }
 
 function SearchBar({ onSearch }: SearchBarProps) {
-
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   // const [searchNotFound, setSearchNotFound] = useState(false);
 
-
-
   useEffect(() => {
-
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/products?search=${searchQuery}`);
+        const response = await fetch(
+          `http://localhost:8080/products?search=${searchQuery}`
+        );
         const data = await response.json();
         setAllProducts(data);
         // setSearchNotFound(data.length === 0);
@@ -44,8 +40,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
 
     fetchProducts();
   }, [searchQuery]);
-
-
 
   const performSearch = (searchQuery: string) => {
     if (searchQuery.trim() !== "") {
@@ -68,75 +62,64 @@ function SearchBar({ onSearch }: SearchBarProps) {
     setSearchQuery(searchQuery);
     if (searchQuery.length >= 1) {
       performSearch(searchQuery);
-
-  }else {
-    setResults([]);
+    } else {
+      setResults([]);
       onSearch("");
 
-
-    // setSearchNotFound(false);
-  }
-};
-
+      // setSearchNotFound(false);
+    }
+  };
 
   const handleLinkClick = () => {
     setResults([]);
     setSearchQuery("");
-
   };
 
-
-
-
-return (
-  <>
-
-    <div className="container">
-
-    <form className="search-bar">
-      <input
-        type="text"
-        id="searchQuery"
-        name="searchQuery"
-        value={searchQuery}
-        onChange={handleInputChange}
+  return (
+    <>
+      <form className="search-bar">
+        <input
+          type="text"
+          id="searchQuery"
+          name="searchQuery"
+          value={searchQuery}
+          onChange={handleInputChange}
           placeholder="Search..."
           className="search-bar-input"
-      />
+        />
 
-      {searchQuery && searchQuery.length >= 1 &&(
-        <div className="dropdown-menu">
-          {results.length > 0 ? (
-            results.map((product) => (
-              <Link
-                key={product.id}
-                to={`/detailpage/${product.title}`}
-                className="dropdown-item"
-                onClick={handleLinkClick}
-              >
-                <img
-                  src={product.img}
-                  alt={product.title}
-                  className="product-image"
-                />
-                <div className= "product-info">
-                  <h3>{product.title}</h3>
-                  <p>{product.subtitle}</p>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p className="dropdown-item">Your search was not Found</p>
-          )}
-        </div>
-      )}
-      {/* {searchNotFound && results.length === 0 && (
+        {searchQuery && searchQuery.length >= 1 && (
+          <div className="dropdown-menu">
+            {results.length > 0 ? (
+              results.map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/detailpage/${product.title}`}
+                  className="dropdown-item"
+                  onClick={handleLinkClick}
+                >
+                  <img
+                    src={product.img}
+                    alt={product.title}
+                    className="product-image"
+                  />
+                  <div className="product-info">
+                    <h3>{product.title}</h3>
+                    <p>{product.subtitle}</p>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <p className="dropdown-item">Your search was not Found</p>
+            )}
+          </div>
+        )}
+        {/* {searchNotFound && results.length === 0 && (
         <p className="dropdown-item">Your search was not found.</p>
       )} */}
       </form>
-    </div>
-  </>
-);
+    </>
+  );
 }
 
 export default SearchBar;

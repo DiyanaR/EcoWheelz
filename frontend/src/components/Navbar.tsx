@@ -1,397 +1,41 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "../css/Navbar.css";
-// import SearchBar from "../components/SearchBar";
-
-// export default function Navbar() {
-//   const handleSearch = (searchTerm: string) => {
-//     console.log("Sökt:", searchTerm);
-//   };
-//   return (
-//     <>
-//       <nav>
-//         <ul>
-//           <li>
-//             <Link to="/">
-//               <div className="logo-container">
-
-//                 <img
-//                   src="/logo/logo-desktop.png"
-//                   alt="Logo"
-//                   className="logo-image"
-//                 />
-//                 <span className="logo-text">EcoWheelz</span>
-//               </div>
-//             </Link>
-//           </li>
-//           <li>
-//             <Link to="/productpage">Products</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           <li>
-//             <Link to="/faq">FAQ</Link>
-//           </li>
-//           <Link to="/cart">
-//             <img src="/icons/Vector.png" alt="icon" />
-//           </Link>
-//         </ul>
-
-//         <SearchBar onSearch={handleSearch} />
-//       </nav>
-//     </>
-//   );
-// }
-
-
-
-
-
-
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import "../css/Navbar.css";
-// import SearchBar from "../components/SearchBar";
-
-// export default function Navbar() {
-//   const handleSearch = (searchTerm: string) => {
-//     console.log("Sökt:", searchTerm);
-//   };
-
-//   const [isMenuOpen, setMenuOpen] = useState(false);
-
-//   const handleMenuToggle = () => {
-//     setMenuOpen(!isMenuOpen);
-//   };
-
-//   return (
-//     <>
-//       <nav>
-//         <div className={`menu-icon ${isMenuOpen ? "open" : ""}`} onClick={handleMenuToggle}>
-//           <div className="menu-icon-bar"></div>
-//           <div className="menu-icon-bar"></div>
-//           <div className="menu-icon-bar"></div>
-//         </div>
-
-//         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-//           <li>
-//             <Link to="/">
-//               <div className="logo-container">
-//                 <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
-//                 <span className="logo-text">EcoWheelz</span>
-//               </div>
-//             </Link>
-//           </li>
-//           <li>
-//             <Link to="/productpage">Products</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           <li>
-//             <Link to="/faq">FAQ</Link>
-//           </li>
-//           <li>
-//             <Link to="/cart">
-//               <img src="/icons/Vector.png" alt="icon" />
-//             </Link>
-//           </li>
-//         </ul>
-
-//         <SearchBar onSearch={handleSearch} />
-//       </nav>
-//     </>
-//   );
-// }
-
-
-
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import "../css/Navbar.css";
-// import SearchBar from "../components/SearchBar";
-
-// export default function Navbar() {
-//   const [isMenuOpen, setMenuOpen] = useState(false);
-
-//   const handleSearch = (searchTerm: string) => {
-//     console.log("Sökt:", searchTerm);
-//   };
-
-//   const handleMenuToggle = () => {
-//     setMenuOpen(!isMenuOpen);
-//   };
-
-//   return (
-//     <>
-//       <nav>
-//         <div className="menu-icon" onClick={handleMenuToggle}>
-//           <div className={`menu-icon-bar ${isMenuOpen ? "open" : ""}`}></div>
-//           <div className={`menu-icon-bar ${isMenuOpen ? "open" : ""}`}></div>
-//           <div className={`menu-icon-bar ${isMenuOpen ? "open" : ""}`}></div>
-//         </div>
-
-//         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-//           <li className="logo-li">
-
-//             <Link to="/">
-//             <div className="logo-container">
-//               <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
-//               <span className="logo-text">EcoWheelz</span>
-//             </div>
-//             </Link>
-//           </li>
-//           <li>
-//             <Link to="/productpage">Products</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           <li>
-//             <Link to="/faq">FAQ</Link>
-//           </li>
-//           <li>
-//             <Link to="/cart">
-//               <img src="/icons/Vector.png" alt="icon" />
-//             </Link>
-//           </li>
-//         </ul>
-
-//         <SearchBar onSearch={handleSearch} />
-//       </nav>
-//     </>
-//   );
-// }
-
-
-
-
-
-
-
-
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import "../css/Navbar.css";
-// import SearchBar from "../components/SearchBar";
-
-// export default function Navbar() {
-//   const [isMenuOpen, setMenuOpen] = useState(false);
-
-//   const handleSearch = (searchTerm: string) => {
-//     console.log("Sökt:", searchTerm);
-//   };
-
-//   const handleMenuToggle = () => {
-//     setMenuOpen(!isMenuOpen);
-//   };
-
-//   return (
-//     <>
-//       <nav>
-//         <div className="menu-icon" onClick={handleMenuToggle}>
-//           <div className={`menu-icon-bar ${isMenuOpen ? "open" : ""}`}></div>
-//           <div className={`menu-icon-bar ${isMenuOpen ? "open" : ""}`}></div>
-//           <div className={`menu-icon-bar ${isMenuOpen ? "open" : ""}`}></div>
-//         </div>
-
-//         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-//           <li className="logo-li">
-//             <Link to="/">
-//               <div className="logo-container">
-//                 <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
-//                 <span className="logo-text">EcoWheelz</span>
-//               </div>
-//             </Link>
-//           </li>
-//           <li>
-//             <Link to="/productpage">Products</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           <li>
-//             <Link to="/faq">FAQ</Link>
-//           </li>
-//           <li>
-//             <Link to="/cart">
-//               <img src="/icons/Vector.png" alt="icon" />
-//             </Link>
-//           </li>
-//         </ul>
-
-//         <ul className={`mobile-nav-links ${isMenuOpen ? "open" : ""}`}>
-//           <li>
-//             <Link to="/productpage">Products</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           <li>
-//             <Link to="/faq">FAQ</Link>
-//           </li>
-//           <li>
-//             <Link to="/cart">
-//               <img src="/icons/Vector.png" alt="icon" />
-//             </Link>
-//           </li>
-//         </ul>
-
-//         <SearchBar onSearch={handleSearch} />
-//       </nav>
-//     </>
-//   );
-// }
-
-
-
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import "../css/Navbar.css";
-// import SearchBar from "../components/SearchBar";
-
-// export default function Navbar() {
-//   const [isMenuOpen, setMenuOpen] = useState(false);
-
-//   const handleSearch = (searchTerm: string) => {
-//     console.log("Sökt:", searchTerm);
-//   };
-
-//   // const handleMenuToggle = () => {
-//   //   setMenuOpen(prevState => !prevState);
-//   // };
-
-//   const handleMenuToggle = () => {
-//     setMenuOpen(!isMenuOpen);
-//   };
-
-//   return (
-//     <>
-
-//       <nav>
-//         <div className={`menu-icon ${isMenuOpen ? "open" : ""}`} onClick={handleMenuToggle}>
-//         <div className="menu-icon-bar"></div>
-//           <div className="menu-icon-bar"></div>
-//           <div className="menu-icon-bar"></div>
-
-//           </div>
-
-//         <div className="logo-menu-container">
-
-//         <ul className={`nav-links ${isMenuOpen ? "hidden" : ""}`}>
-
-//           <li className="logo-li">
-//             <Link to="/">
-//               <div className="logo-container">
-//                 <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
-//                 <span className="logo-text">EcoWheelz</span>
-//               </div>
-//             </Link>
-//           </li>
-//           <li>
-//             <Link to="/productpage">Products</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           <li>
-//             <Link to="/faq">FAQ</Link>
-//           </li>
-//           <li>
-//             <Link to="/cart">
-//               <img src="/icons/Vector.png" alt="icon" />
-//             </Link>
-//           </li>
-//         </ul>
-
-
-
-//         <ul className={`mobile-nav-links ${isMenuOpen ? "open" : ""}`}>
-//             <li>
-//               <Link to="/productpage">Products</Link>
-//             </li>
-//             <li>
-//               <Link to="/about">About</Link>
-//             </li>
-//             <li>
-//               <Link to="/contact">Contact</Link>
-//             </li>
-//             <li>
-//               <Link to="/faq">FAQ</Link>
-//             </li>
-//             <li>
-//               <Link to="/cart">
-//                 <img src="/icons/Vector.png" alt="icon" />
-//               </Link>
-//             </li>
-//             </ul>
-//             </div>
-
-
-
-
-//         <SearchBar onSearch={handleSearch} />
-//         </nav>
-
-
-//     </>
-//   );
-// }
-
-
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import SearchBar from "../components/SearchBar";
+import { ReactComponent as AccountIcon } from "../assets/account.svg";
+import { ReactComponent as CartIcon } from "../assets/cart.svg";
+import { ReactComponent as SearchIcon } from "../assets/search.svg";
+import { ReactComponent as MenuIcon } from "../assets/hamburger.svg";
+import { ReactComponent as CloseIcon } from "../assets/close.svg";
+import { LoginContext } from "./ContextProvider";
 
 export default function Navbar() {
-
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [showSearchMobile, setShowSearchMobile] = useState(false);
+  const { login, setLogin } = useContext(LoginContext);
 
   const handleSearch = (searchTerm: string) => {
     //     console.log("Sökt:", searchTerm);
-      };
+  };
 
-    const handleMenuToggle = () => {
-      setMenuOpen(!isMenuOpen);
-    };
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
-    return (
+  return (
+    <>
       <nav className="navbar-desktop">
-        <ul className="nav-links-desktop">
-          <li>
-            <Link to="/">
-              <div className="logo-container">
+        <Link to="/">
+          <div className="logo-container">
+            <img
+              src="/logo/logo-desktop.png"
+              alt="Logo"
+              className="logo-image"
+            />
+            <span className="logo-text">EcoWheelz</span>
+          </div>
+        </Link>
 
-                <img
-                  src="/logo/logo-desktop.png"
-                  alt="Logo"
-                  className="logo-image"
-                />
-                <span className="logo-text">EcoWheelz</span>
-              </div>
-            </Link>
-          </li>
-        </ul>
         <ul className="nav-links-desktop">
           <li>
             <Link to="/productpage">Products</Link>
@@ -405,36 +49,45 @@ export default function Navbar() {
           <li>
             <Link to="/faq">FAQ</Link>
           </li>
-          <Link to="/cart">
-            <img src="/icons/Vector.png" alt="icon" />
-          </Link>
+          <div className="side-push">
+            <li>
+              <Link to={login ? "/orders" : "/login"}>
+                <AccountIcon className="cart-icon" />
+              </Link>
+            </li>
+            <li>
+              <Link to="/cart">
+                <CartIcon className="account-icon" />
+              </Link>
+            </li>
+          </div>
         </ul>
 
-        <div className={`menu-icon${isMenuOpen ? "-open" : ""}`} onClick={handleMenuToggle}>
-
-
-          <span className="search">
-            <Link to="/account">
-              <img src="/icons/search.png" alt="account" className="nav-icon" />
-            </Link>
-
-
+        <div className="menu-icon">
+          <span className="search push">
+            <SearchIcon
+              onClick={() => setShowSearchMobile(!showSearchMobile)}
+              className="nav-icon"
+            />
           </span>
 
           <span className="account">
-            <Link to="/account">
-              <img src="/icons/account.png" alt="account" className="nav-icon" />
+            <Link to="/login">
+              <AccountIcon className="nav-icon" />
             </Link>
           </span>
 
           <span className="cart">
             <Link to="/cart">
-              <img src="/icons/cart.png" alt="cart" className="nav-icon" />
+              <CartIcon className="nav-icon cart-size" />
             </Link>
           </span>
 
-          <div className="menu-icon-bar"></div>
-
+          {isMenuOpen ? (
+            <CloseIcon className="nav-icon" onClick={handleMenuToggle} />
+          ) : (
+            <MenuIcon className="nav-icon" onClick={handleMenuToggle} />
+          )}
         </div>
 
         <div className={`slide-menu ${isMenuOpen ? "open" : ""}`}>
@@ -455,13 +108,13 @@ export default function Navbar() {
               <li>
                 <Link to="/faq">FAQ</Link>
               </li>
-              <li>
-
-              </li>
+              <li></li>
             </ul>
           </div>
         </div>
-        <SearchBar onSearch={handleSearch} />
+
+        {showSearchMobile && <SearchBar onSearch={handleSearch} />}
       </nav>
-    );
-  }
+    </>
+  );
+}
