@@ -52,72 +52,78 @@ export default function ProductsCards() {
   return (
     <>
       <h1 className="Product-header">Popular products</h1>
-      <div className="Product-box">
-        {products.length > 0 ? (
-          <ol className="Product-list">
-            {products.slice(0, 3).map((product) => (
-              <li key={product.id}>
-                <div className="Product-container">
-                  <img
-                    className="Product-image"
-                    src={product.img}
-                    alt={product.img}
-                  />
+      {/* <div className="Product-box"> */}
+      {products.length > 0 ? (
+        <div className="Product-list">
+          {products.slice(0, 3).map((product) => (
+            <li key={product.id}>
+              <div className="Product-container">
+                <img
+                  className="Product-image"
+                  src={product.img}
+                  alt={product.img}
+                />
 
-                  <div className="Product-text">
-                    <div className="Product-iconBox">
-                      <h2 className="Product-title">{product.title}</h2>
-                      {!showModal ? (
-                        <img
-                          className="Product-icon"
-                          src={"./icons/placeholder.png"}
-                          alt="icon"
-                          onClick={() => handleShowText(product.id)}
-                        />
-                      ) : (
-                        <img src="./icons/placeholderUp.png" alt="icon" />
-                      )}
-                    </div>
-                    <hr className="Product-line" />
-                    <div className="ProductCard-icon">
-                      {/* {selectedProductId === null ? ( */}
+                <div className="Product-text">
+                  <div className="Product-iconBox">
+                    <h2 className="ProductCard-title">{product.title}</h2>
 
-                      {selectedProductId === product.id && (
-                        <ShowInfoModal
-                          subtitle={product.subtitle}
-                          shortdescription={product.shortdescription}
-                          closeModal={closeModal}
-                        />
-                      )}
+                    <img
+                      className={
+                        showModal ? "Product-icon rotate" : "Product-icon"
+                      }
+                      src={"./icons/placeholder.png"}
+                      alt="icon"
+                      onClick={() => {
+                        handleShowText(product.id);
+                        setShowModal(!showModal);
+                      }}
+                    />
+                  </div>
 
-                      {/* // )} */}
-                    </div>
-                    <div></div>
-                    <h3 className="Product-subtitle">{product.subtitle}</h3>
-                    <div className="ProductCard-button">
-                      <p className="Product-price">{product.price}:-</p>
+                  <hr className="Product-line" />
+                  <div className="ProductCard-icon">
+                    {/* {selectedProductId === null ? ( */}
 
-                      <Link to={`/detailpage/${product.title}`}>
-                        <button className="Product-button">View product</button>
-                      </Link>
-                    </div>
+                    {selectedProductId === product.id && (
+                      <ShowInfoModal
+                        subtitle={product.subtitle}
+                        shortdescription={product.shortdescription}
+                        closeModal={closeModal}
+                      />
+                    )}
+
+                    {/* // )} */}
+                  </div>
+
+                  <h3 className="Product-subtitle">{product.subtitle}</h3>
+                  <p className="PopularProduct-shortdescription">
+                    {product.shortdescription}
+                  </p>
+                  <div className="ProductCard-button">
+                    <p className="Product-price">{product.price}:-</p>
+
+                    <Link to={`/detailpage/${product.title}`}>
+                      <button className="Product-button">View product</button>
+                    </Link>
                   </div>
                 </div>
-              </li>
-            ))}
-          </ol>
-        ) : null}
-        <div className="Product-show-more">
-          <Link to={`/productpage`}>
-            <button
-              className="ProductViewMore-button"
-              onClick={() => setShowText(!showText)}
-            >
-              View all products
-            </button>
-          </Link>
+              </div>
+            </li>
+          ))}
         </div>
+      ) : null}
+      <div className="Product-show-more">
+        <Link to={`/productpage`}>
+          <button
+            className="Product-button"
+            onClick={() => setShowText(!showText)}
+          >
+            View all products
+          </button>
+        </Link>
       </div>
+      {/* </div> */}
     </>
   );
 }

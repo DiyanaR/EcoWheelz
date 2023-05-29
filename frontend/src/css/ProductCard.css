@@ -7,7 +7,9 @@
   background-color: #222222;
   width: 326px;
   color: #faf9f8;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
   gap: 10.14px;
   font-family: "Red Hat Display";
   font-style: normal;
@@ -16,10 +18,15 @@
   padding: 0px, 0px, 41px, 0px;
   align-items: center;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
   transition: height 0.3s;
   min-height: 500px; /* Increase the height as desired */
-  /* height: 462px; */
+  /* height: 700px; */
+  border-radius: 2px;
+}
+
+.PopularProduct-shortdescription {
+  display: none;
 }
 
 .ProductViewMore-button {
@@ -32,7 +39,6 @@
 
   width: 228px;
   height: 59px;
-
   border: 2.68182px solid #9ae5bd;
   border-radius: 21.4545px;
 
@@ -54,9 +60,10 @@
 .Product-image {
   height: 326px;
   width: 326px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+
   object-fit: cover;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
 .Product-list {
@@ -64,19 +71,22 @@
   flex-direction: column;
   list-style: none;
   gap: 64px;
+
+  align-items: center;
 }
 
 .Product-box {
-  margin-left: 32px;
-  margin-right: 32px;
   width: 100%;
-  margin-top: 64px;
+  margin-top: 10px;
 }
 
 .Product-text {
   padding: 0px 15.2126px;
-
   position: relative;
+  width: 302px;
+  /* display: flex;
+  justify-content: space-between; */
+
   /*
   flex: 1;
   display: flex;
@@ -91,7 +101,8 @@
   font-size: 24px;
 }
 
-.Product-title {
+.ProductCard-title {
+  margin-bottom: 15px;
   font-size: 24px;
   /* position: absolute; */
   /* right: 300px; */
@@ -117,15 +128,11 @@
 .Product-button {
   background-color: transparent;
   border: 2px solid #9ae5bd;
-
   padding: 10px 12px;
   border-radius: 20px;
-  margin: 0 12px;
-
   color: white;
   font-size: 16px;
   font-weight: 700;
-
   cursor: pointer;
 }
 
@@ -135,27 +142,45 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px;
-  gap: 68px;
+  /* gap: 68px; */
   height: 32px;
   flex: none;
   order: 4;
   align-self: stretch;
   flex-grow: 0;
   padding-bottom: 30px;
+
+  /* bottom: 10px;
+  position: absolute; */
+  bottom: 0;
+  /* left: 0; */
+  /* width: 100%; */
+  margin-top: auto;
+  /* height: 700px; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ProductCard-icon {
   flex-direction: row;
   justify-content: space-between;
   display: flex;
-  align-items: center;
-  position: relative;
+  /* align-items: center; */
+  /* position: relative; */
 }
 
 .Product-icon {
   width: 25px;
   height: 25px;
   align-items: center;
+  /* transform: rotate(180deg) !important; */
+}
+
+.rotate {
+  transform: rotate(180deg) !important;
 }
 
 .Product-header {
@@ -164,6 +189,7 @@
   font-size: 32px;
   text-align: center;
   color: #faf9f8;
+  margin-top: 80px;
 }
 
 .Product-show-more {
@@ -177,9 +203,9 @@
   font-size: 14px;
 }
 
-.Product-text {
+/* .Product-text {
   position: relative;
-}
+} */
 
 .ProductCard-button {
   margin-top: 10px;
@@ -205,19 +231,48 @@
 }
 
 @media (min-width: 600px) {
+  .PopularProduct-shortdescription {
+    display: block;
+  }
+
   .Product-image {
     width: 399.48px;
     height: 399.48px;
+    border-top-left-radius: 38.03px;
+    border-top-right-radius: 38.03px;
   }
   .Product-text {
     /* width: 499.48px; */
-    height: 229.85px;
+    height: 300.84px;
     /* background-color: #222222; */
+    position: relative;
+  }
+
+  .ProductCard-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    height: 32px;
+    flex: none;
+    order: 4;
+    align-self: stretch;
+    flex-grow: 0;
+    padding-bottom: 30px;
+    bottom: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    margin-top: auto;
   }
 
   .Product-container {
     width: 399.48px;
-    /* height: 687px; */
+    border-radius: 38.03px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding-bottom: 20px;
   }
 
   .Product-list {
@@ -225,7 +280,7 @@
     flex-direction: row;
   }
 
-  .Product-line {
+  */ .Product-line {
     display: none;
   }
 
@@ -234,5 +289,9 @@
   }
   .Product-subtitle {
     display: block;
+  }
+
+  .Product-container::-webkit-scrollbar {
+    display: none;
   }
 }

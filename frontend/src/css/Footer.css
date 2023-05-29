@@ -1,5 +1,5 @@
 .footer {
-  display: flex;
+  /* display: flex; */
   background-color: #222222;
   padding: 40px 0;
   font-family: "Red Hat Display";
@@ -11,6 +11,9 @@
   width: 1440px;
   height: 220px; */
   /* margin-top: auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-container {
@@ -50,12 +53,141 @@
   text-decoration: underline;
 }
 
+.arrow-icon {
+  margin-bottom: 50px;
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dropdrown-boxes {
+  border: 1px solid hsla(148, 59%, 75%, 1);
+}
+
+label {
+  color: white;
+}
+
+.footer-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  width: 300px;
+  height: 229px;
+}
+
+.dropdown-boxes {
+  width: 225px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 12px;
+  gap: 12px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid hsla(148, 59%, 75%, 1);
+  position: relative;
+}
+
+.dropdown-boxestest {
+  width: 225px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 12px;
+  gap: 12px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid hsla(148, 59%, 75%, 1);
+  position: absoulute;
+  top: 10px;
+}
+
+.footer-dropdownbox {
+  width: 225px;
+  /* height: 40px; */
+  border-radius: 8px;
+  /* padding: 12px; */
+
+  background-color: transparent;
+  color: #faf9f8;
+  border: 1px solid hsla(148, 59%, 75%, 1);
+  display: flex;
+  justify-content: flex-start;
+  margin: 12px;
+  flex-direction: column;
+}
+
+.detail-info {
+  margin-top: 0;
+}
+
+.footer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 4px solid #9ae5bd;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: row;
+}
+
+.icon-container {
+  max-width: 100%;
+  height: 24px;
+  width: 24px;
+}
+
+.icon-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.footer-icon {
+  margin-right: 30px;
+}
+
+.text {
+  margin-left: 10px;
+}
+
+.footer-text {
+  margin-left: 10px;
+}
+
+.footer-textheader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-iconarrow {
+  height: 24px;
+  width: 24px;
+}
+
+.copyright-text {
+  font-size: 10px;
+  color: #faf9f8;
+}
+
 /* ----------- */
 
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
   }
 
   .footer-column {

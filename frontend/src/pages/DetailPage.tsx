@@ -29,10 +29,24 @@ export default function DetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/products/${title}`);
+        const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
         console.log(data);
         setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/products/${title}`);
+        const data = await response.json();
+        console.log(data);
+        setProduct(data);
       } catch (error) {
         console.error(error);
       }
@@ -66,45 +80,6 @@ export default function DetailPage() {
 
   return (
     <>
-      {/* {true === true ? (<div></div>) : (<img></img>)} */}
-
-      {/* {product !== null && product.length > 0 */}
-      {/* <div className="DetailPage-info">
-        <img
-          className="DetailPage-image"
-          src={product[0].img}
-          alt={product[0].img}
-        />
-        <div className="DetailPage-text">
-          <h1>
-            {product[0].title.charAt(0).toUpperCase() +
-              product[0].title.slice(1)}
-          </h1>
-          <p>{product[0].subtitle}</p>
-          <p>{product[0].longdescription}</p>
-          <h2>{product[0].price}:-</h2>
-          <div className="DetailPage-container">
-            <img src="../icons/stars.png" alt="icon" />
-            <button onClick={addProduct} className="Product-button">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="DetailPage-specification">
-        <div className="Specification-header">
-          <h2>Specifikations</h2>
-        </div>
-        <ul>
-          <li>
-            {product[0].specification.split(",").map((spec) => (
-              <li>{spec}</li>
-            ))}
-          </li>
-        </ul>
-      </div>  */}
-
       {filteredProduct.length > 0 && (
         <div id="top " className="DetailPage-box">
           <div className="DetailPage-info">
@@ -124,7 +99,7 @@ export default function DetailPage() {
                 <h2>{filteredProduct[0].price}:-</h2>
                 <div className="DetailPage-container">
                   <img src="../icons/stars.png" alt="icon" />
-                  <button className="Product-button">Add to Cart</button>
+                  <button className="Product-button">Add to Bag</button>
                 </div>
               </div>
             </div>
@@ -145,7 +120,7 @@ export default function DetailPage() {
 
           <h1 className="Product-header">Other products</h1>
           {products.length > 0 ? (
-            <ol className="Product-list">
+            <ol className="DetailPage-list">
               {products.slice(0, 2).map((product) => (
                 <li key={product.id}>
                   <div className="OtherProduct-container">
@@ -156,11 +131,13 @@ export default function DetailPage() {
                     />
 
                     <div className="OtherProduct-text">
-                      <div className="OtherProductCard-icon">
-                        <h2 className="Product-title">{product.title}</h2>
-                        <h3>{product.subtitle}</h3>
-                        <p className="OtherProduct-shortdescription">{product.shortdescription}</p>
-                      </div>
+                      {/* <div className="OtherProductCard-icon"> */}
+                      <h2 className="Product-title">{product.title}</h2>
+                      <h3>{product.subtitle}</h3>
+                      <p className="OtherProduct-shortdescription">
+                        {product.shortdescription}
+                      </p>
+                      {/* </div> */}
 
                       <div className="OtherProductCard-button">
                         <p className="Product-price">{product.price}:-</p>

@@ -86,9 +86,11 @@ function ProductPage() {
                   <div className="ProductPage-info">
                     <div className="ProductPage-text">
                       <div className="ProductCardPage-icon">
-                        <h1 className="Product-title">{product.title}</h1>
+                        <h1 className="ProductPage-title">{product.title}</h1>
                         <img
-                          className="Product-icon"
+                          className={
+                            showModal ? "Product-icon rotate" : "Product-icon"
+                          }
                           src="./icons/placeholder.png"
                           alt="icon"
                           onClick={() => handleShowText(product.id)}
@@ -111,7 +113,7 @@ function ProductPage() {
                         {product.shortdescription}
                       </p>
 
-                      <div className="ProductCard-button">
+                      <div className="ProductPage-button">
                         <p className="Product-price">{product.price}:-</p>
                         <Link to={`/detailpage/${product.title}`}>
                           <button className="Product-button">
