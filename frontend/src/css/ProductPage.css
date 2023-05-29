@@ -13,8 +13,10 @@
   flex-direction: column;
   position: relative;
   margin-top: 32px;
-  flex-direction: column;
-  width: 326px;
+
+  width: fit-content;
+
+  /* width: 326px; */
 }
 
 .ProductPage-button {
@@ -33,6 +35,7 @@
   margin-top: 24px;
   /* width: 116px; */
   /* height: 700px; */
+  align-items: center;
 }
 
 .ProductPage-text {
@@ -49,7 +52,7 @@
   border-width: 0;
   border-top-width: 2px;
   border-radius: 1px;
-  width: 100%;
+  /* width: 100%; */
   display: block;
   position: absoulte;
   bottom: 0;
@@ -82,20 +85,17 @@
 }
 
 .ProductPage-info {
-  /* display: flex;
-  justify-content: center; */
   border-radius: 30px;
-  /* text-align: center; */
 }
 
 .ProductPage-image {
-  /* width: 544px;
-  height: 479.6px; */
+  /* width: 544px; */
+  /* height: 479.6px;  */
   border-top-left-radius: 8px;
-  /* border-top-right-radius: 8px; */
   object-fit: cover;
   width: 326px;
   height: 326px;
+  object-fit: cover;
 }
 
 .short-description {
@@ -112,6 +112,7 @@
 
 .ProductPage-list {
   list-style-type: none;
+  /* margin-top: 64px; */
 }
 
 .ProductPage-title {
@@ -120,27 +121,65 @@
   font-size: 24px;
 }
 
-@media (min-width: 600px) {
-  .ProductPage-box {
-    display: flex;
-    width: 1312px;
+.ProductPage-info {
+  /* width: 645px; */
+  /* height: 270px; */
+}
+
+@media (min-width: 935px) {
+  .ProductPage-image {
+    /* border-top-left-radius: 8px;
+    object-fit: cover; */
+    width: 350px;
+    height: 350px;
   }
 
   .ProductPage-container {
     display: flex;
     flex-direction: row;
-    width: 1312px;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: fit-content;
+    /* margin-top: 32px; */
+  }
+
+  .subtitle {
+    display: block;
+  }
+
+  .Product-line {
+    display: none;
+  }
+
+  .short-description {
+    display: block;
+  }
+}
+
+@media (min-width: 1160px) {
+  .ProductPage-box {
+    display: flex;
+    /* width: 1312px; */
+  }
+
+  .ProductPage-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    /* width: 100%; */
   }
   .ProductPage-image {
-    width: 544px;
-    height: 479.6px;
+    width: 479px;
+    height: 479px;
   }
   .ProductPage-box {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    width: 1312px;
+    /* width: 1312px; */
   }
   .short-description {
     display: block;
@@ -152,10 +191,10 @@
     padding: 0px 15.2126px;
     height: 136px;
     position: relative;
-    width: 644px;
+    /* width: 644px; */
   }
   .ProductPage-info {
-    width: 645px;
+    /* width: 645px; */
     height: 270px;
   }
   .Product-line {
