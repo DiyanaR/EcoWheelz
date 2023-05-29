@@ -261,46 +261,138 @@
 
 
 
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import "../css/Navbar.css";
+// import SearchBar from "../components/SearchBar";
+
+// export default function Navbar() {
+//   const [isMenuOpen, setMenuOpen] = useState(false);
+
+//   const handleSearch = (searchTerm: string) => {
+//     console.log("Sökt:", searchTerm);
+//   };
+
+//   // const handleMenuToggle = () => {
+//   //   setMenuOpen(prevState => !prevState);
+//   // };
+
+//   const handleMenuToggle = () => {
+//     setMenuOpen(!isMenuOpen);
+//   };
+
+//   return (
+//     <>
+
+//       <nav>
+//         <div className={`menu-icon ${isMenuOpen ? "open" : ""}`} onClick={handleMenuToggle}>
+//         <div className="menu-icon-bar"></div>
+//           <div className="menu-icon-bar"></div>
+//           <div className="menu-icon-bar"></div>
+
+//           </div>
+
+//         <div className="logo-menu-container">
+
+//         <ul className={`nav-links ${isMenuOpen ? "hidden" : ""}`}>
+
+//           <li className="logo-li">
+//             <Link to="/">
+//               <div className="logo-container">
+//                 <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
+//                 <span className="logo-text">EcoWheelz</span>
+//               </div>
+//             </Link>
+//           </li>
+//           <li>
+//             <Link to="/productpage">Products</Link>
+//           </li>
+//           <li>
+//             <Link to="/about">About</Link>
+//           </li>
+//           <li>
+//             <Link to="/contact">Contact</Link>
+//           </li>
+//           <li>
+//             <Link to="/faq">FAQ</Link>
+//           </li>
+//           <li>
+//             <Link to="/cart">
+//               <img src="/icons/Vector.png" alt="icon" />
+//             </Link>
+//           </li>
+//         </ul>
+
+
+
+//         <ul className={`mobile-nav-links ${isMenuOpen ? "open" : ""}`}>
+//             <li>
+//               <Link to="/productpage">Products</Link>
+//             </li>
+//             <li>
+//               <Link to="/about">About</Link>
+//             </li>
+//             <li>
+//               <Link to="/contact">Contact</Link>
+//             </li>
+//             <li>
+//               <Link to="/faq">FAQ</Link>
+//             </li>
+//             <li>
+//               <Link to="/cart">
+//                 <img src="/icons/Vector.png" alt="icon" />
+//               </Link>
+//             </li>
+//             </ul>
+//             </div>
+
+
+
+
+//         <SearchBar onSearch={handleSearch} />
+//         </nav>
+
+
+//     </>
+//   );
+// }
+
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import SearchBar from "../components/SearchBar";
 
 export default function Navbar() {
+
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleSearch = (searchTerm: string) => {
-    console.log("Sökt:", searchTerm);
-  };
+    //     console.log("Sökt:", searchTerm);
+      };
 
-  // const handleMenuToggle = () => {
-  //   setMenuOpen(prevState => !prevState);
-  // };
+    const handleMenuToggle = () => {
+      setMenuOpen(!isMenuOpen);
+    };
 
-  const handleMenuToggle = () => {
-    setMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <>
-      <nav>
-        <div className={`menu-icon ${isMenuOpen ? "open" : ""}`} onClick={handleMenuToggle}>
-        <div className="menu-icon-bar"></div>
-          <div className="menu-icon-bar"></div>
-          <div className="menu-icon-bar"></div>
-
-        </div>
-
-        <ul className={`nav-links ${isMenuOpen ? "hidden" : ""}`}>
-
-          <li className="logo-li">
+    return (
+      <nav className="navbar-desktop">
+        <ul className="nav-links-desktop">
+          <li>
             <Link to="/">
               <div className="logo-container">
-                <img src="/logo/logo-desktop.png" alt="Logo" className="logo-image" />
+
+                <img
+                  src="/logo/logo-desktop.png"
+                  alt="Logo"
+                  className="logo-image"
+                />
                 <span className="logo-text">EcoWheelz</span>
               </div>
             </Link>
           </li>
+        </ul>
+        <ul className="nav-links-desktop">
           <li>
             <Link to="/productpage">Products</Link>
           </li>
@@ -313,40 +405,63 @@ export default function Navbar() {
           <li>
             <Link to="/faq">FAQ</Link>
           </li>
-          <li>
-            <Link to="/cart">
-              <img src="/icons/Vector.png" alt="icon" />
-            </Link>
-          </li>
+          <Link to="/cart">
+            <img src="/icons/Vector.png" alt="icon" />
+          </Link>
         </ul>
 
+        <div className={`menu-icon${isMenuOpen ? "-open" : ""}`} onClick={handleMenuToggle}>
 
 
-        <ul className={`mobile-nav-links ${isMenuOpen ? "open" : ""}`}>
-            <li>
-              <Link to="/productpage">Products</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/faq">FAQ</Link>
-            </li>
-            <li>
-              <Link to="/cart">
-                <img src="/icons/Vector.png" alt="icon" />
-              </Link>
-            </li>
+          <span className="search">
+            <Link to="/account">
+              <img src="/icons/search.png" alt="account" className="nav-icon" />
+            </Link>
+
+
+          </span>
+
+          <span className="account">
+            <Link to="/account">
+              <img src="/icons/account.png" alt="account" className="nav-icon" />
+            </Link>
+          </span>
+
+          <span className="cart">
+            <Link to="/cart">
+              <img src="/icons/cart.png" alt="cart" className="nav-icon" />
+            </Link>
+          </span>
+
+          <div className="menu-icon-bar"></div>
+
+        </div>
+
+        <div className={`slide-menu ${isMenuOpen ? "open" : ""}`}>
+          <div className="slide-menu-content">
+            <ul className="nav-links">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/productpage">Products</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/faq">FAQ</Link>
+              </li>
+              <li>
+
+              </li>
             </ul>
-
-
-
-
+          </div>
+        </div>
         <SearchBar onSearch={handleSearch} />
       </nav>
-    </>
-  );
-}
+    );
+  }
