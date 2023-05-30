@@ -74,8 +74,6 @@
 .Product-show-more {
   display: flex;
   justify-content: center;
-  margin-top: 128px;
-  margin-bottom: 128px;
 }
 
 .ProductPage-info {
