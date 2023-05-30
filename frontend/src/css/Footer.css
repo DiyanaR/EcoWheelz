@@ -1,6 +1,6 @@
 .footer {
   /* display: flex; */
-  /* background-color: #222222; */
+  background-color: #222222;
   padding: 40px 0;
   font-family: "Red Hat Display";
   justify-content: center;
@@ -219,6 +219,23 @@ label {
   height: 24px;
 }
 
+.Productfooter-line {
+  border: none;
+  height: 2px;
+  background-color: #9ae5bd;
+  margin: 10px 0;
+  border-style: solid;
+  border-color: #9ae5bd;
+  border-width: 0;
+  border-top-width: 2px;
+  border-radius: 1px;
+  width: 100%;
+  /* display: block; */
+  position: absoulte;
+  bottom: 0;
+  left: 0;
+}
+
 /* ----------- */
 
 @media (max-width: 768px) {
@@ -228,7 +245,7 @@ label {
     cursor: pointer;
   }
 
-  .Product-line {
+  .Productfooter-line {
     border: none;
     height: 2px;
     background-color: #9ae5bd;
@@ -239,7 +256,7 @@ label {
     border-top-width: 2px;
     border-radius: 1px;
     width: 302px;
-    display: block;
+    /* display: block; */
     position: absoulte;
     bottom: 0;
     left: 0;
