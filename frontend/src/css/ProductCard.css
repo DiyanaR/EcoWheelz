@@ -99,10 +99,12 @@
   align-items: center;
   padding: 20px;
   text-align: center; */
+  width: 100%;
 }
 
 .Product-price {
   font-size: 24px;
+  margin: 0;
 }
 
 .ProductCard-title {
@@ -220,10 +222,6 @@
   margin-top: 10px;
 }
 
-.Product-price {
-  margin-top: 10px;
-}
-
 .ShowInfoModal {
   margin-top: 10px;
 }
@@ -239,7 +237,16 @@
   align-items: center;
 }
 
-@media (min-width: 600px) {
+.Modal-container {
+  width: 296px;
+}
+
+.ProductPage-button {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 850px) {
   .PopularProduct-shortdescription {
     display: block;
   }
@@ -268,7 +275,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    height: 32px;
+
     flex: none;
     order: 4;
     align-self: stretch;

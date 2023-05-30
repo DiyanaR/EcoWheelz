@@ -102,7 +102,9 @@ function ProductPage() {
                           <h1 className="ProductPage-title">{product.title}</h1>
                           <img
                             className={
-                              showModal ? "Product-icon rotate" : "Product-icon"
+                              selectedProductId === product.id
+                                ? "Product-icon rotate"
+                                : "Product-icon"
                             }
                             src="./icons/placeholder.png"
                             alt="icon"
