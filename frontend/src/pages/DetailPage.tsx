@@ -4,6 +4,7 @@ import "../css/DetailPage.css";
 import "../css/ProductCard.css";
 import { useParams } from "react-router-dom";
 import { useRef } from "react";
+import SearchBar from "../components/SearchBar";
 
 interface Product {
   id: number;
@@ -25,6 +26,10 @@ export default function DetailPage() {
   // const title = products.length > 0 ? products[0].title : "";
   const { title } = useParams<{ title: string }>();
   const productRef = useRef<HTMLDivElement>(null);
+
+  const handleSearch = (searchTerm: string) => {
+    //     console.log("Sökt:", searchTerm);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -161,6 +166,9 @@ export default function DetailPage() {
             </ol>
           ) : null}
           <div className="Product-show-more"></div>
+          <div className="desktop-serachbar">
+        <SearchBar onSearch={handleSearch} />
+        </div>
         </div>
       )}
     </>

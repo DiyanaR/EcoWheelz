@@ -2,8 +2,12 @@ import styled from "styled-components";
 import HeroImg from "../assets/header.png";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
+import SearchBar from "../components/SearchBar";
 
 export default function LandingPage() {
+  const handleSearch = (searchTerm: string) => {
+    //     console.log("Sökt:", searchTerm);
+  };
   return (
     <>
       <Main>
@@ -24,6 +28,9 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="desktop-serachbar">
+        <SearchBar onSearch={handleSearch} />
         </div>
         <ProductCard />
       </Main>

@@ -7,6 +7,7 @@ import React from "react";
 import "../css/ProductPage.css";
 import "../css/ProductCard.css";
 import ShowInfoModal from "../components/ShowInfoModal";
+import SearchBar from "../components/SearchBar";
 
 interface Product {
   id: number;
@@ -27,6 +28,11 @@ function ProductPage() {
     null
   );
   const [showModal, setShowModal] = useState(true);
+
+  const handleSearch = (searchTerm: string) => {
+    //     console.log("Sökt:", searchTerm);
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -137,6 +143,9 @@ function ProductPage() {
             </button>
           )}
         </Link>
+        <div className="desktop-serachbar">
+        <SearchBar onSearch={handleSearch} />
+        </div>
       </div>
     </>
   );
