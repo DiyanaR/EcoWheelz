@@ -94,19 +94,20 @@ export default function Navbar() {
           <div className="slide-menu-content">
             <ul className="nav-links">
               <li>
-                <Link to="/">Home</Link>
+                <Link onClick={() => setMenuOpen(false)}  to="/">Home</Link>
               </li>
               <li>
-                <Link to="/productpage">Products</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/productpage">Products</Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+
+                <Link onClick={() => setMenuOpen(false)}  to="/about">About</Link>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link onClick={() => setMenuOpen(false)}  to="/contact">Contact</Link>
               </li>
               <li>
-                <Link to="/faq">FAQ</Link>
+                <Link onClick={() => setMenuOpen(false)}  to="/faq">FAQ</Link>
               </li>
               <li></li>
             </ul>
