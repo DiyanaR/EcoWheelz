@@ -112,7 +112,7 @@
 }
 
 .navbar-desktop .nav-links-desktop a:hover {
-  color: gray;
+  color: #9ae5bd;
 }
 
 .navbar-desktop .logo-container {
@@ -159,6 +159,14 @@ a {
   align-items: center;
   margin-left: auto;
   gap: 32px;
+}
+
+.account-icon:hover {
+  fill: #9ae5bd;
+}
+
+.cart-icon:hover {
+  fill: #9ae5bd;
 }
 
 @media (min-width: 830px) {
