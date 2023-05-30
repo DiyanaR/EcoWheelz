@@ -179,7 +179,7 @@
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1312px) {
   .ProductPage-container {
     display: flex;
     flex-direction: row;
