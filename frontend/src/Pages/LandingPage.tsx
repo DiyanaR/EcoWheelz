@@ -103,6 +103,11 @@ const Main = styled.div`
     cursor: pointer;
   }
 
+  .explore-btn:hover {
+    background-color: #9ae5bd;
+    color: black;
+  }
+
   @media (max-width: 815px) {
     .hero-image {
       display: block;

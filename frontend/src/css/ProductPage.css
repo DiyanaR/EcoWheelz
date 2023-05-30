@@ -125,6 +125,10 @@
   cursor: pointer;
 }
 
+/* .arrow-icon:hover {
+  background-color: #9ae5bd;
+} */
+
 .button-content {
   display: inline-block;
 }

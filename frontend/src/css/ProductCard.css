@@ -140,6 +140,11 @@
   cursor: pointer;
 }
 
+.Product-button:hover {
+  background-color: #9ae5bd;
+  color: black;
+}
+
 .ProductCard-button {
   display: flex;
   flex-direction: row;

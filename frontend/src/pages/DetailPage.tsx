@@ -30,6 +30,7 @@ export default function DetailPage() {
   const handleSearch = (searchTerm: string) => {
     //     console.log("Sökt:", searchTerm);
   };
+  const categoriesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,10 +72,9 @@ export default function DetailPage() {
     console.log(title);
   }, [products, title]);
 
-  const handleClickProduct = () => {
-    if (productRef.current) {
-      productRef.current.scrollIntoView({ behavior: "smooth" });
-      window.scrollTo(0, 0);
+  const handletopClick = () => {
+    if (categoriesRef.current) {
+      categoriesRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -85,94 +85,96 @@ export default function DetailPage() {
 
   return (
     <>
-      {filteredProduct.length > 0 && (
-        <div id="top " className="DetailPage-box">
-          <div className="desktop-serachbar">
-            <SearchBar onSearch={handleSearch} />
-          </div>
-          <div className="DetailPage-info">
-            <img
-              className="DetailPage-image"
-              src={filteredProduct[0].img}
-              alt={filteredProduct[0].img}
-            />
-            <div className="DetailPage-text">
-              <div className="DetailPage-shortText">
-                <h1>
-                  {filteredProduct[0].title.charAt(0).toUpperCase() +
-                    filteredProduct[0].title.slice(1)}
-                </h1>
-                <p>{filteredProduct[0].subtitle}</p>
-                <p>{filteredProduct[0].longdescription}</p>
-                <h2>{filteredProduct[0].price}:-</h2>
-                <div className="DetailPage-container">
-                  <img src="../icons/stars.png" alt="icon" />
-                  <button className="Product-button">Add to Bag</button>
+      <div ref={categoriesRef}>
+        {filteredProduct.length > 0 && (
+          <div id="top " className="DetailPage-box">
+            <div className="desktop-serachbar">
+              <SearchBar onSearch={handleSearch} />
+            </div>
+            <div className="DetailPage-info">
+              <img
+                className="DetailPage-image"
+                src={filteredProduct[0].img}
+                alt={filteredProduct[0].img}
+              />
+              <div className="DetailPage-text">
+                <div className="DetailPage-shortText">
+                  <h1>
+                    {filteredProduct[0].title.charAt(0).toUpperCase() +
+                      filteredProduct[0].title.slice(1)}
+                  </h1>
+                  <p>{filteredProduct[0].subtitle}</p>
+                  <p>{filteredProduct[0].longdescription}</p>
+                  <h2>{filteredProduct[0].price}:-</h2>
+                  <div className="DetailPage-container">
+                    <img src="../icons/stars.png" alt="icon" />
+                    <button className="Product-button">Add to Bag</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="container-specification">
-            {/* <div className="specification-wrapper"> */}
-            <div className="Specification-header">
-              <h2>Specifikations</h2>
+            <div className="container-specification">
+              {/* <div className="specification-wrapper"> */}
+              <div className="Specification-header">
+                <h2>Specifikations</h2>
+              </div>
+              <ul>
+                <li>
+                  {filteredProduct[0].specification.split(",").map((spec) => (
+                    <li>{spec}</li>
+                  ))}
+                </li>
+              </ul>
+              {/* </div> */}
             </div>
-            <ul>
-              <li>
-                {filteredProduct[0].specification.split(",").map((spec) => (
-                  <li>{spec}</li>
-                ))}
-              </li>
-            </ul>
-            {/* </div> */}
-          </div>
 
-          <h1 className="Product-header">Other products</h1>
-          {products.length > 0 ? (
-            <ol className="DetailPage-list">
-              {products.slice(0, 2).map((product) => (
-                <li key={product.id}>
-                  <div className="OtherProduct-container">
-                    <img
-                      className="OtherProduct-image"
-                      src={product.img}
-                      alt={product.img}
-                    />
+            <h1 className="Product-header">Popular products</h1>
+            {products.length > 0 ? (
+              <ol className="DetailPage-list">
+                {products.slice(0, 2).map((product) => (
+                  <li key={product.id}>
+                    <div className="OtherProduct-container">
+                      <img
+                        className="OtherProduct-image"
+                        src={product.img}
+                        alt={product.img}
+                      />
 
-                    <div className="OtherProduct-text">
-                      {/* <div className="OtherProductCard-icon"> */}
-                      <h2 className="Product-title">{product.title}</h2>
-                      <h3>{product.subtitle}</h3>
-                      <p className="OtherProduct-shortdescription">
-                        {product.shortdescription}
-                      </p>
-                      {/* </div> */}
+                      <div className="OtherProduct-text">
+                        {/* <div className="OtherProductCard-icon"> */}
+                        <h2 className="Product-title">{product.title}</h2>
+                        <h3>{product.subtitle}</h3>
+                        <p className="OtherProduct-shortdescription">
+                          {product.shortdescription}
+                        </p>
+                        {/* </div> */}
 
-                      <div className="OtherProductCard-button">
-                        <p className="Product-price">{product.price}:-</p>
-                        <Link
-                          to={`/detailpage/${product.title}`}
-                          onClick={handleClickProduct}
-                        >
-                          <a href="#top">
-                            <button className="Product-button">
-                              View product
-                            </button>
-                          </a>
-                        </Link>
+                        <div className="OtherProductCard-button">
+                          <p className="Product-price">{product.price}:-</p>
+                          <Link
+                            to={`/detailpage/${product.title}`}
+                            onClick={handletopClick}
+                          >
+                            <a href="#top">
+                              <button className="Product-button">
+                                View product
+                              </button>
+                            </a>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          ) : null}
-          <div className="Product-show-more"></div>
-        </div>
-      )}
+                  </li>
+                ))}
+              </ol>
+            ) : null}
+            {/* <div className="Product-show-more"></div> */}
+          </div>
+        )}
+      </div>
       <div className="arrow-container">
-        <button className="top-to-btm" onClick={handleClickProduct}>
+        <button className="top-to-btm" onClick={handletopClick}>
           <span className="button-content">
             <img
               className="arrow-icon"
