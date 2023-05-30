@@ -8,7 +8,7 @@
   font-style: normal;
   font-weight: 600;
   /* line-height: 34px; */
-  padding: 0px, 0px, 41px, 0px;
+  padding: 41px 0px 41px 0px;
   align-items: center;
   flex-direction: column;
   position: relative;
@@ -139,6 +139,7 @@
   top: -20px;
   left: 50%;
   transform: translateX(50%);
+  z-index: 20;
 }
 
 @media (max-width: 850px) {
@@ -181,7 +182,7 @@
   }
 
   .desktop-serachbar {
-    top: -55px !important;
+    top: -20px !important;
   }
 }
 
@@ -223,6 +224,6 @@
   } */
 
   .desktop-serachbar {
-    top: -55px !important;
+    top: -13px !important;
   }
 }
