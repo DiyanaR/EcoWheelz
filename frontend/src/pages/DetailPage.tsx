@@ -163,6 +163,17 @@ export default function DetailPage() {
           <div className="Product-show-more"></div>
         </div>
       )}
+      <div className="arrow-container">
+        <button className="top-to-btm" onClick={handleClickProduct}>
+          <span className="button-content">
+            <img
+              className="arrow-icon"
+              src="/icons/VectorArrow.png"
+              alt="icon"
+            />
+          </span>
+        </button>
+      </div>
     </>
   );
 }

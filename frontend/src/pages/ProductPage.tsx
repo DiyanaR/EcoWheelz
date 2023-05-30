@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import CarouselTest from "../components/CarouselTest";
 import Carousel from "react-bootstrap/Carousel";
@@ -27,6 +27,13 @@ function ProductPage() {
     null
   );
   const [showModal, setShowModal] = useState(true);
+  const categoriesRef = useRef<HTMLDivElement>(null);
+
+  const handletopClick = () => {
+    if (categoriesRef.current) {
+      categoriesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,71 +79,85 @@ function ProductPage() {
   return (
     <>
       <div className="ProductPage-box">
-        {products.length > 0 ? (
-          <ol className="ProductPage-list">
-            {visibleProducts.map((product) => (
-              <li key={product.id}>
-                <div className="ProductPage-container">
-                  <img
-                    className="ProductPage-image"
-                    src={product.img}
-                    alt={product.img}
-                  />
+        <div ref={categoriesRef}>
+          {products.length > 0 ? (
+            <ol className="ProductPage-list">
+              {visibleProducts.map((product) => (
+                <li key={product.id}>
+                  <div className="ProductPage-container">
+                    <img
+                      className="ProductPage-image"
+                      src={product.img}
+                      alt={product.img}
+                    />
 
-                  <div className="ProductPage-info">
-                    <div className="ProductPage-text">
-                      <div className="ProductCardPage-icon">
-                        <h1 className="ProductPage-title">{product.title}</h1>
-                        <img
-                          className={
-                            showModal ? "Product-icon rotate" : "Product-icon"
-                          }
-                          src="./icons/placeholder.png"
-                          alt="icon"
-                          onClick={() => handleShowText(product.id)}
-                        />
-                      </div>
-                      <hr className="Product-line" />
-                      {showModal && (
-                        <div className="Modal-show">
-                          {selectedProductId === product.id && (
-                            <ShowInfoModal
-                              subtitle={product.subtitle}
-                              shortdescription={product.shortdescription}
-                              closeModal={closeModal}
-                            />
-                          )}
+                    <div className="ProductPage-info">
+                      <div className="ProductPage-text">
+                        <div className="ProductCardPage-icon">
+                          <h1 className="ProductPage-title">{product.title}</h1>
+                          <img
+                            className={
+                              showModal ? "Product-icon rotate" : "Product-icon"
+                            }
+                            src="./icons/placeholder.png"
+                            alt="icon"
+                            onClick={() => handleShowText(product.id)}
+                          />
                         </div>
-                      )}
-                      <h2 className="subtitle">{product.subtitle}</h2>
-                      <p className="short-description">
-                        {product.shortdescription}
-                      </p>
+                        <hr className="Product-line" />
+                        {showModal && (
+                          <div className="Modal-show">
+                            {selectedProductId === product.id && (
+                              <ShowInfoModal
+                                subtitle={product.subtitle}
+                                shortdescription={product.shortdescription}
+                                closeModal={closeModal}
+                              />
+                            )}
+                          </div>
+                        )}
+                        <h2 className="subtitle">{product.subtitle}</h2>
+                        <p className="short-description">
+                          {product.shortdescription}
+                        </p>
 
-                      <div className="ProductPage-button">
-                        <p className="Product-price">{product.price}:-</p>
-                        <Link to={`/detailpage/${product.title}`}>
-                          <button className="Product-button">
-                            View product
-                          </button>
-                        </Link>
+                        <div className="ProductPage-button">
+                          <p className="Product-price">{product.price}:-</p>
+                          <Link to={`/detailpage/${product.title}`}>
+                            <button className="Product-button">
+                              View product
+                            </button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        ) : null}
-      </div>
-      <div className="Product-show-more">
-        <Link to={`/productpage`}>
-          {!showMore && (
-            <button className="Product-button" onClick={handleShowMore}>
-              View more
-            </button>
-          )}
-        </Link>
+                </li>
+              ))}
+            </ol>
+          ) : null}
+        </div>
+        <div className="Product-show-more">
+          <Link to={`/productpage`}>
+            {!showMore && (
+              <button className="Product-button" onClick={handleShowMore}>
+                View more
+              </button>
+            )}
+          </Link>
+        </div>
+
+        <div className="arrow-container">
+          <button className="top-to-btm" onClick={handletopClick}>
+            <span className="button-content">
+              <img
+                className="arrow-icon"
+                src="/icons/VectorArrow.png"
+                alt="icon"
+              />
+            </span>
+          </button>
+        </div>
       </div>
     </>
   );

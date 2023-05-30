@@ -1,20 +1,30 @@
 import React from "react";
 import "../css/Footer.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  const categoriesRef = useRef<HTMLDivElement>(null);
+
+  const handletopClick = () => {
+    if (categoriesRef.current) {
+      categoriesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <>
-      <a href="#top" className="arrow-container" onClick={scrollToTop}>
-        <img className="arrow-icon" src="/icons/VectorArrow.png" alt="icon" />
-      </a>
+      {/* <div ref={categoriesRef}>
+        <div className="arrow-container">
+          <button className="top-to-btm" onClick={handletopClick}>
+            <img
+              className="arrow-icon"
+              src="/icons/VectorArrow.png"
+              alt="icon"
+            />
+          </button>
+        </div>
+      </div> */}
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-column">
@@ -40,4 +50,5 @@ function Footer() {
     </>
   );
 }
+
 export default Footer;
