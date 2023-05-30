@@ -149,6 +149,9 @@
   .desktop-serachbar {
     display: none;
   }
+  /* .Product-line {
+    display: none;
+  } */
 }
 
 @media (min-width: 850px) {
@@ -179,6 +182,10 @@
 
   .short-description {
     display: block;
+  }
+
+  .Product-line {
+    display: none;
   }
 
   .desktop-serachbar {
