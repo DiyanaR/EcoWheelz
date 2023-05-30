@@ -30,7 +30,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="desktop-serachbar">
-        <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch} />
         </div>
         <ProductCard />
       </Main>
@@ -49,7 +49,7 @@ const Main = styled.div`
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    max-width: 2000px;
+    max-width: 1630px;
     height: calc(100dvh - 92px);
 
     display: flex;
@@ -155,6 +155,12 @@ const Main = styled.div`
 
     .explore-btn {
       bottom: 16px;
+    }
+  }
+
+  @media (max-width: 830px) {
+    .desktop-serachbar {
+      display: none;
     }
   }
 `;

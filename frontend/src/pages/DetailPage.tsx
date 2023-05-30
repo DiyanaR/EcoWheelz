@@ -87,6 +87,9 @@ export default function DetailPage() {
     <>
       {filteredProduct.length > 0 && (
         <div id="top " className="DetailPage-box">
+          <div className="desktop-serachbar">
+            <SearchBar onSearch={handleSearch} />
+          </div>
           <div className="DetailPage-info">
             <img
               className="DetailPage-image"
@@ -166,9 +169,6 @@ export default function DetailPage() {
             </ol>
           ) : null}
           <div className="Product-show-more"></div>
-          <div className="desktop-serachbar">
-        <SearchBar onSearch={handleSearch} />
-        </div>
         </div>
       )}
     </>

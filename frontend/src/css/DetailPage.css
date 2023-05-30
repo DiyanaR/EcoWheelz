@@ -135,6 +135,23 @@ html {
   height: 326px;
 }
 
+.desktop-serachbar {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(50%);
+}
+
+@media (max-width: 830px) {
+  .DetailPage-info {
+    margin-top: 0;
+  }
+
+  .desktop-serachbar {
+    display: none;
+  }
+}
+
 @media (min-width: 1000px) {
   .DetailPage-list {
     display: flex;
