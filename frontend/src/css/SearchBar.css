@@ -85,9 +85,9 @@
   /* color: #666666; */
 }
 
-@media (max-width: 730px) {
+@media (max-width: 830px) {
   .search-bar {
-    /* display: none; */
+    /* display: none;  */
     top: 100px;
     width: 340px;
   }

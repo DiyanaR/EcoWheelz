@@ -7,6 +7,7 @@ import React from "react";
 import "../css/ProductPage.css";
 import "../css/ProductCard.css";
 import ShowInfoModal from "../components/ShowInfoModal";
+import SearchBar from "../components/SearchBar";
 
 interface Product {
   id: number;
@@ -33,6 +34,10 @@ function ProductPage() {
     if (categoriesRef.current) {
       categoriesRef.current.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleSearch = (searchTerm: string) => {
+    //     console.log("Sökt:", searchTerm);
   };
 
   useEffect(() => {
