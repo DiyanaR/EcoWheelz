@@ -69,9 +69,6 @@ function FooterMobile() {
               </div>
             )}
           </div>
-          {/* <div className="footer-logo">
-            <img src="./logo/Logo-desktop.png" alt="icon" />
-          </div> */}
         </div>
 
         <div className="footer-dropdownbox">

@@ -210,6 +210,23 @@ label {
     cursor: pointer;
   }
 
+  .Product-line {
+    border: none;
+    height: 2px;
+    background-color: #9ae5bd;
+    margin: 10px 0;
+    border-style: solid;
+    border-color: #9ae5bd;
+    border-width: 0;
+    border-top-width: 2px;
+    border-radius: 1px;
+    width: 302px;
+    display: block;
+    position: absoulte;
+    bottom: 0;
+    left: 0;
+  }
+
   .footer-column {
     flex: none;
     width: 100%;

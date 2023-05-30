@@ -14,18 +14,8 @@ function Footer() {
 
   return (
     <>
-      {/* <div ref={categoriesRef}>
-        <div className="arrow-container">
-          <button className="top-to-btm" onClick={handletopClick}>
-            <img
-              className="arrow-icon"
-              src="/icons/VectorArrow.png"
-              alt="icon"
-            />
-          </button>
-        </div>
-      </div> */}
-      <footer className="footer">
+      <div className="footer">
+        <hr className="Product-line" />
         <div className="footer-container">
           <div className="footer-column">
             <h3 className="footer-heading">About Us</h3>
@@ -46,7 +36,7 @@ function Footer() {
             <p className="footer-link">service@eccowheelz.com</p>
           </div>
         </div>
-      </footer>
+      </div>
     </>
   );
 }
