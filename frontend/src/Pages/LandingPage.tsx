@@ -39,6 +39,8 @@ export default function LandingPage() {
 }
 
 const Main = styled.div`
+  padding-bottom: 30px;
+
   .hero-bg-filler {
     background-color: #080d11;
     width: 100%;

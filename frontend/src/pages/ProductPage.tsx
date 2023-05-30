@@ -8,7 +8,7 @@ import "../css/ProductPage.css";
 import "../css/ProductCard.css";
 import ShowInfoModal from "../components/ShowInfoModal";
 import SearchBar from "../components/SearchBar";
-import {ReactComponent as Arrowicon} from "../assets/arrow.svg"
+import { ReactComponent as Arrowicon } from "../assets/arrow.svg";
 
 interface Product {
   id: number;
@@ -85,6 +85,9 @@ function ProductPage() {
   return (
     <>
       <div className="ProductPage-box">
+        <div className="desktop-serachbar">
+          <SearchBar onSearch={handleSearch} />
+        </div>
         <div ref={categoriesRef}>
           {products.length > 0 ? (
             <ol className="ProductPage-list">
@@ -158,7 +161,7 @@ function ProductPage() {
         <div className="arrow-container">
           <button className="top-to-btm" onClick={handletopClick}>
             <span className="button-content">
-              <Arrowicon className="arrow-icon"/>
+              <Arrowicon className="arrow-icon" />
             </span>
           </button>
         </div>
