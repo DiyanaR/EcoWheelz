@@ -22,7 +22,7 @@
   transition: height 0.3s;
   min-height: 500px; /* Increase the height as desired */
   /* height: 700px; */
-  border-radius: 2px;
+  border-radius: 38.03px;
 }
 
 .PopularProduct-shortdescription {
@@ -62,8 +62,8 @@
   width: 326px;
 
   object-fit: cover;
-  border-top-right-radius: 2px;
-  border-bottom-left-radius: 2px;
+  border-top-right-radius: 38.03px;
+  border-top-left-radius: 38.03px;
 }
 
 .Product-list {

@@ -2,7 +2,7 @@
   background-color: #222222;
   /* width: 326px; */
   color: #faf9f8;
-  border-radius: 2px;
+  border-radius: 38.03px;
   gap: 10.14px;
   font-family: "Red Hat Display";
   font-style: normal;
@@ -85,7 +85,8 @@
 .ProductPage-image {
   /* width: 544px; */
   /* height: 479.6px;  */
-  border-top-left-radius: 8px;
+  border-top-left-radius: 38.03px;
+  border-top-right-radius: 38.03px;
   object-fit: cover;
   width: 326px;
   height: 326px;
