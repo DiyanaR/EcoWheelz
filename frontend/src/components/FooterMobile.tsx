@@ -69,6 +69,9 @@ function FooterMobile() {
               </div>
             )}
           </div>
+          <div className="logo-mobile">
+            <img src="./logo/Logo-desktop.png" alt="logo" />
+          </div>
         </div>
 
         <div className="footer-dropdownbox">
@@ -87,6 +90,9 @@ function FooterMobile() {
             </div>
           )}
         </div>
+        <div className="logo-mobile">
+          <img src="./icons/fb.png" alt="logo" />
+        </div>
 
         <div className="footer-dropdownbox">
           <div className="footer-textheader" onClick={toggleFaqDetails}>
@@ -102,6 +108,9 @@ function FooterMobile() {
               <p className="footer-text">Payments</p>
             </div>
           )}
+          <div className="logo-mobile">
+            <img src="./icons/instagram.png" alt="logo" />
+          </div>
         </div>
         <p className="copyright-text">2023 Ecowheelz AB. All rights reserved</p>
       </div>
