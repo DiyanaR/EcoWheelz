@@ -83,9 +83,11 @@
 }
 
 .Product-text {
-  padding: 0px 15.2126px;
+  /* padding: 0px 15.2126px; */
   position: relative;
-  width: 302px;
+  /* width: 302px; */
+  padding-right: 15px;
+  padding-left: 15px;
   /* display: flex;
   justify-content: space-between; */
 

@@ -57,13 +57,28 @@ html {
   margin-top: 20px;
 }
 
-.DetailPage-specification {
+.container-specification {
   color: #faf9f8;
   font-family: "Red Hat Display";
   margin-top: 64px;
   line-height: 40px;
-  margin-left: 32px;
-  width: 326px;
+  /* margin-left: 32px; */
+  /* width: 326px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.specification-wrapper {
+  /* width: 50%; */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.Specification-header {
+  margin-left: 20px;
 }
 
 .OtherProduct-container {
@@ -110,6 +125,7 @@ html {
   flex-direction: column;
   list-style: none;
   gap: 64px;
+  align-items: center;
 }
 
 .OtherProduct-text {
@@ -165,7 +181,7 @@ html {
     margin-bottom: 64px;
     width: 499px;
     line-height: 26.46px;
-    margin-left: 220px;
+    margin-left: 100px;
   }
 
   .OtherProduct-container {
