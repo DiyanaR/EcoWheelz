@@ -129,6 +129,7 @@ html {
   list-style: none;
   gap: 64px;
   align-items: center;
+  padding: 0;
 }
 
 .OtherProduct-text {
@@ -159,6 +160,7 @@ html {
   .DetailPage-list {
     display: flex;
     flex-direction: row;
+    padding: 0;
   }
 
   .OtherProduct-text {

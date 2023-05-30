@@ -178,6 +178,11 @@ label {
   font-family: "Red Hat Display";
 }
 
+.footer-text:hover {
+  color: #9ae5bd;
+  cursor: pointer;
+}
+
 .footer-textheader {
   display: flex;
   /* flex-direction: row; */

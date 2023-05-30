@@ -19,6 +19,7 @@ function FooterMobile() {
   const toggleFaqDetails = () => {
     setShowFAQ(!showFAQ);
   };
+
   return (
     <>
       {/* <div className="footericon-box"> */}

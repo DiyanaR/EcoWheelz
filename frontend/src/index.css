@@ -7,4 +7,13 @@ body {
   height: fit-content;
 }
 
+main {
+  background: linear-gradient(
+    180deg,
+    #222222 41.15%,
+    rgba(34, 34, 34, 0.9) 77.08%,
+    rgba(34, 34, 34, 0.95) 92.71%
+  );
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap");
