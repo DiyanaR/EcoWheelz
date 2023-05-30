@@ -105,7 +105,8 @@ export default function DetailPage() {
             </div>
           </div>
 
-          <div className="DetailPage-specification">
+          <div className="container-specification">
+            {/* <div className="specification-wrapper"> */}
             <div className="Specification-header">
               <h2>Specifikations</h2>
             </div>
@@ -116,6 +117,7 @@ export default function DetailPage() {
                 ))}
               </li>
             </ul>
+            {/* </div> */}
           </div>
 
           <h1 className="Product-header">Other products</h1>

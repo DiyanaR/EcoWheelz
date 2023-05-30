@@ -16,6 +16,18 @@
   align-items: center;
 }
 
+.footericon-box {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+}
+
+.footer-logo {
+  height: 24px;
+  width: 24px;
+  align-items: center;
+}
+
 .footer-container {
   display: flex;
   /* justify-content: space-between; */
@@ -150,6 +162,7 @@ label {
   flex-direction: row;
   align-items: center;
   margin-left: 10px;
+  font-family: "Red Hat Display";
 }
 
 .footer-icon {
@@ -162,13 +175,15 @@ label {
 
 .footer-text {
   margin-left: 10px;
+  font-family: "Red Hat Display";
 }
 
 .footer-textheader {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   align-items: center;
   justify-content: space-between;
+  font-family: "Red Hat Display";
 }
 
 .footer-iconarrow {
