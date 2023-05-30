@@ -16,16 +16,26 @@
   align-items: center;
 }
 
+.footer-secondbox {
+  margin-top: 20px;
+}
+
 .footericon-box {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer-logo {
-  height: 24px;
-  width: 24px;
+  height: 29.07px;
+  width: 29.07px;
   align-items: center;
+}
+
+.footer-icons {
+  height: 29.07px;
+  width: 29.07px;
 }
 
 .footer-container {

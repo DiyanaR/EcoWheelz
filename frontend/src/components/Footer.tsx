@@ -3,15 +3,6 @@ import "../css/Footer.css";
 import { useState, useEffect, useRef } from "react";
 
 function Footer() {
-  const [showTopBtn, setShowTopBtn] = useState(false);
-  const categoriesRef = useRef<HTMLDivElement>(null);
-
-  const handletopClick = () => {
-    if (categoriesRef.current) {
-      categoriesRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <>
       <div className="footer">
