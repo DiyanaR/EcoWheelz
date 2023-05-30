@@ -34,7 +34,10 @@ function Root() {
     <>
       <ContextProvider>
         <Navbar />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
+
         <div>{showMobile ? <FooterMobile /> : <Footer />}</div>
       </ContextProvider>
     </>
