@@ -201,6 +201,11 @@ label {
   color: #faf9f8;
 }
 
+.logo-mobile {
+  width: 24px;
+  height: 24px;
+}
+
 /* ----------- */
 
 @media (max-width: 768px) {
