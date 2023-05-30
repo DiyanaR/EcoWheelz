@@ -122,9 +122,9 @@
   cursor: pointer;
 }
 
-/* .arrow-icon:hover {
-  background-color: #9ae5bd;
-} */
+.arrow-icon:hover {
+  stroke: white;
+}
 
 .button-content {
   display: inline-block;
@@ -132,6 +132,7 @@
 
 .arrow-container {
   margin-top: 100px;
+  stroke: #9ae5bd;
 }
 
 .desktop-serachbar {

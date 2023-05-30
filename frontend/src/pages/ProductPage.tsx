@@ -8,6 +8,7 @@ import "../css/ProductPage.css";
 import "../css/ProductCard.css";
 import ShowInfoModal from "../components/ShowInfoModal";
 import SearchBar from "../components/SearchBar";
+import {ReactComponent as Arrowicon} from "../assets/arrow.svg"
 
 interface Product {
   id: number;
@@ -157,11 +158,7 @@ function ProductPage() {
         <div className="arrow-container">
           <button className="top-to-btm" onClick={handletopClick}>
             <span className="button-content">
-              <img
-                className="arrow-icon"
-                src="/icons/VectorArrow.png"
-                alt="icon"
-              />
+              <Arrowicon className="arrow-icon"/>
             </span>
           </button>
         </div>
