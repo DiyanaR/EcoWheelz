@@ -169,5 +169,8 @@ const Main = styled.div`
     .desktop-serachbar {
       display: none;
     }
+    .hero-image {
+      height: calc(100dvh - 72px);
+    }
   }
 `;

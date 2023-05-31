@@ -28,27 +28,12 @@ export default function SignupPage() {
   const [errorMsg, setErrorMsg] = useState(false);
   const { login, setLogin } = useContext(LoginContext);
 
-  // useEffect(() => {
-  //   // Redirect user from login to homepage if the user is already logged in
-  //   if (login) {
-  //     navigate("/");
-  //   }
-  // }, []);
-
-  async function logoutUser() {
+  useEffect(() => {
+    // Redirect user from login to homepage if the user is already logged in
     if (login) {
-      setLogin(null);
-      localStorage.removeItem("token");
-
-      try {
-        await axios.post("http://localhost:8080/logout", {
-          headers: { Authorization: `Bearer ${login.token}` },
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      navigate("/");
     }
-  }
+  }, []);
 
   return (
     <FormSignup>
@@ -105,12 +90,11 @@ export default function SignupPage() {
         }}
         onSubmit={() => {
           // if all validation succeeds get sent to homepage
-          // navigate("/");
+          navigate("/");
         }}
       >
         {({ values, errors, handleSubmit, handleChange }) => (
           <>
-            {login && <button onClick={logoutUser}>Logout</button>}
             <span className="headline">Sign in</span>
             <div className="form-border">
               <form onSubmit={handleSubmit}>
@@ -178,7 +162,7 @@ const FormSignup = styled.div`
     box-sizing: border-box;
   }
 
-  min-height: calc(100dvh - 112px);
+  min-height: calc(100dvh - 92px);
   background: linear-gradient(
     180deg,
     #222222 41.15%,
@@ -326,6 +310,11 @@ const FormSignup = styled.div`
     margin: 34px auto;
 
     cursor: pointer;
+
+    &:hover {
+      background-color: #9ae5bd;
+      color: #222222;
+    }
   }
 
   .signup {
@@ -409,9 +398,13 @@ const FormSignup = styled.div`
       font-size: 16px;
     }
 
-    .signup {
+    /* .signup {
       font-size: 14px;
       margin-top: 60px;
-    }
+    } */
+  }
+
+  @media (max-width: 850px) {
+    min-height: calc(100dvh - 72px);
   }
 `;

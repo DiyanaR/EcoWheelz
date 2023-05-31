@@ -390,6 +390,11 @@ const FormSignup = styled.div`
     margin: 34px auto;
 
     cursor: pointer;
+
+    &:hover {
+      background-color: #9ae5bd;
+      color: #222222;
+    }
   }
 
   .login {
@@ -453,9 +458,10 @@ const FormSignup = styled.div`
       font-size: 16px;
     }
 
-    .login {
-      font-size: 14px;
+    /* .login {
+      font-size: 18px;
+      font-weight: 700;
       margin-top: 60px;
-    }
+    } */
   }
 `;
