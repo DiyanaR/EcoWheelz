@@ -71,7 +71,7 @@
 .confirmation-icons {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 }
 
 .confirmation-inputcontainer {
