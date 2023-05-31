@@ -7,15 +7,12 @@ import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
 
-
 import FooterMobile from "./components/FooterMobile";
 
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import OrdersPage from "./Pages/OrdersPage";
-
-import CartPage from "./Pages/CartPage";
-import Checkout from "./components/Checkout"
+import ConfirmationPage from "./Pages/ConfirmationPage";
 
 // import CartPage from "./Pages/CartPage";
 
@@ -41,7 +38,6 @@ function Root() {
         <main>
           <Outlet />
         </main>
-
         <div>{showMobile ? <FooterMobile /> : <Footer />}</div>
       </ContextProvider>
     </>
@@ -58,11 +54,7 @@ export default function App() {
         { element: <SignupPage />, path: "/signup" },
         { element: <LoginPage />, path: "/login" },
         { element: <OrdersPage />, path: "/orders" },
-        { element: <CartPage />, path: "/cart" },
-        { element: <Checkout />, path: "/checkout" },
-
-
-
+        { element: <ConfirmationPage />, path: "/confirmation" },
         // { element: <Product />, path: "/product" }
         // { element: <CartPage />, path: "/cart" },
       ],
