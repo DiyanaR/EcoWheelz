@@ -14,7 +14,7 @@ import LoginPage from "./Pages/LoginPage";
 import OrdersPage from "./Pages/OrdersPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
 
-// import CartPage from "./Pages/CartPage";
+import CartPage from "./Pages/CartPage";
 
 function Root() {
   const [showMobile, setShowMobile] = useState(false);
@@ -56,7 +56,7 @@ export default function App() {
         { element: <OrdersPage />, path: "/orders" },
         { element: <ConfirmationPage />, path: "/confirmation" },
         // { element: <Product />, path: "/product" }
-        // { element: <CartPage />, path: "/cart" },
+        { element: <CartPage />, path: "/cart" },
       ],
       element: <Root />,
     },
