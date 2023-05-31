@@ -23,6 +23,7 @@
   min-height: 500px; /* Increase the height as desired */
   /* height: 700px; */
   border-radius: 38.03px;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 .PopularProduct-shortdescription {
