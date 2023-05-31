@@ -61,10 +61,8 @@ export default function Navbar() {
                 className="cart-icon"
               />
 
-              <div className="popup-relative">
-                {login ? <div className="logged-icon" /> : null}
-                {popup && <AccountPopup setPopup={setPopup} />}
-              </div>
+              {login ? <div className="logged-icon" /> : null}
+              {popup && <AccountPopup setPopup={setPopup} />}
             </li>
             <li>
               <Link to="/cart">
@@ -91,10 +89,8 @@ export default function Navbar() {
               className="nav-icon"
             />
 
-            <div className="popup-relative">
-              {login ? <div className="logged-icon" /> : null}
-              {popup && <AccountPopup setPopup={setPopup} />}{" "}
-            </div>
+            {login ? <div className="logged-icon" /> : null}
+            {popup && <AccountPopup setPopup={setPopup} />}
           </span>
 
           <span className="cart">

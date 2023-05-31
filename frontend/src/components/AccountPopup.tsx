@@ -28,11 +28,19 @@ export default function AccountPopup({ setPopup }: prop) {
   }
 
   return (
-    <AccPopup>
+    <AccPopup className="account-popup">
       {login ? (
         <>
-          <Link to="/orders">My orders</Link>
+          <Link
+            onClick={() => {
+              setPopup(false);
+            }}
+            to="/orders"
+          >
+            My orders
+          </Link>
           <button
+            className="btn-popup"
             onClick={() => {
               logoutUser();
               setPopup(false);
@@ -51,7 +59,7 @@ export default function AccountPopup({ setPopup }: prop) {
               }}
               to="/login"
             >
-              <button>Login</button>
+              <button className="btn-popup">Login</button>
             </Link>
             <Link
               onClick={() => {
@@ -59,7 +67,7 @@ export default function AccountPopup({ setPopup }: prop) {
               }}
               to="/signup"
             >
-              <button>Sign up</button>
+              <button className="btn-popup">Sign up</button>
             </Link>
           </div>
         </>
@@ -69,6 +77,16 @@ export default function AccountPopup({ setPopup }: prop) {
 }
 
 const AccPopup = styled.div`
+  a {
+    color: white;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    &:hover {
+      color: #9ae5bd !important;
+    }
+  }
+
   pointer-events: auto;
 
   height: 140px;
@@ -100,9 +118,10 @@ const AccPopup = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 20px;
   }
 
-  button {
+  .btn-popup {
     color: inherit;
     font-family: inherit;
     background-color: transparent;
