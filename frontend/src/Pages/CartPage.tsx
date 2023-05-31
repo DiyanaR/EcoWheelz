@@ -1,14 +1,20 @@
-import { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 
+
 export default function CartPage() {
-  // const [cartItems, setCartItems] = useState([]);
 
-  // const addToCart = (product) => {
-  //   setCartItems([...cartItems, product]);
-  // };
 
-  // const totalPrice =
 
-  return <></>;
+  return (
+    <div>
+      {<h1>cartpage</h1>}
+      <Link to="/checkout">
+      <button>checkout</button>
+    </Link>
+
+
+
+    </div>
+  );
 }
