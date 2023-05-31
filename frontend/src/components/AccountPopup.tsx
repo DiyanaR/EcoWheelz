@@ -69,6 +69,8 @@ export default function AccountPopup({ setPopup }: prop) {
 }
 
 const AccPopup = styled.div`
+  pointer-events: auto;
+
   height: 140px;
   width: 170px;
   padding-bottom: 5px;

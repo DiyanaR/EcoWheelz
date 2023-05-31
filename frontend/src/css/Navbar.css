@@ -18,6 +18,7 @@
   position: absolute;
   inset: 0;
   left: 15px;
+  pointer-events: none;
 }
 
 .logged-icon {
