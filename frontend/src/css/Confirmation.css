@@ -1,0 +1,61 @@
+.confirmation-header {
+  font-size: 64px;
+  font-family: "Red Hat Display";
+  color: #faf9f8;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.checkbox {
+  width: 150px;
+  height: 150px;
+}
+
+.confirmation-text {
+  font-size: 24px;
+  font-family: "Red Hat Display";
+  color: #faf9f8;
+  align-items: center;
+}
+
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 40px;
+  margin-left: 40px;
+  text-align: center;
+  /* margin-top: 64px; */
+}
+
+.confirmation-input {
+  background-color: transparent;
+  border: 2px solid #9ae5bd;
+  padding: 12px 18px;
+  border-radius: 16px;
+  color: white;
+  font-size: 20px;
+
+  outline: none;
+
+  /* width: 100%; */
+  width: 306px;
+  height: 41px;
+  margin-right: 12px;
+}
+
+.confirmation-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.confirmation-inputcontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.confirmation-productbutton {
+  margin-left: 64px;
+  /* margin-top: 64px; */
+}

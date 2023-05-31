@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import CarouselTest from "../components/CarouselTest";
-import Carousel from "react-bootstrap/Carousel";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "../css/ProductPage.css";
 import "../css/ProductCard.css";
