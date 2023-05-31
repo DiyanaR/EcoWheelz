@@ -8,9 +8,12 @@ import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { ReactComponent as MenuIcon } from "../assets/hamburger.svg";
 import { ReactComponent as CloseIcon } from "../assets/close.svg";
 import { LoginContext } from "./ContextProvider";
+import AccountPopup from "./AccountPopup";
+import ShowInfoModal from "./ShowInfoModal";
 
 export default function Navbar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [popup, setPopup] = useState(false);
   const [showSearchMobile, setShowSearchMobile] = useState(false);
   const { login, setLogin } = useContext(LoginContext);
 
@@ -20,10 +23,12 @@ export default function Navbar() {
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
+    setPopup(false);
   };
 
   return (
     <>
+      <div className="spacer" />
       <nav className="navbar-desktop">
         <Link to="/">
           <div className="logo-container">
@@ -50,10 +55,16 @@ export default function Navbar() {
             <Link to="/faq">FAQ</Link>
           </li>
           <div className="side-push">
-            <li>
-              <Link to={login ? "/orders" : "/login"}>
-                <AccountIcon className="cart-icon" />
-              </Link>
+            <li className="account">
+              <AccountIcon
+                onClick={() => setPopup(!popup)}
+                className="cart-icon"
+              />
+
+              <div className="popup-relative">
+                {login ? <div className="logged-icon" /> : null}
+                {popup && <AccountPopup setPopup={setPopup} />}
+              </div>
             </li>
             <li>
               <Link to="/cart">
@@ -72,9 +83,18 @@ export default function Navbar() {
           </span>
 
           <span className="account">
-            <Link to="/login">
-              <AccountIcon className="nav-icon" />
-            </Link>
+            <AccountIcon
+              onClick={() => {
+                setPopup(!popup);
+                setMenuOpen(false);
+              }}
+              className="nav-icon"
+            />
+
+            <div className="popup-relative">
+              {login ? <div className="logged-icon" /> : null}
+              {popup && <AccountPopup setPopup={setPopup} />}{" "}
+            </div>
           </span>
 
           <span className="cart">
@@ -94,20 +114,29 @@ export default function Navbar() {
           <div className="slide-menu-content">
             <ul className="nav-links">
               <li>
-                <Link onClick={() => setMenuOpen(false)}  to="/">Home</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link onClick={() => setMenuOpen(false)} to="/productpage">Products</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/productpage">
+                  Products
+                </Link>
               </li>
               <li>
-
-                <Link onClick={() => setMenuOpen(false)}  to="/about">About</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/about">
+                  About
+                </Link>
               </li>
               <li>
-                <Link onClick={() => setMenuOpen(false)}  to="/contact">Contact</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/contact">
+                  Contact
+                </Link>
               </li>
               <li>
-                <Link onClick={() => setMenuOpen(false)}  to="/faq">FAQ</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/faq">
+                  FAQ
+                </Link>
               </li>
               <li></li>
             </ul>
