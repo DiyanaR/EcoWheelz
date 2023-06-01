@@ -81,7 +81,6 @@
 }
 
 .slide-menu.open {
-  /* CHANGE IF MORE ITEMS ARE ADDED OR REMOVED*/
   height: 302px;
   z-index: 999;
 }
@@ -253,7 +252,7 @@ a {
   }
 
   .navbar-desktop .nav-links-desktop {
-    display: none; /* dölj länkrr i mobil */
+    display: none;
   }
 
   .logo-text {

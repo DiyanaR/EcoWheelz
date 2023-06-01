@@ -43,7 +43,6 @@ html {
 .DetailPage-text {
   color: #faf9f8;
   width: 326px;
-  /* margin-top: 64px; */
   font-family: "Red Hat Display";
   margin-left: 32px;
   margin-right: 32px;
@@ -74,7 +73,6 @@ html {
 }
 
 .specification-wrapper {
-  /* width: 50%; */
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -82,8 +80,6 @@ html {
 
 .Specification-header {
   display: flex;
-  /* margin-left: 20%; */
-  /* margin-right: 190px; */
 }
 
 .OtherProduct-container {
@@ -95,10 +91,8 @@ html {
   font-style: normal;
   font-weight: 600;
   line-height: 26.46px;
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end; */
   width: 326px;
   height: 671px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
@@ -230,7 +224,6 @@ html {
     flex-direction: row;
     justify-content: space-between;
     padding: 0px;
-    /* gap: 150px; */
     height: 32px;
     flex: none;
     order: 4;
