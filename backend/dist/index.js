@@ -32,6 +32,8 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // app.use("/", express.static(path.join(__dirname, "public"));
 app.use("/images", express_1.default.static(path.join(__dirname, "../images")));
+console.log(path.join(path.resolve(), "public"));
+app.use(express_1.default.static(path.join(path.resolve(), "public")));
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Redo på http://localhost:${port}/`);
