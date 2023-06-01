@@ -101,6 +101,7 @@ html {
   /* align-items: flex-end; */
   width: 326px;
   height: 671px;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 .OtherProduct-image {
