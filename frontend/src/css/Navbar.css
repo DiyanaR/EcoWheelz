@@ -119,6 +119,8 @@
   background: #222222;
 
   width: 100%;
+
+  z-index: 1;
 }
 
 .navbar-desktop .nav-links-desktop {
@@ -212,10 +214,6 @@ a {
 }
 
 @media (max-width: 830px) {
-  .popup-relative {
-    z-index: -1;
-  }
-
   .spacer {
     display: block;
     height: 72px;
