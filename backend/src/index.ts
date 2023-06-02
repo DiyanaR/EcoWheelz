@@ -24,7 +24,7 @@ app.use(express.json());
 // app.use("/", express.static(path.join(__dirname, "public"));
 app.use("/images", express.static(path.join(__dirname, "../images")));
 
-console.log(path.join(path.resolve(), "public"))
+console.log(path.join(path.resolve(), "public"));
 
 app.use(express.static(path.join(path.resolve(), "public")));
 
@@ -221,23 +221,23 @@ app.get("/products", async (req, res) => {
   }
 });
 
-app.get("/products", async (req: Request, res: Response) => {
-  const searchQuery = req.query.search;
+// app.get("/search", async (req: Request, res: Response) => {
+//   const searchQuery = req.query.search;
 
-  try {
-    const result = await client.query(
-      "SELECT * FROM products WHERE name ILIKE $1",
-      [`%${searchQuery}%`]
-    );
-    const products = result.rows;
-    res.status(200).json(products);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while fetching products" });
-  }
-});
+//   try {
+//     const result = await client.query(
+//       "SELECT * FROM products WHERE name ILIKE $1",
+//       [`%${searchQuery}%`]
+//     );
+//     const products = result.rows;
+//     res.status(200).json(products);
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     res
+//       .status(500)
+//       .json({ error: "An error occurred while fetching products" });
+//   }
+// });
 
 app.get("/products/:title", async (req, res) => {
   const title = req.params.title;
