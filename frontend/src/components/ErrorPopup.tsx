@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 interface prop {
   errorMsg: boolean;
-  errorText: string;
 }
 
 export default function ErrorPopup({ errorMsg }: prop) {

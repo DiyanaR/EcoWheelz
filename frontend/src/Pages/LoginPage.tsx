@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../components/ContextProvider";
+import { ShopContext } from "../components/ContextProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ErrorIcon } from "../assets/errorIcon.svg";
 import CheckIcon from "../assets/checkIcon.svg";
@@ -26,7 +26,9 @@ interface MyFormProps {
 export default function SignupPage() {
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(false);
-  const { login, setLogin } = useContext(LoginContext);
+  const {
+    userContext: { login, setLogin },
+  } = useContext(ShopContext);
 
   useEffect(() => {
     // Redirect user from login to homepage if the user is already logged in
@@ -146,10 +148,7 @@ export default function SignupPage() {
               </form>
             </div>
 
-            <ErrorPopup
-              errorMsg={errorMsg}
-              errorText="Something went wrong, please try again later"
-            />
+            <ErrorPopup errorMsg={errorMsg} />
           </>
         )}
       </Formik>

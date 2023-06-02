@@ -279,10 +279,7 @@ export default function SignupPage() {
               </form>
             </div>
 
-            <ErrorPopup
-              errorMsg={errorMsg}
-              errorText="Something went wrong, please try again later"
-            />
+            <ErrorPopup errorMsg={errorMsg} />
           </>
         )}
       </Formik>

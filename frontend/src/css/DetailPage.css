@@ -25,6 +25,12 @@ html {
   width: 90%;
 }
 
+.cart-notification {
+  position: absolute;
+  width: 80%;
+  bottom: 10px;
+}
+
 .DetailPage-info {
   display: flex;
   flex-direction: column;

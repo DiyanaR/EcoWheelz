@@ -7,15 +7,17 @@ import { ReactComponent as CartIcon } from "../assets/cart.svg";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { ReactComponent as MenuIcon } from "../assets/hamburger.svg";
 import { ReactComponent as CloseIcon } from "../assets/close.svg";
-import { LoginContext } from "./ContextProvider";
+import { ShopContext } from "./ContextProvider";
 import AccountPopup from "./AccountPopup";
-import ShowInfoModal from "./ShowInfoModal";
 
 export default function Navbar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [popup, setPopup] = useState(false);
   const [showSearchMobile, setShowSearchMobile] = useState(false);
-  const { login, setLogin } = useContext(LoginContext);
+  const {
+    userContext: { login, setLogin },
+    cartContext: { cartProducts },
+  } = useContext(ShopContext);
 
   const handleSearch = (searchTerm: string) => {
     //     console.log("Sökt:", searchTerm);
@@ -64,7 +66,11 @@ export default function Navbar() {
               {login ? <div className="logged-icon" /> : null}
               {popup && <AccountPopup setPopup={setPopup} />}
             </li>
-            <li>
+            <li className="cart">
+              {cartProducts && cartProducts.length > 0 ? (
+                <div className="product-counter">{cartProducts.length}</div>
+              ) : null}
+
               <Link to="/cart">
                 <CartIcon className="account-icon" />
               </Link>
@@ -94,6 +100,10 @@ export default function Navbar() {
           </span>
 
           <span className="cart">
+            {cartProducts && cartProducts.length > 0 ? (
+              <div className="product-counter">{cartProducts.length}</div>
+            ) : null}
+
             <Link to="/cart">
               <CartIcon className="nav-icon cart-size" />
             </Link>
