@@ -161,7 +161,12 @@ export default function DetailPage() {
                       ))}
                     </div>
                     {/* <img src="../icons/stars.png" alt="icon" /> */}
-                    <button className="Product-button">Add to Bag</button>
+                    <button
+                      onClick={addProductToCart}
+                      className="Product-button"
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               </div>
