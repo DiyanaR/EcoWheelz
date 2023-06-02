@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useRef } from "react";
 import SearchBar from "../components/SearchBar";
 import { Cart, ShopContext } from "../components/ContextProvider";
+import { ReactComponent as Arrowicon } from "../assets/arrow.svg";
 
 interface Product {
   id: number;
@@ -33,6 +34,12 @@ export default function DetailPage() {
 
   const handleSearch = (searchTerm: string) => {
     //     console.log("Sökt:", searchTerm);
+  };
+
+  const [rating, setRating] = useState(0);
+
+  const handleStarClick = (selectedRating: number) => {
+    setRating(selectedRating);
   };
   const categoriesRef = useRef<HTMLDivElement>(null);
 
@@ -136,20 +143,31 @@ export default function DetailPage() {
                   <p>{filteredProduct[0].longdescription}</p>
                   <h2>{filteredProduct[0].price}:-</h2>
                   <div className="DetailPage-container">
-                    <img src="../icons/stars.png" alt="icon" />
-                    <button
-                      onClick={addProductToCart}
-                      className="Product-button"
-                    >
-                      Add to Bag
-                    </button>
+                    <div>
+                      {/* <h2>{rating}</h2> */}
+                      {[1, 2, 3, 4, 5].map((value) => (
+                        <span
+                          className="stars"
+                          key={value}
+                          style={{
+                            cursor: "pointer",
+                            marginRight: "5px",
+                            color: value <= rating ? "#9ae5bd" : "gray",
+                          }}
+                          onClick={() => handleStarClick(value)}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                    {/* <img src="../icons/stars.png" alt="icon" /> */}
+                    <button className="Product-button">Add to Bag</button>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="container-specification">
-              {/* <div className="specification-wrapper"> */}
               <div className="Specification-header">
                 <h2>Specifikations</h2>
               </div>
@@ -175,7 +193,6 @@ export default function DetailPage() {
                       />
 
                       <div className="OtherProduct-text">
-                        {/* <div className="OtherProductCard-icon"> */}
                         <h2 className="Product-title">{product.title}</h2>
                         <h3>{product.subtitle}</h3>
                         <p className="OtherProduct-shortdescription">
@@ -199,18 +216,13 @@ export default function DetailPage() {
                 ))}
               </ol>
             ) : null}
-            {/* <div className="Product-show-more"></div> */}
           </div>
         )}
       </div>
       <div className="arrow-container">
         <button className="top-to-btm" onClick={handletopClick}>
           <span className="button-content">
-            <img
-              className="arrow-icon"
-              src="/icons/VectorArrow.png"
-              alt="icon"
-            />
+            <Arrowicon className="arrow-icon" />
           </span>
         </button>
       </div>

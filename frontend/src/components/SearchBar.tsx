@@ -27,9 +27,7 @@ function SearchBar({ onSearch }: SearchBarProps) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8080/products?search=${searchQuery}`
-        );
+        const response = await fetch(`http://localhost:8080/products`);
         const data = await response.json();
         setAllProducts(data);
         // setSearchNotFound(data.length === 0);
