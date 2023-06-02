@@ -14,14 +14,11 @@
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 600;
-  /* line-height: 34px; */
   padding: 0px, 0px, 41px, 0px;
   align-items: center;
   flex-direction: column;
-  /* position: relative; */
   transition: height 0.3s;
-  min-height: 500px; /* Increase the height as desired */
-  /* height: 700px; */
+  min-height: 500px;
   border-radius: 38.03px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
@@ -85,22 +82,10 @@
 }
 
 .Product-text {
-  /* padding: 0px 15.2126px; */
   position: relative;
-  /* width: 302px; */
   padding-right: 15px;
   padding-left: 15px;
-  /* display: flex;
-  justify-content: space-between; */
 
-  /*
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  text-align: center; */
   width: 100%;
 }
 
@@ -112,8 +97,6 @@
 .ProductCard-title {
   margin-bottom: 15px;
   font-size: 24px;
-  /* position: absolute; */
-  /* right: 300px; */
 }
 
 .Product-line {
@@ -155,21 +138,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px;
-  /* gap: 68px; */
-  /* height: 32px; */
+
   flex: none;
   order: 4;
   align-self: stretch;
   flex-grow: 0;
   padding-bottom: 30px;
 
-  /* bottom: 10px;
-  position: absolute; */
   bottom: 0;
-  /* left: 0; */
-  /* width: 100%; */
+
   margin-top: auto;
-  /* height: 700px; */
 
   display: flex;
   flex-direction: row;
@@ -181,15 +159,12 @@
   flex-direction: row;
   justify-content: space-between;
   display: flex;
-  /* align-items: center; */
-  /* position: relative; */
 }
 
 .Product-icon {
   width: 25px;
   height: 25px;
   align-items: center;
-  /* transform: rotate(180deg) !important; */
 }
 
 .rotate {
@@ -215,10 +190,6 @@
   margin-top: 10px;
   font-size: 14px;
 }
-
-/* .Product-text {
-  position: relative;
-} */
 
 .ProductCard-button {
   margin-top: 10px;
@@ -265,9 +236,8 @@
     border-top-right-radius: 38.03px;
   }
   .Product-text {
-    /* width: 499.48px; */
     height: 300.84px;
-    /* background-color: #222222; */
+
     position: relative;
   }
 
@@ -298,7 +268,7 @@
     padding-bottom: 20px;
   }
 
-  */ .Product-line {
+  .Product-line {
     display: none;
   }
 

@@ -17,7 +17,7 @@ const dotenv = require("dotenv");
 const { Client } = require("pg");
 const app = (0, express_1.default)();
 const cors_1 = __importDefault(require("cors"));
-// import { v4: uuidv4 } from "uuid";
+const uuid_1 = require("uuid");
 const path = require("path");
 dotenv.config();
 const client = new Client({
@@ -30,148 +30,10 @@ const client = new Client({
 client.connect();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-console.log(path.join(__dirname, "images"));
-app.use(express_1.default.static(path.join(__dirname, "../images")));
-const createUserTable = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield client.query(`
-      CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
-        username TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
-      );
-    `);
-    }
-    catch (error) {
-        console.error("Error creating users table:", error);
-    }
-});
-const createTokensTable = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield client.query(`
-      CREATE TABLE IF NOT EXISTS tokens (
-        id SERIAL PRIMARY KEY,
-        user_id INTEGER,
-        token TEXT UNIQUE,
-        FOREIGN KEY(user_id) REFERENCES users(id)
-      );
-    `);
-    }
-    catch (error) {
-        console.error("Error creating tokens table:", error);
-    }
-});
-const createProductsTable = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield client.query(`
-CREATE TABLE IF NOT EXISTS products(
-  id SERIAL PRIMARY KEY,
-  title TEXT,
-  subtitle TEXT,
-  price NUMERIC,
-  description TEXT,
-  img TEXT
-)
-`);
-    }
-    catch (error) {
-        console.error("Error creating tokens table:", error);
-    }
-});
-createTokensTable();
-createUserTable();
-createProductsTable();
-const products = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'E2S', 'Ecowheelz', 'Our flagship model of electric scooter offers the perfect balance between power and maneuverability, making it the ideal choice for those seeking a powerful yet flexible ride.', 9.999, './images/cruiser.png' )`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products();
-const products1 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'E2S Lite', 'Ecowheelz', 'Our E2S Lite electronic scooter boasts not only a lightweight design but also one of the most powerful motors available.', 7.499, './images/E2S_Lite.png')`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products1();
-const products2 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'E2S BP+', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999, './images/E2S_BP.png'  )`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products2();
-const products3 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'E2S Cruiser', 'Ecowheelz', 'Featuring a comfortable saddle, this electric scooter offers the perfect blend of adventure and relaxation. Experience the thrill of the ride without sacrificing comfort.', 12.999, './images/E2S.png' )`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products3();
-const products4 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'Turbo helment', 'Ecowheelz', 'Despite its sleek design, this electric scooter offers one of our best battery times. Its powerful performance is matched by its impressive energy efficiency.', 11.999, './images/Turbo_helment.png' )`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products4();
-const products5 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'Urban helmet', 'Ecowheelz', 'Introducing TurboCharge helmet for electric scooters, the pinnacle of protection and comfort. Crafted with a robust carbon fiber composite shell.', 599, './images/Urban_helment.png' )`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products5();
-const products6 = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const query = `
-INSERT INTO products (id, title, subtitle, description, price, img)
-        VALUES (1, 'Sport helmet', 'Ecowheelz', 'Sport helmet is an aerodynamic and lightweight helmet that is ideal for sports cycling. It has a hard outer shell in carbon fiber composite.', 899, './images/Sport_helment.png'  )`;
-        yield client.query(query);
-        console.log("success");
-    }
-    catch (error) {
-        console.error("fail");
-    }
-});
-products6();
+// app.use("/", express.static(path.join(__dirname, "public"));
+app.use("/images", express_1.default.static(path.join(__dirname, "../images")));
+console.log(path.join(path.resolve(), "public"));
+app.use(express_1.default.static(path.join(path.resolve(), "public")));
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Redo på http://localhost:${port}/`);
@@ -197,9 +59,10 @@ const authorize = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         if ((user === null || user === void 0 ? void 0 : user.length) === 0) {
             return res.status(404).send("User not found");
         }
-        // Not 100% what to send along to the next process
         req.body.user = {
-            username: user[0].username,
+            email: user[0].email,
+            firstName: user[0].firstName,
+            lastName: user[0].lastName,
             token: validationToken[0].token,
         };
         next();
@@ -214,18 +77,18 @@ app.get("/users", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send(rows);
 }));
 app.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { username, password } = req.body;
+    const { email, password, firstName, lastName, phoneNumber } = req.body;
     // if the information is incomplete
-    if (!username || !password) {
+    if (!email || !password || !firstName || !lastName || !phoneNumber) {
         return res.status(400).send("Bad request");
     }
     try {
-        yield client.query("INSERT INTO users (username, password) VALUES ($1, $2)", [username, password]);
+        yield client.query("INSERT INTO users (email, password, firstName, lastName, phoneNumber) VALUES ($1, $2, $3, $4, $5)", [email.toLowerCase(), password, firstName, lastName, phoneNumber]);
         res.status(201).json("User successfully created");
     }
     catch (error) {
         if ((error === null || error === void 0 ? void 0 : error.code) === "23505") {
-            return res.status(409).json({ error: "Username already exists" });
+            return res.status(409).json({ error: "email already exists" });
         }
         else {
             console.error("Error creating user:", error);
@@ -235,55 +98,76 @@ app.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         }
     }
 }));
-// app.post("/login", async (req: express.Request, res: express.Response) => {
-//   const { username, password } = req.body;
-//   // if the information is incomplete
-//   if (!username || !password) {
-//     return res.status(400).send("Bad request");
-//   }
-//   try {
-//     //Retrieve user information by username
-//     const userInfo = (
-//       await client.query("SELECT * FROM users WHERE username = $1", [username])
-//     ).rows;
-//     // if no user is found then userInfo will be undefined
-//     if (!userInfo) {
-//       return res.status(404).json({ error: "Username doesn't exists" });
-//     }
-//     //Check if passwords match
-//     if (userInfo[0].password !== password) {
-//       return res.status(401).json({ error: "Incorrect password" });
-//     }
-//     //Check if user already has a login token
-//     const existingToken = (
-//       await client.query("SELECT * FROM tokens WHERE user_id = $1", [
-//         userInfo[0].id,
-//       ])
-//     ).rows;
-//     // If it does return the existing token with the username
-//     if (existingToken.length !== 0) {
-//       res.status(200).json({
-//         username: userInfo[0].username,
-//         token: existingToken[0].token,
-//       });
-//     } else {
-//       // Else make a new token and return it along with username
-//       const newToken = (
-//         await client.query(
-//           "INSERT INTO tokens (user_id, token) VALUES ($1, $2) RETURNING *",
-//           [userInfo[0].id, uuidv4()]
-//         )
-//       ).rows;
-//       console.log(newToken);
-//       res.status(201).json({
-//         username: userInfo[0].username,
-//         token: newToken[0].token,
-//       });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email, password } = req.body;
+    // if the information is incomplete
+    if (!email || !password) {
+        return res.status(400).send("Bad request");
+    }
+    try {
+        //Retrieve user information by email
+        const userInfo = (yield client.query("SELECT * FROM users WHERE email = $1", [
+            email.toLowerCase(),
+        ])).rows;
+        // if no user is found then userInfo will be undefined
+        if (!userInfo) {
+            return res.status(404).json({ error: "Username doesn't exists" });
+        }
+        //Check if passwords match
+        if (userInfo[0].password !== password) {
+            return res.status(401).json({ error: "Incorrect password" });
+        }
+        //Check if user already has a login token
+        const existingToken = (yield client.query("SELECT * FROM tokens WHERE user_id = $1", [
+            userInfo[0].id,
+        ])).rows;
+        // If it does return the existing token with the username
+        if (existingToken.length !== 0) {
+            res.status(200).json({
+                email: userInfo[0].email,
+                token: existingToken[0].token,
+            });
+        }
+        else {
+            // Else make a new token and return it along with username
+            const newToken = (yield client.query("INSERT INTO tokens (user_id, token) VALUES ($1, $2) RETURNING *", [userInfo[0].id, (0, uuid_1.v4)()])).rows;
+            res.status(201).json({
+                email: userInfo[0].email,
+                firstName: userInfo[0].firstName,
+                lastName: userInfo[0].lastName,
+                token: newToken[0].token,
+            });
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}));
+app.post("/logout", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { token } = req.body.user;
+    try {
+        const userInfo = (yield client.query("DELETE FROM tokens WHERE token = $1", [token])).rows;
+        console.log(userInfo);
+        res.end();
+    }
+    catch (error) {
+        console.log(error);
+    }
+}));
+app.get("/validate-email", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.query;
+    try {
+        if (email) {
+            const checkExistingEmail = (yield client.query("SELECT * FROM users WHERE email = $1", [email])).rows;
+            res.status(200).json(checkExistingEmail.length);
+        }
+        else
+            res.status(400).send({ error: "Bad request" });
+    }
+    catch (error) {
+        res.status(500).send({ error: "Internal server error" });
+    }
+}));
 app.get("/validate-token", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).send(req.body.user);
 }));
@@ -298,5 +182,37 @@ app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res
             .status(500)
             .json({ error: "An error occurred while fetching products" });
+    }
+}));
+app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const searchQuery = req.query.search;
+    try {
+        const result = yield client.query("SELECT * FROM products WHERE name ILIKE $1", [`%${searchQuery}%`]);
+        const products = result.rows;
+        res.status(200).json(products);
+    }
+    catch (error) {
+        console.error("Error fetching products:", error);
+        res
+            .status(500)
+            .json({ error: "An error occurred while fetching products" });
+    }
+}));
+app.get("/products/:title", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const title = req.params.title;
+    console.log(title);
+    try {
+        const { rows } = yield client.query("SELECT * FROM products WHERE title = $1", [title]);
+        const product = rows[0];
+        if (product) {
+            res.json([product]);
+        }
+        else {
+            res.status(404).json({ error: "Produkten hittades inte" });
+        }
+    }
+    catch (error) {
+        console.error("Error: " + error);
+        res.status(500).json({ error: "fel inträffade vid hämtning av produkten" });
     }
 }));

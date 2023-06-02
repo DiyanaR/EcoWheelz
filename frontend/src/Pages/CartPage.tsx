@@ -40,6 +40,7 @@ export default function CartPage() {
         {checkpoint === "cart" && <div>test</div>}
 
         {checkpoint === "checkout" && <Checkout />}
+
       </div>
     </MainCartPage>
   );

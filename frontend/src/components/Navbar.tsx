@@ -35,7 +35,7 @@ export default function Navbar() {
         <Link to="/">
           <div className="logo-container">
             <img
-              src="/logo/logo-desktop.png"
+              src="/logo/Logo-desktop.png"
               alt="Logo"
               className="logo-image"
             />

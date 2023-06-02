@@ -13,6 +13,7 @@ import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import OrdersPage from "./Pages/OrdersPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
+import Checkout from "./components/Checkout";
 
 import CartPage from "./Pages/CartPage";
 
@@ -57,6 +58,7 @@ export default function App() {
         { element: <ConfirmationPage />, path: "/confirmation" },
         // { element: <Product />, path: "/product" }
         { element: <CartPage />, path: "/cart" },
+        { element: <Checkout />, path: "/checkout" },
       ],
       element: <Root />,
     },

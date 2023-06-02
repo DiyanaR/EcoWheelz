@@ -24,6 +24,10 @@ app.use(express.json());
 // app.use("/", express.static(path.join(__dirname, "public"));
 app.use("/images", express.static(path.join(__dirname, "../images")));
 
+console.log(path.join(path.resolve(), "public"))
+
+app.use(express.static(path.join(path.resolve(), "public")));
+
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {

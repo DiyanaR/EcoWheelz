@@ -1,118 +1,4 @@
 
-
-
-
-// import React, { useState } from 'react';
-// import "../css/Checkout.css";
-
-// interface CheckoutFormData {
-//   name: string;
-//   address: string;
-//   zipCode: string;
-//   state: string;
-//   paymentMethod: string;
-// }
-
-// const CheckoutPage = () => {
-//   const [formData, setFormData] = useState<CheckoutFormData>({
-//     name: '',
-//     address: '',
-//     zipCode: '',
-//     state: '',
-//     paymentMethod: '',
-//   });
-
-//   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = event.target;
-//     setFormData((prevData) => ({
-//       ...prevData,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = (event: React.FormEvent) => {
-//     event.preventDefault();
-//     console.log(formData);
-
-//     setFormData({
-//       name: '',
-//       address: '',
-//       zipCode: '',
-//       state: '',
-//       paymentMethod: '',
-//     });
-//   };
-
-//   return (
-//     <div className="checkout-page">
-//       <h1 className="headline">Checkout </h1>
-//       <form className="form-border" onSubmit={handleSubmit}>
-//         <label className="label">
-//           Full Name:
-//           <input
-//             type="text"
-//             name="name"
-//             value={formData.name}
-//             onChange={handleInputChange}
-//             className="input"
-//           />
-//         </label>
-//         <br />
-//         <label className="label">
-//           Address:
-//           <input
-//             type="text"
-//             name="address"
-//             value={formData.address}
-//             onChange={handleInputChange}
-//             className="input"
-//           />
-//         </label>
-//         <br />
-//         <label className="label">
-//           ZIP Code:
-//           <input
-//             type="text"
-//             name="zipCode"
-//             value={formData.zipCode}
-//             onChange={handleInputChange}
-//             className="input"
-//           />
-//         </label>
-//         <br />
-//         <label className="label">
-//           State:
-//           <input
-//             type="text"
-//             name="state"
-//             value={formData.state}
-//             onChange={handleInputChange}
-//             className="input"
-//           />
-//         </label>
-//         <br />
-
-//        <label className="label">
-//           Payment Method:
-//          <select
-//             name="paymentMethod"
-//              value={formData.paymentMethod}
-//             className="input">
-//             {/* onChange={handleInputChange}  */}
-//             <option value="">Select Payment Method</option>
-//             <option value="creditCard">Credit Card</option>
-//             <option value="paypal">PayPal</option>
-//           </select>
-//         </label>
-//        <br />
-//         <button type="submit" className="button">Submit</button>
-//        </form>
-//     </div>
-//   );
-//  }
-// export default CheckoutPage
-
-
 import React, { useState } from 'react';
 import "../css/Checkout.css";
 
@@ -186,7 +72,7 @@ const CheckoutPage = () => {
 
   return (
     <div className="checkout-page">
-      <h1 className="headline">Checkout </h1>
+      {/* <h1 className="headline">Checkout </h1> */}
       <form className="form-border" onSubmit={handleSubmit}>
         <label className="label">
           Full Name:

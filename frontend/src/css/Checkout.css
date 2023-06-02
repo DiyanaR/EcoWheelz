@@ -62,7 +62,7 @@ select.input {
 }
 
 .button {
-  border: 2px solid #9ae5bd;
+  border: 2px solid white;
   background-color: transparent;
   border-radius: 16px;
   color: inherit;
@@ -70,13 +70,11 @@ select.input {
   padding: 12px 38px;
   font-weight: 700;
   font-size: 22px;
-
   display: block;
   margin: 34px auto;
-
   font-size: 16px;
-
   cursor: pointer;
+  color: white;
 }
 
 .error-message {
