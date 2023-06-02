@@ -96,6 +96,7 @@ html {
   width: 326px;
   height: 671px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+  /* border: 2px solid transparent; */
 }
 
 .OtherProduct-image {
@@ -151,6 +152,9 @@ html {
   .desktop-serachbar {
     display: none;
   }
+  /* .OtherProduct-container:hover {
+    border-color: #9ae5bd;
+  } */
 }
 
 @media (min-width: 1000px) {
@@ -264,4 +268,8 @@ html {
   h3 {
     margin-top: 0;
   }
+
+  /* .OtherProduct-container:hover {
+    border-color: #9ae5bd;
+  } */
 }

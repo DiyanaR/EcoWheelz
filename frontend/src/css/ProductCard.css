@@ -9,7 +9,7 @@
   color: #faf9f8;
   display: flex;
   flex-direction: column;
-
+  border: 2px solid transparent;
   gap: 10.14px;
   font-family: "Red Hat Display";
   font-style: normal;
@@ -281,5 +281,9 @@
 
   .Product-container::-webkit-scrollbar {
     display: none;
+  }
+
+  .Product-container:hover {
+    border-color: #9ae5bd;
   }
 }

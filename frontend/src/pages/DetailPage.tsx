@@ -5,6 +5,7 @@ import "../css/ProductCard.css";
 import { useParams } from "react-router-dom";
 import { useRef } from "react";
 import SearchBar from "../components/SearchBar";
+import { ReactComponent as Arrowicon } from "../assets/arrow.svg";
 
 interface Product {
   id: number;
@@ -78,11 +79,6 @@ export default function DetailPage() {
     }
   };
 
-  // const addProduct = () => {
-  //   const result = [];
-  //   result.push(products);
-  // };
-
   return (
     <>
       <div ref={categoriesRef}>
@@ -115,7 +111,6 @@ export default function DetailPage() {
             </div>
 
             <div className="container-specification">
-              {/* <div className="specification-wrapper"> */}
               <div className="Specification-header">
                 <h2>Specifikations</h2>
               </div>
@@ -126,7 +121,6 @@ export default function DetailPage() {
                   ))}
                 </li>
               </ul>
-              {/* </div> */}
             </div>
 
             <h1 className="Product-header">Popular products</h1>
@@ -142,13 +136,11 @@ export default function DetailPage() {
                       />
 
                       <div className="OtherProduct-text">
-                        {/* <div className="OtherProductCard-icon"> */}
                         <h2 className="Product-title">{product.title}</h2>
                         <h3>{product.subtitle}</h3>
                         <p className="OtherProduct-shortdescription">
                           {product.shortdescription}
                         </p>
-                        {/* </div> */}
 
                         <div className="OtherProductCard-button">
                           <p className="Product-price">{product.price}:-</p>
@@ -169,18 +161,13 @@ export default function DetailPage() {
                 ))}
               </ol>
             ) : null}
-            {/* <div className="Product-show-more"></div> */}
           </div>
         )}
       </div>
       <div className="arrow-container">
         <button className="top-to-btm" onClick={handletopClick}>
           <span className="button-content">
-            <img
-              className="arrow-icon"
-              src="/icons/VectorArrow.png"
-              alt="icon"
-            />
+            <Arrowicon className="arrow-icon" />
           </span>
         </button>
       </div>
