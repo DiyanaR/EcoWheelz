@@ -15,7 +15,7 @@ export default function Navbar() {
   const [popup, setPopup] = useState(false);
   const [showSearchMobile, setShowSearchMobile] = useState(false);
   const {
-    userContext: { login, setLogin },
+    userContext: { login },
     cartContext: { cartProducts },
   } = useContext(ShopContext);
 
@@ -27,6 +27,19 @@ export default function Navbar() {
     setMenuOpen(!isMenuOpen);
     setPopup(false);
   };
+
+  // Includes duplicates in the counter
+  function cartItemCount() {
+    if (cartProducts) {
+      const counter = cartProducts.reduce((acc, cartItem) => {
+        return acc + cartItem.amount;
+      }, 0);
+
+      return counter;
+    }
+
+    return null;
+  }
 
   return (
     <>
@@ -68,7 +81,7 @@ export default function Navbar() {
             </li>
             <li className="cart">
               {cartProducts && cartProducts.length > 0 ? (
-                <div className="product-counter">{cartProducts.length}</div>
+                <div className="product-counter">{cartItemCount()}</div>
               ) : null}
 
               <Link to="/cart">
@@ -101,7 +114,11 @@ export default function Navbar() {
 
           <span className="cart">
             {cartProducts && cartProducts.length > 0 ? (
-              <div className="product-counter">{cartProducts.length}</div>
+              <div className="product-counter">
+                {cartProducts.reduce((acc, cartItem) => {
+                  return acc + cartItem.amount;
+                }, 0)}
+              </div>
             ) : null}
 
             <Link to="/cart">

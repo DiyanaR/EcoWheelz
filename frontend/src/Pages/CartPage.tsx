@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Checkout from "../components/Checkout";
+import CartDisplay from "../components/CartDisplay";
 
 export default function CartPage() {
   const [checkpoint, setCheckpoint] = useState("cart");
@@ -37,10 +38,9 @@ export default function CartPage() {
       </div>
 
       <div className="display-container">
-        {checkpoint === "cart" && <div>test</div>}
+        {checkpoint === "cart" && <CartDisplay />}
 
         {checkpoint === "checkout" && <Checkout />}
-
       </div>
     </MainCartPage>
   );

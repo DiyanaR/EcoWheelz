@@ -22,7 +22,7 @@ export default function DetailPage() {
   // const { id } = useParams<{ id: string }>();
   const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
-
+  const [cartNotif, setCartNotif] = useState(false);
   const [filteredProduct, setFilteredProduct] = useState<Product[]>([]);
   const { title } = useParams<{ title: string }>();
   const productRef = useRef<HTMLDivElement>(null);
@@ -102,6 +102,13 @@ export default function DetailPage() {
           { id, title, subtitle, price, img, amount: 1 },
         ]);
       }
+
+      // trigger cart notfication
+      setCartNotif(true);
+
+      setTimeout(() => {
+        setCartNotif(false);
+      }, 2000);
     }
   }
 
@@ -208,9 +215,9 @@ export default function DetailPage() {
         </button>
       </div>
 
-      {filteredProduct && (
+      {filteredProduct[0]?.title && cartNotif && (
         <div className="cart-notification">
-          {filteredProduct[0].title} has been added to your cart
+          {filteredProduct[0]?.title} has been added to your cart
         </div>
       )}
     </>

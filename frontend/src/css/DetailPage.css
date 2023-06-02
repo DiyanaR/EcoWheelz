@@ -26,9 +26,25 @@ html {
 }
 
 .cart-notification {
-  position: absolute;
+  position: fixed;
   width: 80%;
-  bottom: 10px;
+  bottom: 24px;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222222;
+  border: 2px solid #9ae5bd;
+  padding: 20px 30px;
+  border-radius: 16px;
+}
+
+@media (max-width: 560px) {
+  .cart-notification {
+    width: 90%;
+    font-size: 18px;
+  }
 }
 
 .DetailPage-info {
