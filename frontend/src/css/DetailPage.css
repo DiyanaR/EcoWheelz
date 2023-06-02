@@ -269,6 +269,10 @@ html {
     margin-top: 0;
   }
 
+  .stars {
+    font-size: 30px;
+  }
+
   /* .OtherProduct-container:hover {
     border-color: #9ae5bd;
   } */

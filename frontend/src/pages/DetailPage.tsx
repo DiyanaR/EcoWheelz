@@ -31,6 +31,12 @@ export default function DetailPage() {
   const handleSearch = (searchTerm: string) => {
     //     console.log("Sökt:", searchTerm);
   };
+
+  const [rating, setRating] = useState(0);
+
+  const handleStarClick = (selectedRating: number) => {
+    setRating(selectedRating);
+  };
   const categoriesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -103,7 +109,24 @@ export default function DetailPage() {
                   <p>{filteredProduct[0].longdescription}</p>
                   <h2>{filteredProduct[0].price}:-</h2>
                   <div className="DetailPage-container">
-                    <img src="../icons/stars.png" alt="icon" />
+                    <div>
+                      {/* <h2>{rating}</h2> */}
+                      {[1, 2, 3, 4, 5].map((value) => (
+                        <span
+                          className="stars"
+                          key={value}
+                          style={{
+                            cursor: "pointer",
+                            marginRight: "5px",
+                            color: value <= rating ? "#9ae5bd" : "gray",
+                          }}
+                          onClick={() => handleStarClick(value)}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                    {/* <img src="../icons/stars.png" alt="icon" /> */}
                     <button className="Product-button">Add to Bag</button>
                   </div>
                 </div>
