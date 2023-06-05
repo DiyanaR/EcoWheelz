@@ -3,14 +3,16 @@
   height: 40px;
   position: absolute;
   top: 140px;
-
   left: 50%;
   transform: translateX(-50%);
-
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.4);
   border: none;
   z-index: 100;
+  box-shadow: 0 0 0 4px #9ae5bd;
+
+  /* background-image: url("../assets/icons/search.png"); */
+  /* background-image: url("../../public/icons/search.png"); */
 }
 
 .search-bar input[type="text"] {
@@ -24,11 +26,14 @@
   background-color: transparent;
   color: #ffffff;
   box-sizing: border-box;
+
+  /* background-image: url("../../public/icons/search.png"); */
+  /* background-image: url("/public/icons/search.png"); */
 }
 
 .search-bar input[type="text"]:focus {
   outline: none;
-  box-shadow: 0 0 0 3px #9ae5bd;
+  box-shadow: 0 0 0 2px #9ae5bd;
 }
 
 .dropdown-menu {
