@@ -20,7 +20,6 @@ interface Product {
 }
 
 export default function DetailPage() {
-  // const { id } = useParams<{ id: string }>();
   const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
   const [cartNotif, setCartNotif] = useState(false);
@@ -32,9 +31,7 @@ export default function DetailPage() {
     cartContext: { cartProducts, setCartProducts },
   } = useContext(ShopContext);
 
-  const handleSearch = (searchTerm: string) => {
-    //     console.log("Sökt:", searchTerm);
-  };
+  const handleSearch = (searchTerm: string) => {};
 
   const categoriesRef = useRef<HTMLDivElement>(null);
 
@@ -64,15 +61,6 @@ export default function DetailPage() {
     };
     fetchData();
   }, [title]);
-
-  useEffect(() => {
-    if (products.length > 0 && title) {
-      const filteredProduct = products.filter(
-        (product) => product.title === title
-      );
-      setFilteredProduct(filteredProduct);
-    }
-  }, [products, title]);
 
   const handletopClick = () => {
     if (categoriesRef.current) {

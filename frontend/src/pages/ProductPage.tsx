@@ -34,9 +34,7 @@ function ProductPage() {
     }
   };
 
-  const handleSearch = (searchTerm: string) => {
-    //     console.log("Sökt:", searchTerm);
-  };
+  const handleSearch = (searchTerm: string) => {};
 
   useEffect(() => {
     const fetchData = async () => {
