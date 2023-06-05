@@ -210,22 +210,42 @@ interface orderInformation {
 
 interface orderType {
   productOrders: orderInformation[];
-  total: number;
+  fullName: string;
+  address: string;
+  zipCode: string;
+  state: string;
+  paymentMethod: string;
 }
 
 app.post("/order", authorize, async (req, res) => {
   const { id } = req.body.user;
-  const { productOrders, total }: orderType = req.body.data;
+  const {
+    productOrders,
+    fullName,
+    address,
+    zipCode,
+    state,
+    paymentMethod,
+  }: orderType = req.body.data;
 
   // Check for valid data
-  if (!productOrders || productOrders.length === 0 || !total) {
+  if (
+    !productOrders ||
+    productOrders.length === 0 ||
+    !fullName ||
+    !address ||
+    !zipCode ||
+    !state ||
+    !paymentMethod
+  ) {
     return res.status(400).send({ error: "Bad request" });
   }
 
   //Rrtrieve data for product verification
-  const validateProducts = await client.query(
-    "SELECT * FROM products WHERE id = ANY($1)",
-    [productOrders.map((order) => order.orderId)]
+  const validateProducts = (
+    await client.query("SELECT id FROM products WHERE id = ANY($1)", [
+      productOrders.map((order) => order.orderId),
+    ])
   ).rows;
 
   // fail the request if one or more products are missing
@@ -236,9 +256,35 @@ app.post("/order", authorize, async (req, res) => {
   try {
     await client.query("BEGIN");
 
-    await client.query("");
+    const orderId = uuidv4();
+
+    await client.query(
+      `INSERT INTO orders (
+        order_id,
+        user_id,
+        full_name,
+        address,
+        zip_code,
+        state,
+        payment_method
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+      [orderId, id, fullName, address, zipCode, state, paymentMethod]
+    ).rows;
+
+    productOrders.forEach(async (order) => {
+      await client.query(
+        `INSERT INTO order_products (
+        order_relation_id,
+        product_id,
+        quantity
+      ) VALUES ($1, $2, $3)`,
+        [orderId, order.orderId, order.quantity]
+      );
+    });
 
     await client.query("COMMIT");
+
+    res.status(201).send("Created resource");
   } catch (error) {
     await client.query("ROLLBACK");
     res
@@ -246,9 +292,79 @@ app.post("/order", authorize, async (req, res) => {
       .send({ error: "Internal server error, couldn't finish transaction" });
   }
 
-  console.log(validateProducts);
-
   res.end();
+});
+
+app.get("/orders-list", authorize, async (req, res) => {
+  const { id } = req.body.user;
+
+  const query = `
+  SELECT
+  jsonb_build_object(
+    'order_id', o.order_id,
+    'full_name', o.full_name,
+    'address', o.address,
+    'zip_code', o.zip_code,
+    'state', o.state,
+    'payment_method', o.payment_method,
+    'order_date', o.order_date,
+    'products', jsonb_agg(
+      jsonb_build_object(
+        'product_title', p.title,
+        'price', p.price,
+        'quantity', op.quantity
+      )
+    )
+  ) AS order_data
+  FROM orders o
+  JOIN order_products op ON o.order_id = op.order_relation_id
+  JOIN products p ON op.product_id = p.id
+  WHERE o.user_id = $1
+  GROUP BY o.order_id, o.full_name, o.zip_code, o.state, o.payment_method, o.order_date`;
+
+  try {
+    const orderData = (await client.query(query, [id])).rows;
+
+    res.status(200).send(orderData);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ error: "An error occurred while fetching orders" });
+  }
+});
+
+app.delete("/order-cancel", authorize, async (req, res) => {
+  const { id } = req.body.user;
+  const { order_id } = req.body.data;
+
+  try {
+    const validateOrder = await client.query(
+      `SELECT * FROM orders WHERE order_id = $1`,
+      [order_id]
+    ).rows;
+
+    if (!validateOrder || validateOrder.length === 0) {
+      return res.status(400).send({ error: "Bad request" });
+    }
+
+    await client.query("BEGIN");
+
+    await client.query(
+      `DELETE FROM order_products WHERE order_relation_id = $1`,
+      [order_id]
+    );
+
+    await client.query(`DELETE FROM orders WHERE order_id = $1`, [order_id]);
+
+    await client.query("COMMIT");
+
+    res.status(204).send("Order successfully cancelled");
+  } catch (error) {
+    await client.query("ROLLBACK");
+    console.error("Error canceling order:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while attempting to cancel order" });
+  }
 });
 
 app.get("/products", async (req, res) => {
