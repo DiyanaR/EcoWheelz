@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import "../css/SearchBar.css";
 import { Link } from "react-router-dom";
 // import SearchResults from "./searchResults";
-import searchIcon from "/public/icons/search.png";
+// import searchIcon from "/public/icons/search.png";
 
 
 interface SearchBarProps {
