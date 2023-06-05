@@ -32,7 +32,7 @@ export default function Navbar() {
   function cartItemCount() {
     if (cartProducts) {
       const counter = cartProducts.reduce((acc, cartItem) => {
-        return acc + cartItem.amount;
+        return acc + cartItem.quantity;
       }, 0);
 
       return counter;
@@ -116,7 +116,7 @@ export default function Navbar() {
             {cartProducts && cartProducts.length > 0 ? (
               <div className="product-counter">
                 {cartProducts.reduce((acc, cartItem) => {
-                  return acc + cartItem.amount;
+                  return acc + cartItem.quantity;
                 }, 0)}
               </div>
             ) : null}

@@ -13,9 +13,9 @@ export interface Cart {
   id: number;
   title: string;
   subtitle: string;
-  price: string;
+  price: number;
   img: string;
-  amount: number;
+  quantity: number;
 }
 
 export interface LoginContextValue {

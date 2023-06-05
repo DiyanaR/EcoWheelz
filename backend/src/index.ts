@@ -54,8 +54,6 @@ const authorize = async (req: Request, res: Response, next: NextFunction) => {
       return res.status(401).send("Unauthorized");
     }
 
-    console.log(validationToken[0].user_id);
-
     const user = (
       await client.query("SELECT * FROM users WHERE id = $1", [
         validationToken[0].user_id,
@@ -67,9 +65,10 @@ const authorize = async (req: Request, res: Response, next: NextFunction) => {
     }
 
     req.body.user = {
+      id: user[0].id,
       email: user[0].email,
-      firstName: user[0].firstName,
-      lastName: user[0].lastName,
+      firstName: user[0].firstname,
+      lastName: user[0].lastname,
       token: validationToken[0].token,
     };
 
@@ -176,13 +175,9 @@ app.post("/logout", authorize, async (req: Request, res: Response) => {
   const { token } = req.body.user;
 
   try {
-    const userInfo = (
-      await client.query("DELETE FROM tokens WHERE token = $1", [token])
-    ).rows;
+    await client.query("DELETE FROM tokens WHERE token = $1", [token]);
 
-    console.log(userInfo);
-
-    res.end();
+    res.status(200).send("User Logged out");
   } catch (error) {
     console.log(error);
   }
@@ -206,6 +201,54 @@ app.get("/validate-email", async (req, res) => {
 
 app.get("/validate-token", authorize, async (req, res) => {
   res.status(200).send(req.body.user);
+});
+
+interface orderInformation {
+  orderId: number;
+  quantity: number;
+}
+
+interface orderType {
+  productOrders: orderInformation[];
+  total: number;
+}
+
+app.post("/order", authorize, async (req, res) => {
+  const { id } = req.body.user;
+  const { productOrders, total }: orderType = req.body.data;
+
+  // Check for valid data
+  if (!productOrders || productOrders.length === 0 || !total) {
+    return res.status(400).send({ error: "Bad request" });
+  }
+
+  //Rrtrieve data for product verification
+  const validateProducts = await client.query(
+    "SELECT * FROM products WHERE id = ANY($1)",
+    [productOrders.map((order) => order.orderId)]
+  ).rows;
+
+  // fail the request if one or more products are missing
+  if (validateProducts.length !== productOrders.length) {
+    return res.status(400).send({ error: "Bad request" });
+  }
+
+  try {
+    await client.query("BEGIN");
+
+    await client.query("");
+
+    await client.query("COMMIT");
+  } catch (error) {
+    await client.query("ROLLBACK");
+    res
+      .status(500)
+      .send({ error: "Internal server error, couldn't finish transaction" });
+  }
+
+  console.log(validateProducts);
+
+  res.end();
 });
 
 app.get("/products", async (req, res) => {
@@ -241,7 +284,6 @@ app.get("/products", async (req, res) => {
 
 app.get("/products/:title", async (req, res) => {
   const title = req.params.title;
-  console.log(title);
 
   try {
     const { rows } = await client.query(
