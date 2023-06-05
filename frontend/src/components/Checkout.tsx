@@ -71,8 +71,8 @@ const CheckoutPage = () => {
   };
 
   return (
+
     <div className="checkout-page">
-      {/* <h1 className="headline">Checkout </h1> */}
       <form className="form-border" onSubmit={handleSubmit}>
         <label className="label">
           Full Name:

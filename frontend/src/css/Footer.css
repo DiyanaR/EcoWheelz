@@ -226,6 +226,36 @@ label {
   left: 0;
 }
 
+.icon-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-container div {
+  margin-bottom: 10px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-heading-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  margin-right: 10px;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ----------- */
 
 @media (max-width: 768px) {
@@ -256,4 +286,8 @@ label {
     width: 100%;
     margin-bottom: 20px;
   }
+
+  /* .icon-container {
+    display: none;
+  } */
 }
