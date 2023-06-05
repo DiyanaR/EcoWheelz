@@ -45,6 +45,9 @@ function Footer() {
           <img className="footer-icons" src="./icons/fb.png" alt="logo" />
           </div>
           </div>
+          {/* <p className="copyright-text">
+            2023 Ecowheelz AB. All rights reserved
+          </p> */}
 
         </div>
       </div>

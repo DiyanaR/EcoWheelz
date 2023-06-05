@@ -49,15 +49,18 @@ const CheckoutPage = () => {
 
     const firstNameValidation = nameValidation(formData.fullName);
     if (firstNameValidation.length !== formData.fullName.length) {
-      errors.fullName = " •  Invalid name given";
+      errors.fullName = "   Invalid name given";
     }
 
     if (!formData.address) {
       errors.address = "Please enter your address";
     }
 
+   const zipCodeValidaton=/^\d{5}$/;
     if (!formData.zipCode) {
       errors.zipCode = "Please enter your ZIP code";
+    } else if (!zipCodeValidaton.test(formData.zipCode)) {
+      errors.zipCode = "please enter a valid Zip code";
     }
 
     if (!formData.state) {
@@ -92,8 +95,12 @@ const CheckoutPage = () => {
           orderId: item.id,
           quantity: item.quantity,
         })),
+        fullName: formData.fullName,
+        adress: formData.address,
+        ZipCode: formData.zipCode,
+        state: formData.state,
+        paymentMethod: formData.paymentMethod,
 
-        // ADD INFO HERE
       };
 
       try {
@@ -101,6 +108,8 @@ const CheckoutPage = () => {
           headers: { Authorization: `Bearer ${login.token}` },
           data: orderInfo,
         });
+        // console.log("order details:",response.data);
+        // console.log("Order placed successfully!");
       } catch (error) {
         console.log(error);
       }
@@ -114,7 +123,7 @@ const CheckoutPage = () => {
           Full Name:
           <input
             type="text"
-            name="name"
+            name="fullName"
             value={formData.fullName}
             onChange={handleInputChange}
             className="input"
