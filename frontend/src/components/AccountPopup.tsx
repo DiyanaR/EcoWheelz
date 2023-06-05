@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { LoginContext } from "./ContextProvider";
+import { ShopContext } from "./ContextProvider";
 import axios from "axios";
 
 interface prop {
@@ -9,7 +9,9 @@ interface prop {
 }
 
 export default function AccountPopup({ setPopup }: prop) {
-  const { login, setLogin } = useContext(LoginContext);
+  const {
+    userContext: { login, setLogin },
+  } = useContext(ShopContext);
   const navigate = useNavigate();
 
   async function logoutUser() {

@@ -25,6 +25,28 @@ html {
   width: 90%;
 }
 
+.cart-notification {
+  position: fixed;
+  width: 80%;
+  bottom: 24px;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222222;
+  border: 2px solid #9ae5bd;
+  padding: 20px 30px;
+  border-radius: 16px;
+}
+
+@media (max-width: 560px) {
+  .cart-notification {
+    width: 90%;
+    font-size: 18px;
+  }
+}
+
 .DetailPage-info {
   display: flex;
   flex-direction: column;
@@ -267,6 +289,10 @@ html {
 
   h3 {
     margin-top: 0;
+  }
+
+  .stars {
+    font-size: 30px;
   }
 
   /* .OtherProduct-container:hover {

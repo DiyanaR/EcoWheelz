@@ -9,6 +9,15 @@ export interface Login {
   token: string;
 }
 
+export interface Cart {
+  id: number;
+  title: string;
+  subtitle: string;
+  price: string;
+  img: string;
+  amount: number;
+}
+
 export interface LoginContextValue {
   login: Login | null;
   setLogin: React.Dispatch<React.SetStateAction<Login | null>>;
@@ -19,12 +28,33 @@ export const LoginContext = createContext<LoginContextValue>({
   setLogin: () => {},
 });
 
+export interface ProductContextValue {
+  cartProducts: Cart[];
+  setCartProducts: React.Dispatch<React.SetStateAction<Cart[]>>;
+}
+
+export const ProductContext = createContext<ProductContextValue>({
+  cartProducts: [],
+  setCartProducts: () => {},
+});
+
+interface shopContextValue {
+  userContext: LoginContextValue;
+  cartContext: ProductContextValue;
+}
+
+export const ShopContext = createContext<shopContextValue>({
+  userContext: { login: null, setLogin: () => {} },
+  cartContext: { cartProducts: [], setCartProducts: () => {} },
+});
+
 interface Props {
   children: ReactNode;
 }
 
 export function ContextProvider({ children }: Props) {
   const [login, setLogin] = useState<Login | null>(null);
+  const [cartProducts, setCartProducts] = useState<Cart[]>([]);
   const [errorMsg, setErrorMsg] = useState(false);
 
   useEffect(() => {
@@ -52,12 +82,29 @@ export function ContextProvider({ children }: Props) {
         }
       }
     })();
+
+    const CheckExistingCart: Cart[] = JSON.parse(
+      localStorage.getItem("cart") || "null"
+    );
+
+    if (CheckExistingCart?.length > 0) {
+      setCartProducts(CheckExistingCart);
+    }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartProducts));
+  }, [cartProducts]);
+
   return (
-    <LoginContext.Provider value={{ login, setLogin }}>
+    <ShopContext.Provider
+      value={{
+        userContext: { login, setLogin },
+        cartContext: { cartProducts, setCartProducts },
+      }}
+    >
       {children}
-      <ErrorPopup errorMsg={errorMsg} errorText="Error couldn't login user" />
-    </LoginContext.Provider>
+      <ErrorPopup errorMsg={errorMsg} />
+    </ShopContext.Provider>
   );
 }
