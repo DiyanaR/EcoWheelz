@@ -39,8 +39,14 @@ export default function CartDisplay() {
           orderId: item.id,
           quantity: item.quantity,
         })),
-        total: cartTotal(),
+        fullName: "FullnameTest",
+        address: "SomeStreet123",
+        zipCode: "123 45",
+        state: "Gothenburg",
+        paymentMethod: "creditCard",
       };
+
+      console.log(orderInfo);
 
       try {
         await axios.post("http://localhost:8080/order", {
