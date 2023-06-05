@@ -35,10 +35,9 @@
 
 .footer-container {
   display: flex;
-  max-width: 1440px;
   margin: 0 auto;
   padding: 0 30px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
   gap: 170px;
 }
