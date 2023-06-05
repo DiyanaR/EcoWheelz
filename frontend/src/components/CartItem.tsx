@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ShopContext } from "./ContextProvider";
 import { ReactComponent as CloseIcon } from "../assets/close.svg";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function CartItem() {
   const {
@@ -18,9 +19,9 @@ export default function CartItem() {
     const updatedCart = cartProducts.map((item) => {
       if (item.id === id) {
         if (operator === "increment") {
-          item.amount++;
-        } else if (operator === "decrement" && item.amount > 1) {
-          item.amount--;
+          item.quantity++;
+        } else if (operator === "decrement" && item.quantity > 1) {
+          item.quantity--;
         }
       }
       return item;
@@ -50,7 +51,7 @@ export default function CartItem() {
                     >
                       -
                     </div>
-                    <div>{item.amount}x</div>
+                    <div>{item.quantity}x</div>
                     <div
                       onClick={() => {
                         updateCartItem(item.id, "increment");
@@ -64,7 +65,9 @@ export default function CartItem() {
                 <p className="item-subtitle">{item.subtitle}</p>
                 <div className="item-bottom-info">
                   <p className="item-price">{item.price} :-</p>
-                  <button> View product</button>
+                  <Link to={"/detailpage/" + item.title}>
+                    <button> View product</button>
+                  </Link>
                 </div>
               </div>
               <CloseIcon
@@ -167,20 +170,25 @@ const CartItemDiv = styled.div`
         font-weight: inherit;
       }
 
-      button {
+      a {
         margin-left: auto;
-        font-weight: inherit;
-        font-size: 14px;
+        text-decoration: none;
         color: inherit;
-        background-color: transparent;
-        border-radius: 12px;
-        padding: 8px;
-        border: 2px solid #9ae5bd;
-        cursor: pointer;
 
-        &:hover {
-          color: #222222;
-          background-color: #9ae5bd;
+        button {
+          font-weight: inherit;
+          font-size: 14px;
+          color: inherit;
+          background-color: transparent;
+          border-radius: 12px;
+          padding: 8px;
+          border: 2px solid #9ae5bd;
+          cursor: pointer;
+
+          &:hover {
+            color: #222222;
+            background-color: #9ae5bd;
+          }
         }
       }
     }

@@ -2,17 +2,19 @@ import styled from "styled-components";
 import { useContext, useState } from "react";
 import { ShopContext } from "./ContextProvider";
 import CartItem from "./CartItem";
+import axios from "axios";
 
 export default function CartDisplay() {
   const {
     cartContext: { cartProducts },
+    userContext: { login },
   } = useContext(ShopContext);
   const [discount, setDiscount] = useState("");
 
   function cartTotal() {
     if (cartProducts) {
-      let counter = cartProducts.reduce((acc, cartItem) => {
-        return acc + Number(cartItem.price) * cartItem.amount;
+      let counter: number = cartProducts.reduce((acc, cartItem) => {
+        return acc + cartItem.price * cartItem.quantity;
       }, 0);
 
       if (discount === "ECOWHEELZ") {
@@ -20,10 +22,35 @@ export default function CartDisplay() {
       }
 
       //Rounds to 3 decimals
-      return counter.toFixed(3);
+      return counter;
     }
 
     return 0;
+  }
+
+  function addDotToPrice(price: number) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  async function handlePurchase() {
+    if (login) {
+      const orderInfo = {
+        productOrders: cartProducts.map((item) => ({
+          orderId: item.id,
+          quantity: item.quantity,
+        })),
+        total: cartTotal(),
+      };
+
+      try {
+        await axios.post("http://localhost:8080/order", {
+          headers: { Authorization: `Bearer ${login.token}` },
+          data: orderInfo,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
@@ -41,8 +68,8 @@ export default function CartDisplay() {
                   <div key={item.id} className="cart-item-line">
                     <p>{item.title}</p>
                     <p className="item-price-line">
-                      {item.price} :-
-                      <span className="amount-count">{item.amount}x</span>
+                      {addDotToPrice(item.price)} :-
+                      <span className="amount-count">{item.quantity}x</span>
                     </p>
                   </div>
                 );
@@ -51,7 +78,10 @@ export default function CartDisplay() {
 
           <div className="total-amount">
             <p>Total</p>
-            <p>{cartTotal()} :-</p>
+            <p>
+              {addDotToPrice(cartTotal())}
+              :-
+            </p>
           </div>
 
           <p className="shipping-text">
@@ -72,7 +102,9 @@ export default function CartDisplay() {
             </label>
           </div>
         </div>
-        <button className="checkout-btn">Checkout</button>
+        <button onClick={handlePurchase} className="checkout-btn">
+          Checkout
+        </button>
       </div>
     </CartDisplayDiv>
   );

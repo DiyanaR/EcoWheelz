@@ -26,7 +26,7 @@ export default function DetailPage() {
   const [cartNotif, setCartNotif] = useState(false);
   const [filteredProduct, setFilteredProduct] = useState<Product[]>([]);
   const { title } = useParams<{ title: string }>();
-  const productRef = useRef<HTMLDivElement>(null);
+  const [rating, setRating] = useState(0);
 
   const {
     cartContext: { cartProducts, setCartProducts },
@@ -36,11 +36,6 @@ export default function DetailPage() {
     //     console.log("Sökt:", searchTerm);
   };
 
-  const [rating, setRating] = useState(0);
-
-  const handleStarClick = (selectedRating: number) => {
-    setRating(selectedRating);
-  };
   const categoriesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -94,7 +89,7 @@ export default function DetailPage() {
 
       const dubplicateItemCheck = cartProducts.map((cartItem) => {
         if (cartItem.id === id) {
-          cartItem.amount++;
+          cartItem.quantity++;
           duplicateItemValidation = true;
         }
 
@@ -106,7 +101,14 @@ export default function DetailPage() {
       } else {
         setCartProducts([
           ...cartProducts,
-          { id, title, subtitle, price, img, amount: 1 },
+          {
+            id,
+            title,
+            subtitle,
+            price: Number(price.replace(".", "")),
+            img,
+            quantity: 1,
+          },
         ]);
       }
 
@@ -144,17 +146,15 @@ export default function DetailPage() {
                   <h2>{filteredProduct[0].price}:-</h2>
                   <div className="DetailPage-container">
                     <div>
-                      {/* <h2>{rating}</h2> */}
                       {[1, 2, 3, 4, 5].map((value) => (
                         <span
-                          className="stars"
                           key={value}
                           style={{
                             cursor: "pointer",
                             marginRight: "5px",
                             color: value <= rating ? "#9ae5bd" : "gray",
                           }}
-                          onClick={() => handleStarClick(value)}
+                          onClick={() => setRating(value)}
                         >
                           ★
                         </span>
