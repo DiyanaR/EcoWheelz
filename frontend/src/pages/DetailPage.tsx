@@ -62,6 +62,15 @@ export default function DetailPage() {
     fetchData();
   }, [title]);
 
+  useEffect(() => {
+    if (products.length > 0 && title) {
+      const filteredProduct = products.filter(
+        (product) => product.title === title
+      );
+      setFilteredProduct(filteredProduct);
+    }
+  }, [products, title]);
+
   const handletopClick = () => {
     if (categoriesRef.current) {
       categoriesRef.current.scrollIntoView({ behavior: "smooth" });
