@@ -1,9 +1,11 @@
+import React, { useState, useContext } from "react";
+import { ShopContext } from "./ContextProvider";
 
-import React, { useState } from 'react';
 import "../css/Checkout.css";
+import axios from "axios";
 
 interface CheckoutFormData {
-  name: string;
+  fullName: string;
   address: string;
   zipCode: string;
   state: string;
@@ -12,12 +14,16 @@ interface CheckoutFormData {
 
 const CheckoutPage = () => {
   const [formData, setFormData] = useState<CheckoutFormData>({
-    name: '',
-    address: '',
-    zipCode: '',
-    state: '',
-    paymentMethod: '',
+    fullName: "",
+    address: "",
+    zipCode: "",
+    state: "",
+    paymentMethod: "",
   });
+  const {
+    userContext: { login },
+    cartContext: { cartProducts },
+  } = useContext(ShopContext);
 
   const [formErrors, setFormErrors] = useState<Partial<CheckoutFormData>>({});
 
@@ -29,12 +35,21 @@ const CheckoutPage = () => {
     }));
   };
 
+  function nameValidation(input: string) {
+    return input.replace(/[!@#$%^&*()_+\-={}\[\]|\\:";'<>.,\/?0-9]/g, "");
+  }
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const errors: Partial<CheckoutFormData> = {};
 
-    if (!formData.name) {
-      errors.name = "Please enter your full name";
+    if (!formData.fullName) {
+      errors.fullName = "Please enter your full name";
+    }
+
+    const firstNameValidation = nameValidation(formData.fullName);
+    if (firstNameValidation.length !== formData.fullName.length) {
+      errors.fullName = " •  Invalid name given";
     }
 
     if (!formData.address) {
@@ -62,16 +77,37 @@ const CheckoutPage = () => {
     setFormErrors({});
 
     setFormData({
-      name: '',
-      address: '',
-      zipCode: '',
-      state: '',
-      paymentMethod: '',
+      fullName: "",
+      address: "",
+      zipCode: "",
+      state: "",
+      paymentMethod: "",
     });
   };
 
-  return (
+  async function handlePurchase() {
+    if (login) {
+      const orderInfo = {
+        productOrders: cartProducts.map((item) => ({
+          orderId: item.id,
+          quantity: item.quantity,
+        })),
 
+        // ADD INFO HERE
+      };
+
+      try {
+        await axios.post("http://localhost:8080/order", {
+          headers: { Authorization: `Bearer ${login.token}` },
+          data: orderInfo,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  return (
     <div className="checkout-page">
       <form className="form-border" onSubmit={handleSubmit}>
         <label className="label">
@@ -79,11 +115,13 @@ const CheckoutPage = () => {
           <input
             type="text"
             name="name"
-            value={formData.name}
+            value={formData.fullName}
             onChange={handleInputChange}
             className="input"
           />
-          {formErrors.name && <span className="error-message">{formErrors.name}</span>}
+          {formErrors.fullName && (
+            <span className="error-message">{formErrors.fullName}</span>
+          )}
         </label>
         <br />
         <label className="label">
@@ -95,7 +133,9 @@ const CheckoutPage = () => {
             onChange={handleInputChange}
             className="input"
           />
-          {formErrors.address && <span className="error-message">{formErrors.address}</span>}
+          {formErrors.address && (
+            <span className="error-message">{formErrors.address}</span>
+          )}
         </label>
         <br />
         <label className="label">
@@ -107,7 +147,9 @@ const CheckoutPage = () => {
             onChange={handleInputChange}
             className="input"
           />
-          {formErrors.zipCode && <span className="error-message">{formErrors.zipCode}</span>}
+          {formErrors.zipCode && (
+            <span className="error-message">{formErrors.zipCode}</span>
+          )}
         </label>
         <br />
         <label className="label">
@@ -119,7 +161,9 @@ const CheckoutPage = () => {
             onChange={handleInputChange}
             className="input"
           />
-          {formErrors.state && <span className="error-message">{formErrors.state}</span>}
+          {formErrors.state && (
+            <span className="error-message">{formErrors.state}</span>
+          )}
         </label>
         <br />
 
@@ -134,13 +178,17 @@ const CheckoutPage = () => {
             <option value="creditCard">Credit Card</option>
             <option value="paypal">PayPal</option>
           </select>
-          {formErrors.paymentMethod && <span className="error-message">{formErrors.paymentMethod}</span>}
+          {formErrors.paymentMethod && (
+            <span className="error-message">{formErrors.paymentMethod}</span>
+          )}
         </label>
         <br />
-        <button type="submit" className="button">Submit</button>
+        <button type="submit" className="button">
+          Submit
+        </button>
       </form>
     </div>
   );
-}
+};
 
 export default CheckoutPage;
