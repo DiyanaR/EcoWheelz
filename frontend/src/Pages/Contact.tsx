@@ -16,7 +16,7 @@ function Contact() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    //b
+
   };
 
   return (
