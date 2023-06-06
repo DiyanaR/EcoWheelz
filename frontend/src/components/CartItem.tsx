@@ -64,7 +64,12 @@ export default function CartItem() {
                 </div>
                 <p className="item-subtitle">{item.subtitle}</p>
                 <div className="item-bottom-info">
-                  <p className="item-price">{item.price} :-</p>
+                  <p className="item-price">
+                    {item.price
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+                    :-
+                  </p>
                   <Link to={"/detailpage/" + item.title}>
                     <button> View product</button>
                   </Link>

@@ -267,7 +267,7 @@ app.post("/order", authorize, async (req, res) => {
         zip_code,
         state,
         payment_method
-      ) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7)`,
       [orderId, id, fullName, address, zipCode, state, paymentMethod]
     ).rows;
 
@@ -295,6 +295,14 @@ app.post("/order", authorize, async (req, res) => {
   res.end();
 });
 
+interface OrderData {
+  order_data: Order[];
+}
+
+interface Order {
+  someData: string;
+}
+
 app.get("/orders-list", authorize, async (req, res) => {
   const { id } = req.body.user;
 
@@ -310,7 +318,8 @@ app.get("/orders-list", authorize, async (req, res) => {
     'order_date', o.order_date,
     'products', jsonb_agg(
       jsonb_build_object(
-        'product_title', p.title,
+        'img', p.img,
+        'title', p.title,
         'price', p.price,
         'quantity', op.quantity
       )
@@ -320,12 +329,12 @@ app.get("/orders-list", authorize, async (req, res) => {
   JOIN order_products op ON o.order_id = op.order_relation_id
   JOIN products p ON op.product_id = p.id
   WHERE o.user_id = $1
-  GROUP BY o.order_id, o.full_name, o.zip_code, o.state, o.payment_method, o.order_date`;
+  GROUP BY o.order_id`;
 
   try {
-    const orderData = (await client.query(query, [id])).rows;
+    const orderData: OrderData[] = (await client.query(query, [id])).rows;
 
-    res.status(200).send(orderData);
+    res.status(200).send(orderData.map((order) => order.order_data));
   } catch (error) {
     console.error("Error fetching orders:", error);
     res.status(500).json({ error: "An error occurred while fetching orders" });
@@ -334,12 +343,15 @@ app.get("/orders-list", authorize, async (req, res) => {
 
 app.delete("/order-cancel", authorize, async (req, res) => {
   const { id } = req.body.user;
-  const { order_id } = req.body.data;
+  const { order_id } = req.body;
+
+  if (!order_id) {
+    return res.status(400).send({ error: "Bad request" });
+  }
 
   try {
-    const validateOrder = await client.query(
-      `SELECT * FROM orders WHERE order_id = $1`,
-      [order_id]
+    const validateOrder = (
+      await client.query(`SELECT * FROM orders WHERE order_id = $1`, [order_id])
     ).rows;
 
     if (!validateOrder || validateOrder.length === 0) {
@@ -347,23 +359,21 @@ app.delete("/order-cancel", authorize, async (req, res) => {
     }
 
     await client.query("BEGIN");
-
     await client.query(
       `DELETE FROM order_products WHERE order_relation_id = $1`,
       [order_id]
     );
 
     await client.query(`DELETE FROM orders WHERE order_id = $1`, [order_id]);
-
     await client.query("COMMIT");
 
     res.status(204).send("Order successfully cancelled");
   } catch (error) {
     await client.query("ROLLBACK");
     console.error("Error canceling order:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while attempting to cancel order" });
+    res.status(500).json({
+      error: "An error occurred while attempting to cancel the order",
+    });
   }
 });
 
