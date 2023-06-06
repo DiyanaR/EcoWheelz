@@ -1,15 +1,21 @@
 import styled from "styled-components";
-import { useContext, useState } from "react";
+import { SetStateAction, useContext, useState } from "react";
 import { ShopContext } from "./ContextProvider";
 import CartItem from "./CartItem";
-import axios from "axios";
+import { useNavigate } from "react-router";
 
-export default function CartDisplay() {
+interface checkType {
+  checkPoint: string;
+  setCheckPoint: React.Dispatch<SetStateAction<string>>;
+}
+
+export default function CartDisplay({ checkPoint, setCheckPoint }: checkType) {
   const {
     cartContext: { cartProducts },
     userContext: { login },
   } = useContext(ShopContext);
   const [discount, setDiscount] = useState("");
+  const navigate = useNavigate();
 
   function cartTotal() {
     if (cartProducts) {
@@ -30,33 +36,6 @@ export default function CartDisplay() {
 
   function addDotToPrice(price: number) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
-
-  async function handlePurchase() {
-    if (login) {
-      const orderInfo = {
-        productOrders: cartProducts.map((item) => ({
-          orderId: item.id,
-          quantity: item.quantity,
-        })),
-        fullName: "FullnameTest",
-        address: "SomeStreet123",
-        zipCode: "123 45",
-        state: "Gothenburg",
-        paymentMethod: "creditCard",
-      };
-
-      console.log(orderInfo);
-
-      try {
-        await axios.post("http://localhost:8080/order", {
-          headers: { Authorization: `Bearer ${login.token}` },
-          data: orderInfo,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
   }
 
   return (
@@ -108,9 +87,18 @@ export default function CartDisplay() {
             </label>
           </div>
         </div>
-        <button onClick={handlePurchase} className="checkout-btn">
-          Checkout
-        </button>
+        {login ? (
+          <button
+            onClick={() => setCheckPoint("checkout")}
+            className="checkout-btn"
+          >
+            Checkout
+          </button>
+        ) : (
+          <button onClick={() => navigate("/login")} className="checkout-btn">
+            Login to proceed
+          </button>
+        )}
       </div>
     </CartDisplayDiv>
   );

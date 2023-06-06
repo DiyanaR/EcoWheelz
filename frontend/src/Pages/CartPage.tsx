@@ -1,10 +1,43 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import Checkout from "../components/Checkout";
 import CartDisplay from "../components/CartDisplay";
+import { ShopContext } from "../components/ContextProvider";
+import axios from "axios";
 
 export default function CartPage() {
   const [checkpoint, setCheckpoint] = useState("cart");
+  const {
+    userContext: { login },
+    cartContext: { cartProducts },
+  } = useContext(ShopContext);
+
+  async function handlePurchase() {
+    if (login) {
+      const orderInfo = {
+        productOrders: cartProducts.map((item) => ({
+          orderId: item.id,
+          quantity: item.quantity,
+        })),
+        fullName: "FullnameTest",
+        address: "SomeStreet123",
+        zipCode: "123 45",
+        state: "Gothenburg",
+        paymentMethod: "creditCard",
+      };
+
+      console.log(orderInfo);
+
+      try {
+        await axios.post("http://localhost:8080/order", {
+          headers: { Authorization: `Bearer ${login.token}` },
+          data: orderInfo,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   return (
     <MainCartPage>
@@ -38,7 +71,9 @@ export default function CartPage() {
       </div>
 
       <div className="display-container">
-        {checkpoint === "cart" && <CartDisplay />}
+        {checkpoint === "cart" && (
+          <CartDisplay checkPoint={checkpoint} setCheckPoint={setCheckpoint} />
+        )}
 
         {checkpoint === "checkout" && <Checkout />}
       </div>
@@ -69,6 +104,12 @@ const MainCartPage = styled.div`
       width: 125px;
       height: 3px;
       background-color: #9ae5bd92;
+
+      transition: all 0.7s ease;
+
+      @media (max-width: 555px) {
+        width: 100px;
+      }
     }
 
     .line-active {
@@ -89,6 +130,11 @@ const MainCartPage = styled.div`
         color: #ffffff97;
         font-weight: 600;
         font-size: 20px;
+
+        @media (max-width: 555px) {
+          top: -28px;
+          font-size: 16px;
+        }
       }
 
       .text-active {
@@ -102,6 +148,7 @@ const MainCartPage = styled.div`
         border: 3px solid #9ae5bd92;
 
         background-color: transparent;
+        transition: all 0.7s ease;
       }
 
       .ball-active {

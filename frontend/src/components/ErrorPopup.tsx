@@ -10,7 +10,7 @@ export default function ErrorPopup({ errorMsg }: prop) {
       {errorMsg && (
         <Popup>
           <span>
-            An error occured, You have been logged out{" "}
+            An error occured, couldn't process information
             <span className="float-right">(error code 500)</span>
           </span>
         </Popup>
@@ -28,7 +28,7 @@ const Popup = styled.div`
   );
 
   width: 80%;
-  padding: 16px;
+  padding: 16px !important;
 
   border: 3px solid #9ae5bd;
   border-radius: 16px;

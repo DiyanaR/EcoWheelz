@@ -32,9 +32,7 @@ export default function SignupPage() {
 
   useEffect(() => {
     // Redirect user from login to homepage if the user is already logged in
-    if (login) {
-      navigate("/");
-    }
+    if (login) navigate("/");
   }, []);
 
   return (
