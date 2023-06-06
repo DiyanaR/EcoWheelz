@@ -12,7 +12,7 @@ interface CheckoutFormData {
   paymentMethod: string;
 }
 
-const CheckoutPage = () => {
+function Checkout() {
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: "",
     address: "",
@@ -34,6 +34,15 @@ const CheckoutPage = () => {
       [name]: value,
     }));
   };
+
+ const handleSelectChange=(event: React.ChangeEvent<HTMLSelectElement>) => {
+  const { name, value } = event.target;
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
+};
+
 
   function nameValidation(input: string) {
     return input.replace(/[!@#$%^&*()_+\-={}\[\]|\\:";'<>.,\/?0-9]/g, "");
@@ -108,8 +117,7 @@ const CheckoutPage = () => {
           headers: { Authorization: `Bearer ${login.token}` },
           data: orderInfo,
         });
-        // console.log("order details:",response.data);
-        // console.log("Order placed successfully!");
+
       } catch (error) {
         console.log(error);
       }
@@ -182,6 +190,7 @@ const CheckoutPage = () => {
             name="paymentMethod"
             value={formData.paymentMethod}
             className="input"
+            onChange={handleSelectChange}
           >
             <option value="">Select Payment Method</option>
             <option value="creditCard">Credit Card</option>
@@ -200,4 +209,4 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default Checkout;

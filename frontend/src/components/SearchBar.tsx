@@ -1,9 +1,6 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
 import "../css/SearchBar.css";
 import { Link } from "react-router-dom";
-// import SearchResults from "./searchResults";
-// import searchIcon from "/public/icons/search.png";
-
 
 interface SearchBarProps {
   onSearch: (searchQuery: string) => void;
@@ -24,7 +21,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
-  // const [searchNotFound, setSearchNotFound] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,7 +28,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
         const response = await fetch(`http://localhost:8080/products`);
         const data = await response.json();
         setAllProducts(data);
-        // setSearchNotFound(data.length === 0);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -49,11 +44,10 @@ function SearchBar({ onSearch }: SearchBarProps) {
       setResults(filteredResults);
       onSearch(searchQuery);
 
-      // setSearchNotFound(searchQuery.length >= 2 &&  filteredResults.length === 0);
     } else {
       setResults([]);
       onSearch("");
-      // setSearchNotFound(false);
+
     }
   };
 
@@ -66,7 +60,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
       setResults([]);
       onSearch("");
 
-      // setSearchNotFound(false);
     }
   };
 
@@ -116,9 +109,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
             )}
           </div>
         )}
-        {/* {searchNotFound && results.length === 0 && (
-        <p className="dropdown-item">Your search was not found.</p>
-      )} */}
       </form>
     </>
   );

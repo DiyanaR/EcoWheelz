@@ -6,6 +6,9 @@ import React, { useState, useEffect } from "react";
 import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import FAQ from "./Pages/FAQ";
 
 import FooterMobile from "./components/FooterMobile";
 
@@ -56,7 +59,9 @@ export default function App() {
         { element: <LoginPage />, path: "/login" },
         { element: <OrdersPage />, path: "/orders" },
         { element: <ConfirmationPage />, path: "/confirmation" },
-        // { element: <Product />, path: "/product" }
+        { element: <Contact />, path: "/contact" },
+        { element: <About />, path: "/about" },
+        { element: <FAQ />, path: "/faq" },
         { element: <CartPage />, path: "/cart" },
         { element: <Checkout />, path: "/checkout" },
       ],
