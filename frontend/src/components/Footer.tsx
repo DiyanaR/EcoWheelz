@@ -28,9 +28,18 @@ function Footer() {
           </div>
           <div className="footer-column">
             <h3 className="footer-heading">Contact</h3>
-            <p className="footer-link">+ 46 745 343 21</p>
-            <p className="footer-link">Gloryroad1</p>
-            <p className="footer-link">service@eccowheelz.com</p>
+            <p className="footer-link">
+            <img className="phone-icon" src="./icons/phone.png" alt="Phone Icon" />
+            <span>+ 46 745 343 21</span>
+            </p>
+            <p className="footer-link">
+              <img className="person-icon" src="./icons/person.png" alt="person icon" />
+              <span>Gloryroad1</span>
+            </p>
+            <p className="footer-link">
+              <img className="mail-icon" src="./icons/mail.png" alt="mejl icon" />
+              <span>service@eccowheelz.com</span>
+            </p>
           </div>
 
           <div className="icon-container">
