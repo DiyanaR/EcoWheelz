@@ -19,7 +19,6 @@ interface Product {
 
 function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [showText, setShowText] = useState(false);
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [showMore, setShowMore] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<number | null>(
@@ -79,26 +78,28 @@ function ProductPage() {
 
   return (
     <>
-      <div className="productPage-box">
+      <div className="product-page-box">
         <div className="desktop-serachbar">
           <SearchBar onSearch={handleSearch} />
         </div>
         <div ref={categoriesRef}>
           {products.length > 0 ? (
-            <ol className="productPage-list">
+            <ol className="product-page-list">
               {visibleProducts.map((product) => (
                 <li key={product.id}>
-                  <div className="productPage-container">
+                  <div className="product-page-container">
                     <img
-                      className="productPage-image"
+                      className="product-page-image"
                       src={product.img}
                       alt={product.img}
                     />
 
-                    <div className="productPage-info">
-                      <div className="productPage-text">
-                        <div className="productCardPage-icon">
-                          <h1 className="productPage-title">{product.title}</h1>
+                    <div className="product-page-info">
+                      <div className="product-page-text">
+                        <div className="product-card-page-icon">
+                          <h1 className="product-page-title">
+                            {product.title}
+                          </h1>
                           <img
                             className={
                               selectedProductId === product.id
@@ -127,7 +128,7 @@ function ProductPage() {
                           {product.shortdescription}
                         </p>
 
-                        <div className="productPage-button">
+                        <div className="product-page-button">
                           <p className="product-price">{product.price}:-</p>
                           <Link to={`/detailpage/${product.title}`}>
                             <button className="product-button">

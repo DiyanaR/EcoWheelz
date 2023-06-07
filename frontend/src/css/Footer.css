@@ -127,7 +127,6 @@ label {
 .footer-dropdownbox {
   width: 225px;
   border-radius: 8px;
-
   background-color: transparent;
   color: #faf9f8;
   border: 1px solid hsla(148, 59%, 75%, 1);
@@ -210,7 +209,7 @@ label {
   height: 24px;
 }
 
-.Productfooter-line {
+.product-footer-line {
   border: none;
   height: 2px;
   background-color: #9ae5bd;
@@ -263,7 +262,7 @@ label {
     cursor: pointer;
   }
 
-  .Productfooter-line {
+  .product-footer-line {
     border: none;
     height: 2px;
     background-color: #9ae5bd;

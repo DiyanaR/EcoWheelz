@@ -142,18 +142,18 @@ export default function DetailPage() {
     <>
       <div ref={categoriesRef}>
         {filteredProduct.length > 0 && (
-          <div id="top " className="detailPage-box">
+          <div id="top " className="detail-page-box">
             <div className="desktop-serachbar">
               <SearchBar onSearch={handleSearch} />
             </div>
-            <div className="detailPage-info">
+            <div className="detail-page-info">
               <img
-                className="detailPage-image"
+                className="detail-page-image"
                 src={filteredProduct[0].img}
                 alt={filteredProduct[0].title}
               />
-              <div className="detailPage-text">
-                <div className="detailPage-shortText">
+              <div className="detail-page-text">
+                <div className="detail-page-shortText">
                   <h1>
                     {filteredProduct[0].title.charAt(0).toUpperCase() +
                       filteredProduct[0].title.slice(1)}
@@ -161,7 +161,7 @@ export default function DetailPage() {
                   <p>{filteredProduct[0].subtitle}</p>
                   <p>{filteredProduct[0].longdescription}</p>
                   <h2>{filteredProduct[0].price}:-</h2>
-                  <div className="detailPage-container">
+                  <div className="detail-page-container">
                     <div>
                       {[1, 2, 3, 4, 5].map((value) => (
                         <span
@@ -205,24 +205,24 @@ export default function DetailPage() {
 
             <h1 className="product-header">Popular products</h1>
             {products.length > 0 ? (
-              <ol className="detailPage-list">
+              <ol className="detail-page-list">
                 {products.slice(0, 2).map((product) => (
                   <li key={product.id}>
-                    <div className="otherProduct-container">
+                    <div className="other-product-container">
                       <img
-                        className="otherProduct-image"
+                        className="other-product-image"
                         src={product.img}
                         alt={product.img}
                       />
 
-                      <div className="otherProduct-text">
+                      <div className="other-product-text">
                         <h2 className="product-title">{product.title}</h2>
                         <h3>{product.subtitle}</h3>
                         <p className="otherProduct-shortdescription">
                           {product.shortdescription}
                         </p>
 
-                        <div className="otherProductCard-button">
+                        <div className="other-product-card-button">
                           <p className="product-price">{product.price}:-</p>
                           <Link
                             to={`/detailpage/${product.title}`}

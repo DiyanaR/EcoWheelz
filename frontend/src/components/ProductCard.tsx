@@ -64,8 +64,8 @@ export default function ProductsCards() {
                 />
 
                 <div className="product-text">
-                  <div className="product-iconBox">
-                    <h2 className="productCard-title">{product.title}</h2>
+                  <div className="product-iconbox">
+                    <h2 className="product-card-title">{product.title}</h2>
 
                     <img
                       className={
@@ -81,7 +81,7 @@ export default function ProductsCards() {
                   </div>
 
                   <hr className="product-line" />
-                  <div className="productCard-icon">
+                  <div className="product-card-icon">
                     {selectedProductId === product.id && (
                       <ShowInfoModal
                         subtitle={product.subtitle}
@@ -92,10 +92,10 @@ export default function ProductsCards() {
                   </div>
 
                   <h3 className="product-subtitle">{product.subtitle}</h3>
-                  <p className="popularProduct-shortdescription">
+                  <p className="popular-product-shortdescription">
                     {product.shortdescription}
                   </p>
-                  <div className="productCard-button">
+                  <div className="product-card-button">
                     <p className="product-price">{product.price}:-</p>
 
                     <Link to={`/detailpage/${product.title}`}>

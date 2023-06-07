@@ -11,7 +11,7 @@ export default function Confirmation() {
       <div className="confirmation-box">
         <Link to="/productpage">
           <div className="confirmation-productbutton">
-            <button className="Product-button">Back to products</button>
+            <button className="product-button">Back to products</button>
           </div>
         </Link>
         <div className="confirmation-container">
@@ -40,7 +40,7 @@ export default function Confirmation() {
               />
             </div>
             <div>
-              <button className="Product-button">Sign me up!</button>
+              <button className="product-button">Sign me up!</button>
             </div>
           </div>
           <div>

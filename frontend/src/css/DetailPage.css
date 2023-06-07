@@ -2,12 +2,12 @@ html {
   scroll-behavior: smooth;
 }
 
-.detailPage-box {
+.detail-page-box {
   max-width: 1200px;
   margin: auto;
 }
 
-.otherProductCard-button {
+.other-product-card-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,14 +45,14 @@ html {
   }
 }
 
-.detailPage-info {
+.detail-page-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 64px;
 }
 
-.detailPage-image {
+.detail-page-image {
   border-radius: 30px;
   height: 326px;
   width: 326px;
@@ -60,7 +60,7 @@ html {
   margin-top: 64px;
 }
 
-.detailPage-text {
+.detail-page-text {
   color: #faf9f8;
   width: 326px;
   font-family: "Red Hat Display";
@@ -68,7 +68,7 @@ html {
   margin-right: 32px;
 }
 
-.detailPage-container {
+.detail-page-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -98,11 +98,11 @@ html {
   flex-direction: column;
 }
 
-.Specification-header {
+.specification-header {
   display: flex;
 }
 
-.otherProduct-container {
+.other-product-container {
   background-color: #222222;
   color: #faf9f8;
   border-radius: 30px;
@@ -118,7 +118,7 @@ html {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
-.otherProduct-image {
+.other-product-image {
   width: 326px;
   height: 326px;
   object-fit: cover;
@@ -126,7 +126,7 @@ html {
   border-top-left-radius: 30px;
 }
 
-.otherProduct-line {
+.other-product-line {
   border: none;
   height: 2px;
   background-color: #9ae5bd;
@@ -138,7 +138,7 @@ html {
   border-radius: 1px;
 }
 
-.detailPage-list {
+.detail-page-list {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -149,7 +149,7 @@ html {
   padding: 0;
 }
 
-.otherProduct-text {
+.other-product-text {
   padding-left: 15px;
   padding-right: 15px;
   position: relative;
@@ -164,7 +164,7 @@ html {
 }
 
 @media (max-width: 830px) {
-  .DetailPage-info {
+  .detail-page-info {
     margin-top: 0;
   }
 
@@ -174,32 +174,32 @@ html {
 }
 
 @media (min-width: 1000px) {
-  .detailPage-list {
+  .detail-page-list {
     display: flex;
     flex-direction: row;
     padding: 0;
   }
 
-  .otherProduct-text {
+  .other-product-text {
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
   }
 
-  .detailPage-info {
+  .detail-page-info {
     flex-direction: row;
     justify-content: center;
     padding-top: 64px;
     align-items: center;
   }
 
-  .detailPage-image {
+  .detail-page-image {
     width: 500px;
     height: 500px;
     border-radius: 30px;
   }
 
-  .detailPage-text {
+  .detail-page-text {
     width: 507px;
     margin-top: 0;
     height: 470px;
@@ -207,13 +207,13 @@ html {
     align-items: center;
   }
 
-  .detailPage-container {
+  .detail-page-container {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
   }
 
-  .detailPage-specification {
+  .detail-page-specification {
     margin-top: 40px;
     margin-bottom: 64px;
     width: 499px;
@@ -221,12 +221,12 @@ html {
     margin-left: 100px;
   }
 
-  .otherProduct-container {
+  .other-product-container {
     width: 374.45px;
     position: relative;
   }
 
-  .otherProduct-image {
+  .other-product-image {
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     width: 374.45px;
@@ -237,7 +237,7 @@ html {
     margin-top: 20px;
   }
 
-  .otherProductCard-button {
+  .other-product-card-button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -253,18 +253,18 @@ html {
     bottom: 46px;
   }
 
-  .otherProduct-container {
+  .other-product-container {
     width: 374.45px;
   }
 
-  .otherProduct-description {
+  .other-product-description {
     line-height: 27px;
   }
-  .otherProduct-text {
+  .other-product-text {
     height: 326.7px;
   }
 
-  .otherProductCard-icon {
+  .other-product-card-icon {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -275,7 +275,7 @@ html {
     margin-top: 0;
   }
 
-  .otherProduct-shortdescription {
+  .other-product-shortdescription {
     margin-top: 10.85px;
   }
 
