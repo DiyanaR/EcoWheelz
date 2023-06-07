@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { exportedProps } from "../Pages/CartPage";
 import "../css/Checkout.css";
+import { Link } from "react-router-dom";
 
 interface CheckoutFormData {
   fullName: string;
@@ -155,9 +156,11 @@ const CheckoutPage = ({
           )}
         </label>
         <br />
-        <button type="submit" className="button">
-          Submit
-        </button>
+        <Link to="/confirmation">
+          <button type="submit" className="button">
+            Submit
+          </button>
+        </Link>
       </form>
     </div>
   );

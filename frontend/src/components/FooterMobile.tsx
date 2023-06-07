@@ -22,7 +22,6 @@ function FooterMobile() {
 
   return (
     <>
-      {/* <div className="footericon-box"> */}
       <div className="footer-box">
         <div className="footer-secondbox">
           <div className="footericon-box">
@@ -83,7 +82,7 @@ function FooterMobile() {
             <div className="footer-dropdownbox">
               <div className="footer-textheader" onClick={toggleAboutusDetails}>
                 <p className="footer-text">About us</p>
-                {/* <img src="" alt="" /> */}
+
                 <div className="footer-iconarrow">
                   <img src="./icons/footer-arrow.png" alt="" />
                 </div>
