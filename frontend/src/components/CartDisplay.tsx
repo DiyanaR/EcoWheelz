@@ -1,15 +1,11 @@
 import styled from "styled-components";
-import { SetStateAction, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "./ContextProvider";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router";
+import { checkType } from "../Pages/CartPage";
 
-interface checkType {
-  checkPoint: string;
-  setCheckPoint: React.Dispatch<SetStateAction<string>>;
-}
-
-export default function CartDisplay({ checkPoint, setCheckPoint }: checkType) {
+export default function CartDisplay({ setCheckPoint }: checkType) {
   const {
     cartContext: { cartProducts },
     userContext: { login },

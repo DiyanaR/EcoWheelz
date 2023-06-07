@@ -6,15 +6,11 @@ import React, { useState, useEffect } from "react";
 import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
 import DetailPage from "./Pages/DetailPage";
-
 import FooterMobile from "./components/FooterMobile";
-
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import OrdersPage from "./Pages/OrdersPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
-import Checkout from "./components/Checkout";
-
 import CartPage from "./Pages/CartPage";
 
 function Root() {
@@ -56,9 +52,7 @@ export default function App() {
         { element: <LoginPage />, path: "/login" },
         { element: <OrdersPage />, path: "/orders" },
         { element: <ConfirmationPage />, path: "/confirmation" },
-        // { element: <Product />, path: "/product" }
         { element: <CartPage />, path: "/cart" },
-        { element: <Checkout />, path: "/checkout" },
       ],
       element: <Root />,
     },

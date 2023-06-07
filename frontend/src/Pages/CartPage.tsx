@@ -1,43 +1,37 @@
-import { useState, useContext } from "react";
+import { useState, SetStateAction } from "react";
 import styled from "styled-components";
 import Checkout from "../components/Checkout";
 import CartDisplay from "../components/CartDisplay";
-import { ShopContext } from "../components/ContextProvider";
-import axios from "axios";
+import ConfirmOrder from "../components/ConfirmOrder";
+
+interface CheckoutFormData {
+  fullName: string;
+  address: string;
+  zipCode: string;
+  state: string;
+  paymentMethod: string;
+}
+
+export interface checkType {
+  setCheckPoint: React.Dispatch<SetStateAction<string>>;
+}
+
+interface formType {
+  formData: CheckoutFormData;
+  setFormData: React.Dispatch<SetStateAction<CheckoutFormData>>;
+}
+
+export interface exportedProps extends checkType, formType {}
 
 export default function CartPage() {
   const [checkpoint, setCheckpoint] = useState("cart");
-  const {
-    userContext: { login },
-    cartContext: { cartProducts },
-  } = useContext(ShopContext);
-
-  async function handlePurchase() {
-    if (login) {
-      const orderInfo = {
-        productOrders: cartProducts.map((item) => ({
-          orderId: item.id,
-          quantity: item.quantity,
-        })),
-        fullName: "FullnameTest",
-        address: "SomeStreet123",
-        zipCode: "123 45",
-        state: "Gothenburg",
-        paymentMethod: "creditCard",
-      };
-
-      console.log(orderInfo);
-
-      try {
-        await axios.post("http://localhost:8080/order", {
-          headers: { Authorization: `Bearer ${login.token}` },
-          data: orderInfo,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
+  const [formData, setFormData] = useState<CheckoutFormData>({
+    fullName: "",
+    address: "",
+    zipCode: "",
+    state: "",
+    paymentMethod: "",
+  });
 
   return (
     <MainCartPage>
@@ -71,11 +65,23 @@ export default function CartPage() {
       </div>
 
       <div className="display-container">
-        {checkpoint === "cart" && (
-          <CartDisplay checkPoint={checkpoint} setCheckPoint={setCheckpoint} />
+        {checkpoint === "cart" && <CartDisplay setCheckPoint={setCheckpoint} />}
+
+        {checkpoint === "checkout" && (
+          <Checkout
+            formData={formData}
+            setFormData={setFormData}
+            setCheckPoint={setCheckpoint}
+          />
         )}
 
-        {checkpoint === "checkout" && <Checkout />}
+        {checkpoint === "confirm" && (
+          <ConfirmOrder
+            formData={formData}
+            setFormData={setFormData}
+            setCheckPoint={setCheckpoint}
+          />
+        )}
       </div>
     </MainCartPage>
   );
@@ -92,7 +98,6 @@ const MainCartPage = styled.div`
   font-family: "Red Hat Display";
 
   .progress-bar {
-    width: 440px;
     height: 100px;
     margin: auto;
 
@@ -108,7 +113,7 @@ const MainCartPage = styled.div`
       transition: all 0.7s ease;
 
       @media (max-width: 555px) {
-        width: 100px;
+        width: 50px;
       }
     }
 

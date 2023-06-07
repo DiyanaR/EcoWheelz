@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { ShopContext } from "./ContextProvider";
-
+import { exportedProps } from "../Pages/CartPage";
 import "../css/Checkout.css";
 import axios from "axios";
 
@@ -12,14 +12,11 @@ interface CheckoutFormData {
   paymentMethod: string;
 }
 
-const CheckoutPage = () => {
-  const [formData, setFormData] = useState<CheckoutFormData>({
-    fullName: "",
-    address: "",
-    zipCode: "",
-    state: "",
-    paymentMethod: "",
-  });
+const CheckoutPage = ({
+  formData,
+  setFormData,
+  setCheckPoint,
+}: exportedProps) => {
   const {
     userContext: { login },
     cartContext: { cartProducts },
@@ -56,7 +53,7 @@ const CheckoutPage = () => {
       errors.address = "Please enter your address";
     }
 
-   const zipCodeValidaton=/^\d{5}$/;
+    const zipCodeValidaton = /^\d{5}$/;
     if (!formData.zipCode) {
       errors.zipCode = "Please enter your ZIP code";
     } else if (!zipCodeValidaton.test(formData.zipCode)) {
@@ -74,47 +71,11 @@ const CheckoutPage = () => {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return;
+    } else {
+      setFormErrors({});
+      setCheckPoint("confirm");
     }
-
-    console.log(formData);
-    setFormErrors({});
-
-    setFormData({
-      fullName: "",
-      address: "",
-      zipCode: "",
-      state: "",
-      paymentMethod: "",
-    });
   };
-
-  async function handlePurchase() {
-    if (login) {
-      const orderInfo = {
-        productOrders: cartProducts.map((item) => ({
-          orderId: item.id,
-          quantity: item.quantity,
-        })),
-        fullName: formData.fullName,
-        adress: formData.address,
-        ZipCode: formData.zipCode,
-        state: formData.state,
-        paymentMethod: formData.paymentMethod,
-
-      };
-
-      try {
-        await axios.post("http://localhost:8080/order", {
-          headers: { Authorization: `Bearer ${login.token}` },
-          data: orderInfo,
-        });
-        // console.log("order details:",response.data);
-        // console.log("Order placed successfully!");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
 
   return (
     <div className="checkout-page">
