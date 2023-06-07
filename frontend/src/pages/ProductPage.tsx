@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import React from "react";
 import "../css/ProductPage.css";
 import "../css/ProductCard.css";
 import ShowInfoModal from "../components/ShowInfoModal";
@@ -49,8 +48,6 @@ function ProductPage() {
   }, []);
 
   useEffect(() => {
-    console.log("Showmore", showMore);
-    console.log("products", products);
     if (showMore) {
       setVisibleProducts(products);
     } else {

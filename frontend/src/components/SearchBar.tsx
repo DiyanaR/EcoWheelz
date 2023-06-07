@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import "../css/SearchBar.css";
 import { Link } from "react-router-dom";
 

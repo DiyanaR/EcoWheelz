@@ -9,14 +9,15 @@ function Contact() {
     message: "",
   });
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-
   };
 
   return (
@@ -62,7 +63,6 @@ function Contact() {
       </form>
     </div>
   );
-
-};
+}
 
 export default Contact;

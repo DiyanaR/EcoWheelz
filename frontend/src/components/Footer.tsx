@@ -1,11 +1,10 @@
-import React from "react";
 import "../css/Footer.css";
 
 function Footer() {
   return (
     <>
       <div className="footer">
-        <hr className="product-footer-line" />
+        <hr className="Productfooter-line" />
         <div className="footer-container">
           <div className="desktop-icon">
             <img

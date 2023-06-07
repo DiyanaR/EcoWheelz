@@ -5,7 +5,7 @@ import "../css/ProductCard.css";
 import { useParams } from "react-router-dom";
 import { useRef } from "react";
 import SearchBar from "../components/SearchBar";
-import { Cart, ShopContext } from "../components/ContextProvider";
+import { ShopContext } from "../components/ContextProvider";
 import { ReactComponent as Arrowicon } from "../assets/arrow.svg";
 
 interface Product {
@@ -34,7 +34,6 @@ export default function DetailPage() {
   const setRatingAndSave = (value: number) => {
     setRating(value);
     localStorage.setItem("rating", value.toString());
-    console.log(value);
   };
 
   const {
