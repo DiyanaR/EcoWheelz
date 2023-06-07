@@ -13,7 +13,7 @@ interface CheckoutFormData {
 }
 
 export interface checkType {
-  setCheckPoint: React.Dispatch<SetStateAction<string>>;
+  setCheckPoint: React.Dispatch<SetStateAction<number>>;
 }
 
 interface formType {
@@ -24,7 +24,7 @@ interface formType {
 export interface exportedProps extends checkType, formType {}
 
 export default function CartPage() {
-  const [checkpoint, setCheckpoint] = useState("cart");
+  const [checkpoint, setCheckpoint] = useState(2);
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: "",
     address: "",
@@ -41,33 +41,29 @@ export default function CartPage() {
           <div className="ball ball-active" />
         </div>
 
-        <div
-          className={checkpoint === "checkout" ? "line line-active" : "line"}
-        />
+        <div className={checkpoint >= 1 ? "line line-active" : "line"} />
 
         <div className="checkpoint">
-          <span>Checkout</span>
-          <div
-            className={checkpoint === "checkout" ? "ball ball-active" : "ball"}
-          />
+          <span className={checkpoint >= 1 ? "text text-active" : "text"}>
+            Checkout
+          </span>
+          <div className={checkpoint >= 1 ? "ball ball-active" : "ball"} />
         </div>
 
-        <div
-          className={checkpoint === "confirm" ? "line line-active" : "line"}
-        />
+        <div className={checkpoint >= 2 ? "line line-active" : "line"} />
 
         <div className="checkpoint">
-          <span>Confirmation</span>
-          <div
-            className={checkpoint === "confirm" ? "ball ball-active" : "ball"}
-          />
+          <span className={checkpoint >= 2 ? "text text-active" : "text"}>
+            Confirmation
+          </span>
+          <div className={checkpoint >= 2 ? "ball ball-active" : "ball"} />
         </div>
       </div>
 
       <div className="display-container">
-        {checkpoint === "cart" && <CartDisplay setCheckPoint={setCheckpoint} />}
+        {checkpoint === 0 && <CartDisplay setCheckPoint={setCheckpoint} />}
 
-        {checkpoint === "checkout" && (
+        {checkpoint === 1 && (
           <Checkout
             formData={formData}
             setFormData={setFormData}
@@ -75,7 +71,7 @@ export default function CartPage() {
           />
         )}
 
-        {checkpoint === "confirm" && (
+        {checkpoint === 2 && (
           <ConfirmOrder
             formData={formData}
             setFormData={setFormData}
@@ -132,6 +128,7 @@ const MainCartPage = styled.div`
         left: 50%;
         transform: translateX(-50%);
 
+        margin: 0 !important;
         color: #ffffff97;
         font-weight: 600;
         font-size: 20px;

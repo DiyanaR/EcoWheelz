@@ -74,7 +74,7 @@ const CheckoutPage = ({
       return;
     } else {
       setFormErrors({});
-      setCheckPoint("confirm");
+      setCheckPoint(2);
     }
   };
 
@@ -155,9 +155,18 @@ const CheckoutPage = ({
           )}
         </label>
         <br />
-        <button type="submit" className="button">
-          Submit
-        </button>
+        <div className="btn-container">
+          <button
+            type="button"
+            className="button"
+            onClick={() => setCheckPoint(0)}
+          >
+            Cancel
+          </button>
+          <button type="submit" className="button">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

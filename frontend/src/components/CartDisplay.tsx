@@ -84,10 +84,7 @@ export default function CartDisplay({ setCheckPoint }: checkType) {
           </div>
         </div>
         {login ? (
-          <button
-            onClick={() => setCheckPoint("checkout")}
-            className="checkout-btn"
-          >
+          <button onClick={() => setCheckPoint(1)} className="checkout-btn">
             Checkout
           </button>
         ) : (
