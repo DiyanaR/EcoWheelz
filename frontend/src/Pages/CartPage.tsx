@@ -24,7 +24,7 @@ interface formType {
 export interface exportedProps extends checkType, formType {}
 
 export default function CartPage() {
-  const [checkpoint, setCheckpoint] = useState(2);
+  const [checkpoint, setCheckpoint] = useState(0);
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: "",
     address: "",
