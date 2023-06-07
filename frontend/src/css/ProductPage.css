@@ -1,14 +1,11 @@
-.ProductPage-container {
+.productPage-container {
   background-color: #222222;
-  /* width: 326px; */
   color: #faf9f8;
   border-radius: 38.03px;
   gap: 10.14px;
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: 600;
-  /* line-height: 34px; */
-  /* padding: 41px 0px 41px 0px; */
   align-items: center;
   flex-direction: column;
   position: relative;
@@ -17,35 +14,27 @@
   width: fit-content;
   transition: border-color 0.3s ease;
   border: 2px solid transparent;
-  /* margin-bottom: 100px; */
-
-  /* width: 326px; */
 }
 
-.ProductPage-button {
+.productPage-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-items: center; */
   padding: 0px;
-  /* gap: 68px; */
-  /* height: 32px; */
   flex: none;
   order: 4;
   align-self: stretch;
   flex-grow: 0;
   padding-bottom: 30px;
   margin-top: 24px;
-  /* width: 116px; */
-  /* height: 700px; */
   align-items: center;
 }
 
-.ProductPage-text {
+.productPage-text {
   margin: 15px;
 }
 
-.Product-line {
+.product-line {
   border: none;
   height: 2px;
   background-color: #9ae5bd;
@@ -62,29 +51,27 @@
   left: 0;
 }
 
-.ProductCardPage-icon {
+.productCardPage-icon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.Product-icon {
+.product-icon {
   align-items: center;
 }
 
-.Product-show-more {
+.product-show-more {
   display: flex;
   justify-content: center;
 }
 
-.ProductPage-info {
+.productPage-info {
   border-radius: 30px;
 }
 
-.ProductPage-image {
-  /* width: 544px; */
-  /* height: 479.6px;  */
+.productPage-image {
   border-top-left-radius: 38.03px;
   border-top-right-radius: 38.03px;
   object-fit: cover;
@@ -101,18 +88,17 @@
   display: none;
 }
 
-.ProductPage-list {
+.productPage-list {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 64px; */
   padding: 16px 0 0 0;
   margin: 0;
   margin-bottom: 50px;
 }
 
-.ProductPage-title {
+.productPage-title {
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 24px;
@@ -146,44 +132,37 @@
   z-index: 20;
 }
 
-.ProductPage-container:hover {
-  /* Stilar för hover-tillstånd */
+.productPage-container:hover {
   border-color: #9ae5bd;
 }
 
 @media (max-width: 850px) {
-  .ProductPage-container {
+  .productPage-container {
     margin-top: 0;
     transition: border-color 0.3s ease;
   }
   .desktop-serachbar {
     display: none;
   }
-  /* .Product-line {
-    display: none;
-  } */
 
-  .ProductPage-container:hover {
+  .productPage-container:hover {
     border-color: #9ae5bd;
   }
 }
 
 @media (min-width: 850px) {
-  .ProductPage-image {
-    /* border-top-left-radius: 8px;
-    object-fit: cover; */
+  .productPage-image {
     width: 350px;
     height: 350px;
     border-radius: 38.03px;
   }
 
-  .ProductPage-container {
+  .productPage-container {
     display: flex;
     flex-direction: row;
     margin-right: 5%;
     margin-left: 5%;
     width: fit-content;
-    /* margin-top: 32px; */
     transition: border-color 0.3s ease;
   }
 
@@ -191,15 +170,11 @@
     display: block;
   }
 
-  /* .Product-line {
-    display: none;
-  } */
-
   .short-description {
     display: block;
   }
 
-  .Product-line {
+  .product-line {
     display: none;
   }
 
@@ -207,26 +182,24 @@
     top: -20px !important;
   }
 
-  .ProductPage-container:hover {
+  .productPage-container:hover {
     border-color: #9ae5bd;
   }
 }
 
 @media (min-width: 1312px) {
-  .ProductPage-container {
+  .productPage-container {
     display: flex;
     flex-direction: row;
     margin-left: 5%;
     margin-right: 5%;
     transition: border-color 0.3s ease;
-
-    /* width: 100%; */
   }
-  .ProductPage-image {
+  .productPage-image {
     width: 479px;
     height: 479px;
   }
-  .ProductPage-box {
+  .productPage-box {
     width: 1312px;
     margin: auto;
   }
@@ -236,25 +209,20 @@
   .subtitle {
     display: block;
   }
-  .ProductPage-text {
+  .productPage-text {
     padding: 0px 15.2126px;
     height: 136px;
     position: relative;
-    /* width: 644px; */
   }
-  .ProductPage-info {
-    /* width: 645px; */
+  .productPage-info {
     height: 270px;
   }
-  /* .Product-line {
-    display: none;
-  } */
 
   .desktop-serachbar {
     top: -13px !important;
   }
 
-  .ProductPage-container:hover {
+  .productPage-container:hover {
     border-color: #9ae5bd;
   }
 }

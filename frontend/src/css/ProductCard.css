@@ -1,9 +1,9 @@
-.Product-image {
+.product-image {
   height: 342.28px;
   width: 377.78px;
 }
 
-.Product-container {
+.product-container {
   background-color: #222222;
   width: 326px;
   color: #faf9f8;
@@ -23,11 +23,11 @@
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
-.PopularProduct-shortdescription {
+.popularProduct-shortdescription {
   display: none;
 }
 
-.ProductViewMore-button {
+.productViewMore-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,11 +51,11 @@
   line-height: 28.38px;
 }
 
-.Product-container:target {
+.product-container:target {
   height: 462px;
 }
 
-.Product-image {
+.product-image {
   height: 326px;
   width: 326px;
 
@@ -64,7 +64,7 @@
   border-top-left-radius: 38.03px;
 }
 
-.Product-list {
+.product-list {
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -76,12 +76,12 @@
   margin-bottom: 40px;
 }
 
-.Product-box {
+.product-box {
   width: 100%;
   margin-top: 10px;
 }
 
-.Product-text {
+.product-text {
   position: relative;
   padding-right: 15px;
   padding-left: 15px;
@@ -89,17 +89,17 @@
   width: 100%;
 }
 
-.Product-price {
+.product-price {
   font-size: 24px;
   margin: 0;
 }
 
-.ProductCard-title {
+.productCard-title {
   margin-bottom: 15px;
   font-size: 24px;
 }
 
-.Product-line {
+.product-line {
   border: none;
   height: 2px;
   background-color: #9ae5bd;
@@ -116,7 +116,7 @@
   left: 0;
 }
 
-.Product-button {
+.product-button {
   background-color: transparent;
   border: 2px solid #9ae5bd;
   padding: 10px 12px;
@@ -127,24 +127,22 @@
   cursor: pointer;
 }
 
-.Product-button:hover {
+.product-button:hover {
   background-color: #9ae5bd;
   color: black;
 }
 
-.ProductCard-button {
+.productCard-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0px;
-
   flex: none;
   order: 4;
   align-self: stretch;
   flex-grow: 0;
   padding-bottom: 30px;
-
   bottom: 0;
 
   margin-top: auto;
@@ -155,13 +153,13 @@
   align-items: center;
 }
 
-.ProductCard-icon {
+.productCard-icon {
   flex-direction: row;
   justify-content: space-between;
   display: flex;
 }
 
-.Product-icon {
+.product-icon {
   width: 25px;
   height: 25px;
   align-items: center;
@@ -171,7 +169,7 @@
   transform: rotate(180deg) !important;
 }
 
-.Product-header {
+.product-header {
   font-family: "Red Hat Display";
   font-style: Bold;
   font-size: 32px;
@@ -180,68 +178,68 @@
   margin-top: 80px;
 }
 
-.Product-show-more {
+.product-show-more {
   text-align: center;
   display: flex;
   justify-content: center;
 }
 
-.Product-description {
+.product-description {
   margin-top: 10px;
   font-size: 14px;
 }
 
-.ProductCard-button {
+.productCard-button {
   margin-top: 10px;
 }
 
-.ShowInfoModal {
+.showInfoModal {
   margin-top: 10px;
 }
 
-.Product-subtitle {
+.product-subtitle {
   display: none;
 }
 
-.Product-iconBox {
+.product-iconBox {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.Modal-container {
+.modal-container {
   width: 296px;
 }
 
-.ProductPage-button {
+.productPage-button {
   display: flex;
   align-items: center;
 }
 
 @media (min-width: 850px) {
-  .PopularProduct-shortdescription {
+  .popularProduct-shortdescription {
     display: block;
   }
 
-  .Product-list {
+  .product-list {
     display: flex;
     flex-direction: row;
   }
 
-  .Product-image {
+  .product-image {
     width: 399.48px;
     height: 399.48px;
     border-top-left-radius: 38.03px;
     border-top-right-radius: 38.03px;
   }
-  .Product-text {
+  .product-text {
     height: 300.84px;
 
     position: relative;
   }
 
-  .ProductCard-button {
+  .productCard-button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -260,7 +258,7 @@
     margin-top: auto;
   }
 
-  .Product-container {
+  .product-container {
     width: 399.48px;
     border-radius: 38.03px;
     flex-wrap: nowrap;
@@ -268,22 +266,22 @@
     padding-bottom: 20px;
   }
 
-  .Product-line {
+  .product-line {
     display: none;
   }
 
-  .Product-icon {
+  .product-icon {
     display: none;
   }
-  .Product-subtitle {
+  .product-subtitle {
     display: block;
   }
 
-  .Product-container::-webkit-scrollbar {
+  .product-container::-webkit-scrollbar {
     display: none;
   }
 
-  .Product-container:hover {
+  .product-container:hover {
     border-color: #9ae5bd;
   }
 }

@@ -2,24 +2,22 @@ html {
   scroll-behavior: smooth;
 }
 
-.DetailPage-box {
+.detailPage-box {
   max-width: 1200px;
   margin: auto;
 }
 
-.OtherProductCard-button {
+.otherProductCard-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0px;
-  /* gap: 150px; */
   height: 32px;
   flex: none;
   order: 4;
   align-self: stretch;
   flex-grow: 0;
   margin-top: 20px;
-  /* position: absolute; */
   bottom: 46px;
   position: absolute;
   width: 90%;
@@ -47,14 +45,14 @@ html {
   }
 }
 
-.DetailPage-info {
+.detailPage-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 64px;
 }
 
-.DetailPage-image {
+.detailPage-image {
   border-radius: 30px;
   height: 326px;
   width: 326px;
@@ -62,7 +60,7 @@ html {
   margin-top: 64px;
 }
 
-.DetailPage-text {
+.detailPage-text {
   color: #faf9f8;
   width: 326px;
   font-family: "Red Hat Display";
@@ -70,7 +68,7 @@ html {
   margin-right: 32px;
 }
 
-.DetailPage-container {
+.detailPage-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,7 +102,7 @@ html {
   display: flex;
 }
 
-.OtherProduct-container {
+.otherProduct-container {
   background-color: #222222;
   color: #faf9f8;
   border-radius: 30px;
@@ -118,10 +116,9 @@ html {
   width: 326px;
   height: 671px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
-  /* border: 2px solid transparent; */
 }
 
-.OtherProduct-image {
+.otherProduct-image {
   width: 326px;
   height: 326px;
   object-fit: cover;
@@ -129,7 +126,7 @@ html {
   border-top-left-radius: 30px;
 }
 
-.OtherProduct-line {
+.otherProduct-line {
   border: none;
   height: 2px;
   background-color: #9ae5bd;
@@ -141,7 +138,7 @@ html {
   border-radius: 1px;
 }
 
-.DetailPage-list {
+.detailPage-list {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -152,7 +149,7 @@ html {
   padding: 0;
 }
 
-.OtherProduct-text {
+.otherProduct-text {
   padding-left: 15px;
   padding-right: 15px;
   position: relative;
@@ -174,54 +171,49 @@ html {
   .desktop-serachbar {
     display: none;
   }
-  /* .OtherProduct-container:hover {
-    border-color: #9ae5bd;
-  } */
 }
 
 @media (min-width: 1000px) {
-  .DetailPage-list {
+  .detailPage-list {
     display: flex;
     flex-direction: row;
     padding: 0;
   }
 
-  .OtherProduct-text {
+  .otherProduct-text {
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
   }
 
-  .DetailPage-info {
+  .detailPage-info {
     flex-direction: row;
     justify-content: center;
     padding-top: 64px;
     align-items: center;
   }
 
-  .DetailPage-image {
+  .detailPage-image {
     width: 500px;
     height: 500px;
     border-radius: 30px;
   }
 
-  .DetailPage-text {
+  .detailPage-text {
     width: 507px;
     margin-top: 0;
     height: 470px;
-
     margin-left: 20px;
     align-items: center;
-    /* height: 260px; */
   }
 
-  .DetailPage-container {
+  .detailPage-container {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
   }
 
-  .DetailPage-specification {
+  .detailPage-specification {
     margin-top: 40px;
     margin-bottom: 64px;
     width: 499px;
@@ -229,23 +221,23 @@ html {
     margin-left: 100px;
   }
 
-  .OtherProduct-container {
+  .otherProduct-container {
     width: 374.45px;
     position: relative;
   }
 
-  .OtherProduct-image {
+  .otherProduct-image {
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     width: 374.45px;
     height: 374.45px;
   }
 
-  .Product-list {
+  .product-list {
     margin-top: 20px;
   }
 
-  .OtherProductCard-button {
+  .otherProductCard-button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -261,29 +253,29 @@ html {
     bottom: 46px;
   }
 
-  .OtherProduct-container {
+  .otherProduct-container {
     width: 374.45px;
   }
 
-  .OtherProduct-description {
+  .otherProduct-description {
     line-height: 27px;
   }
-  .OtherProduct-text {
+  .otherProduct-text {
     height: 326.7px;
   }
 
-  .OtherProductCard-icon {
+  .otherProductCard-icon {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
-  .Product-title {
+  .product-title {
     margin-bottom: 5px;
     margin-top: 0;
   }
 
-  .OtherProduct-shortdescription {
+  .otherProduct-shortdescription {
     margin-top: 10.85px;
   }
 

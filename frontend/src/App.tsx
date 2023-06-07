@@ -1,7 +1,12 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ContextProvider } from "./components/ContextProvider";
-import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  createHashRouter,
+  useLocation,
+} from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import LandingPage from "./Pages/LandingPage";
 import ProductPage from "./Pages/ProductPage";
@@ -18,6 +23,7 @@ import CartPage from "./Pages/CartPage";
 
 function Root() {
   const [showMobile, setShowMobile] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,6 +36,12 @@ function Root() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, [pathname]);
 
   return (
     <>

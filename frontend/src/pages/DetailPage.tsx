@@ -142,18 +142,18 @@ export default function DetailPage() {
     <>
       <div ref={categoriesRef}>
         {filteredProduct.length > 0 && (
-          <div id="top " className="DetailPage-box">
+          <div id="top " className="detailPage-box">
             <div className="desktop-serachbar">
               <SearchBar onSearch={handleSearch} />
             </div>
-            <div className="DetailPage-info">
+            <div className="detailPage-info">
               <img
-                className="DetailPage-image"
+                className="detailPage-image"
                 src={filteredProduct[0].img}
                 alt={filteredProduct[0].title}
               />
-              <div className="DetailPage-text">
-                <div className="DetailPage-shortText">
+              <div className="detailPage-text">
+                <div className="detailPage-shortText">
                   <h1>
                     {filteredProduct[0].title.charAt(0).toUpperCase() +
                       filteredProduct[0].title.slice(1)}
@@ -161,7 +161,7 @@ export default function DetailPage() {
                   <p>{filteredProduct[0].subtitle}</p>
                   <p>{filteredProduct[0].longdescription}</p>
                   <h2>{filteredProduct[0].price}:-</h2>
-                  <div className="DetailPage-container">
+                  <div className="detailPage-container">
                     <div>
                       {[1, 2, 3, 4, 5].map((value) => (
                         <span
@@ -181,7 +181,7 @@ export default function DetailPage() {
                     {/* <img src="../icons/stars.png" alt="icon" /> */}
                     <button
                       onClick={addProductToCart}
-                      className="Product-button"
+                      className="product-button"
                     >
                       Add to cart
                     </button>
@@ -191,7 +191,7 @@ export default function DetailPage() {
             </div>
 
             <div className="container-specification">
-              <div className="Specification-header">
+              <div className="specification-header">
                 <h2>Specifikations</h2>
               </div>
               <ul>
@@ -203,32 +203,32 @@ export default function DetailPage() {
               </ul>
             </div>
 
-            <h1 className="Product-header">Popular products</h1>
+            <h1 className="product-header">Popular products</h1>
             {products.length > 0 ? (
-              <ol className="DetailPage-list">
+              <ol className="detailPage-list">
                 {products.slice(0, 2).map((product) => (
                   <li key={product.id}>
-                    <div className="OtherProduct-container">
+                    <div className="otherProduct-container">
                       <img
-                        className="OtherProduct-image"
+                        className="otherProduct-image"
                         src={product.img}
                         alt={product.img}
                       />
 
-                      <div className="OtherProduct-text">
-                        <h2 className="Product-title">{product.title}</h2>
+                      <div className="otherProduct-text">
+                        <h2 className="product-title">{product.title}</h2>
                         <h3>{product.subtitle}</h3>
-                        <p className="OtherProduct-shortdescription">
+                        <p className="otherProduct-shortdescription">
                           {product.shortdescription}
                         </p>
 
-                        <div className="OtherProductCard-button">
-                          <p className="Product-price">{product.price}:-</p>
+                        <div className="otherProductCard-button">
+                          <p className="product-price">{product.price}:-</p>
                           <Link
                             to={`/detailpage/${product.title}`}
                             onClick={handletopClick}
                           >
-                            <button className="Product-button">
+                            <button className="product-button">
                               View product
                             </button>
                           </Link>
