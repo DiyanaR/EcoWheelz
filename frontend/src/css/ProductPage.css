@@ -1,4 +1,4 @@
-.productPage-container {
+.product-page-container {
   background-color: #222222;
   color: #faf9f8;
   border-radius: 38.03px;
@@ -16,7 +16,7 @@
   border: 2px solid transparent;
 }
 
-.productPage-button {
+.product-page-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,7 +30,7 @@
   align-items: center;
 }
 
-.productPage-text {
+.product-page-text {
   margin: 15px;
 }
 
@@ -51,7 +51,7 @@
   left: 0;
 }
 
-.productCardPage-icon {
+.product-card-page-icon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -67,11 +67,11 @@
   justify-content: center;
 }
 
-.productPage-info {
+.product-page-info {
   border-radius: 30px;
 }
 
-.productPage-image {
+.product-page-image {
   border-top-left-radius: 38.03px;
   border-top-right-radius: 38.03px;
   object-fit: cover;
@@ -88,7 +88,7 @@
   display: none;
 }
 
-.productPage-list {
+.product-page-list {
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@
   margin-bottom: 50px;
 }
 
-.productPage-title {
+.product-page-title {
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 24px;
@@ -132,32 +132,32 @@
   z-index: 20;
 }
 
-.productPage-container:hover {
+.product-page-container:hover {
   border-color: #9ae5bd;
 }
 
 @media (max-width: 850px) {
-  .productPage-container {
-    margin-top: 0;
+  .product-page-container {
+    /* margin-top: 0; */
     transition: border-color 0.3s ease;
   }
   .desktop-serachbar {
     display: none;
   }
 
-  .productPage-container:hover {
+  .product-page-container:hover {
     border-color: #9ae5bd;
   }
 }
 
 @media (min-width: 850px) {
-  .productPage-image {
+  .product-page-image {
     width: 350px;
     height: 350px;
     border-radius: 38.03px;
   }
 
-  .productPage-container {
+  .product-page-container {
     display: flex;
     flex-direction: row;
     margin-right: 5%;
@@ -182,24 +182,24 @@
     top: -20px !important;
   }
 
-  .productPage-container:hover {
+  .product-page-container:hover {
     border-color: #9ae5bd;
   }
 }
 
 @media (min-width: 1312px) {
-  .productPage-container {
+  .product-page-container {
     display: flex;
     flex-direction: row;
     margin-left: 5%;
     margin-right: 5%;
     transition: border-color 0.3s ease;
   }
-  .productPage-image {
+  .product-page-image {
     width: 479px;
     height: 479px;
   }
-  .productPage-box {
+  .product-page-box {
     width: 1312px;
     margin: auto;
   }
@@ -209,12 +209,12 @@
   .subtitle {
     display: block;
   }
-  .productPage-text {
+  .product-page-text {
     padding: 0px 15.2126px;
     height: 136px;
     position: relative;
   }
-  .productPage-info {
+  .product-page-info {
     height: 270px;
   }
 
@@ -222,7 +222,7 @@
     top: -13px !important;
   }
 
-  .productPage-container:hover {
+  .product-page-container:hover {
     border-color: #9ae5bd;
   }
 }

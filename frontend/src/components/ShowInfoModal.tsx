@@ -8,7 +8,7 @@ interface ShowInfoModalProps {
 
 function ShowInfoModal(props: ShowInfoModalProps) {
   return (
-    <div className="Modal-container">
+    <div className="modal-container">
       <p>{props.subtitle}</p>
       <p>{props.shortdescription}</p>
     </div>
