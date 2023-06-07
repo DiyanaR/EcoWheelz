@@ -43,11 +43,9 @@ function SearchBar({ onSearch }: SearchBarProps) {
       );
       setResults(filteredResults);
       onSearch(searchQuery);
-
     } else {
       setResults([]);
       onSearch("");
-
     }
   };
 
@@ -59,7 +57,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
     } else {
       setResults([]);
       onSearch("");
-
     }
   };
 
@@ -71,7 +68,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
   return (
     <>
       <form className="search-bar">
-
         <input
           type="text"
           id="searchQuery"
@@ -80,7 +76,6 @@ function SearchBar({ onSearch }: SearchBarProps) {
           onChange={handleInputChange}
           placeholder="&#x1F50D; Search"
           className="search-bar-input"
-
         />
 
         {searchQuery && searchQuery.length >= 1 && (
@@ -96,7 +91,7 @@ function SearchBar({ onSearch }: SearchBarProps) {
                   <img
                     src={product.img}
                     alt={product.title}
-                    className="product-image"
+                    className="product-search-image"
                   />
                   <div className="product-info">
                     <h3>{product.title}</h3>

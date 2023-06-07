@@ -79,40 +79,40 @@ function ProductPage() {
 
   return (
     <>
-      <div className="ProductPage-box">
+      <div className="productPage-box">
         <div className="desktop-serachbar">
           <SearchBar onSearch={handleSearch} />
         </div>
         <div ref={categoriesRef}>
           {products.length > 0 ? (
-            <ol className="ProductPage-list">
+            <ol className="productPage-list">
               {visibleProducts.map((product) => (
                 <li key={product.id}>
-                  <div className="ProductPage-container">
+                  <div className="productPage-container">
                     <img
-                      className="ProductPage-image"
+                      className="productPage-image"
                       src={product.img}
                       alt={product.img}
                     />
 
-                    <div className="ProductPage-info">
-                      <div className="ProductPage-text">
-                        <div className="ProductCardPage-icon">
-                          <h1 className="ProductPage-title">{product.title}</h1>
+                    <div className="productPage-info">
+                      <div className="productPage-text">
+                        <div className="productCardPage-icon">
+                          <h1 className="productPage-title">{product.title}</h1>
                           <img
                             className={
                               selectedProductId === product.id
-                                ? "Product-icon rotate"
-                                : "Product-icon"
+                                ? "product-icon rotate"
+                                : "product-icon"
                             }
                             src="./icons/placeholder.png"
                             alt="icon"
                             onClick={() => handleShowText(product.id)}
                           />
                         </div>
-                        <hr className="Product-line" />
+                        <hr className="product-line" />
                         {showModal && (
-                          <div className="Modal-show">
+                          <div className="modal-show">
                             {selectedProductId === product.id && (
                               <ShowInfoModal
                                 subtitle={product.subtitle}
@@ -127,10 +127,10 @@ function ProductPage() {
                           {product.shortdescription}
                         </p>
 
-                        <div className="ProductPage-button">
-                          <p className="Product-price">{product.price}:-</p>
+                        <div className="productPage-button">
+                          <p className="product-price">{product.price}:-</p>
                           <Link to={`/detailpage/${product.title}`}>
-                            <button className="Product-button">
+                            <button className="product-button">
                               View product
                             </button>
                           </Link>
@@ -143,10 +143,10 @@ function ProductPage() {
             </ol>
           ) : null}
         </div>
-        <div className="Product-show-more">
+        <div className="product-show-more">
           <Link to={`/productpage`}>
             {!showMore && (
-              <button className="Product-button" onClick={handleShowMore}>
+              <button className="product-button" onClick={handleShowMore}>
                 View more
               </button>
             )}

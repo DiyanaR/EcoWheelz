@@ -51,26 +51,25 @@ export default function ProductsCards() {
 
   return (
     <>
-      <h1 className="Product-header">Popular products</h1>
-      {/* <div className="Product-box"> */}
+      <h1 className="product-header">Popular products</h1>
       {products.length > 0 ? (
-        <div className="Product-list">
+        <div className="product-list">
           {products.slice(0, 3).map((product) => (
             <li key={product.id}>
-              <div className="Product-container">
+              <div className="product-container">
                 <img
-                  className="Product-image"
+                  className="product-image"
                   src={product.img}
                   alt={product.img}
                 />
 
-                <div className="Product-text">
-                  <div className="Product-iconBox">
-                    <h2 className="ProductCard-title">{product.title}</h2>
+                <div className="product-text">
+                  <div className="product-iconBox">
+                    <h2 className="productCard-title">{product.title}</h2>
 
                     <img
                       className={
-                        showModal ? "Product-icon rotate" : "Product-icon"
+                        showModal ? "product-icon rotate" : "product-icon"
                       }
                       src={"./icons/placeholder.png"}
                       alt="icon"
@@ -81,10 +80,8 @@ export default function ProductsCards() {
                     />
                   </div>
 
-                  <hr className="Product-line" />
-                  <div className="ProductCard-icon">
-                    {/* {selectedProductId === null ? ( */}
-
+                  <hr className="product-line" />
+                  <div className="productCard-icon">
                     {selectedProductId === product.id && (
                       <ShowInfoModal
                         subtitle={product.subtitle}
@@ -92,19 +89,17 @@ export default function ProductsCards() {
                         closeModal={closeModal}
                       />
                     )}
-
-                    {/* // )} */}
                   </div>
 
-                  <h3 className="Product-subtitle">{product.subtitle}</h3>
-                  <p className="PopularProduct-shortdescription">
+                  <h3 className="product-subtitle">{product.subtitle}</h3>
+                  <p className="popularProduct-shortdescription">
                     {product.shortdescription}
                   </p>
-                  <div className="ProductCard-button">
-                    <p className="Product-price">{product.price}:-</p>
+                  <div className="productCard-button">
+                    <p className="product-price">{product.price}:-</p>
 
                     <Link to={`/detailpage/${product.title}`}>
-                      <button className="Product-button">View product</button>
+                      <button className="product-button">View product</button>
                     </Link>
                   </div>
                 </div>
@@ -113,17 +108,16 @@ export default function ProductsCards() {
           ))}
         </div>
       ) : null}
-      <div className="Product-show-more">
+      <div className="product-show-more">
         <Link to={`/productpage`}>
           <button
-            className="Product-button"
+            className="product-button"
             onClick={() => setShowText(!showText)}
           >
             View all products
           </button>
         </Link>
       </div>
-      {/* </div> */}
     </>
   );
 }

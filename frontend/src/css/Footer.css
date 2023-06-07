@@ -221,7 +221,6 @@ label {
   border-top-width: 2px;
   border-radius: 1px;
   width: 100%;
-  /* display: block; */
   position: absoulte;
   bottom: 0;
   left: 0;
@@ -256,8 +255,6 @@ label {
   display: flex;
   flex-direction: column;
 }
-
-/* ----------- */
 
 @media (max-width: 768px) {
   .footer-container {

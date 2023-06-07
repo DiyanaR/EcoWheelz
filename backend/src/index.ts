@@ -421,10 +421,10 @@ app.get("/products/:title", async (req, res) => {
     if (product) {
       res.json([product]);
     } else {
-      res.status(404).json({ error: "Produkten hittades inte" });
+      res.status(404).json({ error: "Product not found" });
     }
   } catch (error) {
     console.error("Error: " + error);
-    res.status(500).json({ error: "fel inträffade vid hämtning av produkten" });
+    res.status(500).json({ error: "error while fetching products" });
   }
 });

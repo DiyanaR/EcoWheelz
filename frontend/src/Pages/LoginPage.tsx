@@ -120,7 +120,7 @@ export default function SignupPage() {
                 <div className="password">
                   <label>Password</label>
                   <input
-                    type="text"
+                    type="password"
                     name="password"
                     onChange={handleChange}
                     value={values.password}
@@ -199,6 +199,22 @@ const FormSignup = styled.div`
   }
 
   input[type="text"] {
+    background-color: transparent;
+    border: 2px solid #9ae5bd;
+    padding: 12px 18px;
+    border-radius: 16px;
+    color: white;
+    font-size: 20px;
+
+    outline: none;
+
+    width: 100%;
+    &:focus {
+      border: 2px solid #3cf793;
+    }
+  }
+
+  input[type="password"] {
     background-color: transparent;
     border: 2px solid #9ae5bd;
     padding: 12px 18px;
