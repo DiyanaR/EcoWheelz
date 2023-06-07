@@ -54,8 +54,6 @@ export default function SignupPage() {
               password: values.password,
             });
 
-            console.log(res);
-
             if (res.status === 201 || res.status === 200) {
               // Save the user information in useContext state
               setLogin({

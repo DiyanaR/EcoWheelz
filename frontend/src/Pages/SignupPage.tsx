@@ -132,7 +132,7 @@ export default function SignupPage() {
 
             setTimeout(() => {
               setErrorMsg(false);
-            }, 2500);
+            }, 2000);
           }
         }}
       >

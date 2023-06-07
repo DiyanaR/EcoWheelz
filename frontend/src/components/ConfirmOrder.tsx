@@ -50,6 +50,12 @@ export default function ConfirmOrder({
         }
       } catch (error) {
         console.log(error);
+
+        setErrorMsg(true);
+
+        setTimeout(() => {
+          setErrorMsg(true);
+        }, 2000);
       }
     }
   }

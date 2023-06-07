@@ -48,7 +48,6 @@ export default function OrdersPage() {
 
       const userOrders: Order[] = result.data;
 
-      console.log(userOrders);
       setOrders(userOrders);
     } catch (error) {
       console.log(error);
