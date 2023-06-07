@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
-import { ShopContext } from "./ContextProvider";
+import React, { useState } from "react";
 import { exportedProps } from "../Pages/CartPage";
 import "../css/Checkout.css";
-import axios from "axios";
 
 interface CheckoutFormData {
   fullName: string;
@@ -17,14 +15,17 @@ const CheckoutPage = ({
   setFormData,
   setCheckPoint,
 }: exportedProps) => {
-  const {
-    userContext: { login },
-    cartContext: { cartProducts },
-  } = useContext(ShopContext);
-
   const [formErrors, setFormErrors] = useState<Partial<CheckoutFormData>>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -143,6 +144,7 @@ const CheckoutPage = ({
             name="paymentMethod"
             value={formData.paymentMethod}
             className="input"
+            onChange={handleSelectChange}
           >
             <option value="">Select Payment Method</option>
             <option value="creditCard">Credit Card</option>

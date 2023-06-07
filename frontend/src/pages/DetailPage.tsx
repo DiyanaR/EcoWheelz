@@ -25,7 +25,17 @@ export default function DetailPage() {
   const [cartNotif, setCartNotif] = useState(false);
   const [filteredProduct, setFilteredProduct] = useState<Product[]>([]);
   const { title } = useParams<{ title: string }>();
-  const [rating, setRating] = useState(0);
+
+  const [rating, setRating] = useState(() => {
+    const storedRating = localStorage.getItem("rating");
+    return storedRating ? parseInt(storedRating, 10) : 0;
+  });
+
+  const setRatingAndSave = (value: number) => {
+    setRating(value);
+    localStorage.setItem("rating", value.toString());
+    console.log(value);
+  };
 
   const {
     cartContext: { cartProducts, setCartProducts },
@@ -40,7 +50,6 @@ export default function DetailPage() {
       try {
         const response = await fetch("http://localhost:8080/products");
         const data = await response.json();
-
         setProducts(data);
       } catch (error) {
         console.error(error);
@@ -70,6 +79,17 @@ export default function DetailPage() {
       setFilteredProduct(filteredProduct);
     }
   }, [products, title]);
+
+  useEffect(() => {
+    localStorage.setItem("rating", rating.toString());
+  }, [rating]);
+
+  useEffect(() => {
+    const storedRating = localStorage.getItem("rating");
+    if (storedRating) {
+      setRating(parseInt(storedRating, 10));
+    }
+  }, []);
 
   const handletopClick = () => {
     if (categoriesRef.current) {
@@ -150,8 +170,9 @@ export default function DetailPage() {
                             cursor: "pointer",
                             marginRight: "5px",
                             color: value <= rating ? "#9ae5bd" : "gray",
+                            fontSize: "24px",
                           }}
-                          onClick={() => setRating(value)}
+                          onClick={() => setRatingAndSave(value)}
                         >
                           ★
                         </span>
