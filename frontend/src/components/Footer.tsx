@@ -4,7 +4,7 @@ function Footer() {
   return (
     <>
       <div className="footer">
-        <hr className="Productfooter-line" />
+        <hr className="product-footer-line" />
         <div className="footer-container">
           <div className="desktop-icon">
             <img
