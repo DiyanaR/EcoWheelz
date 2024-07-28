@@ -52,7 +52,6 @@ const authorize = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         if ((validationToken === null || validationToken === void 0 ? void 0 : validationToken.length) === 0) {
             return res.status(401).send("Unauthorized");
         }
-        console.log(validationToken[0].user_id);
         const user = (yield client.query("SELECT * FROM users WHERE id = $1", [
             validationToken[0].user_id,
         ])).rows;
@@ -60,9 +59,10 @@ const authorize = (req, res, next) => __awaiter(void 0, void 0, void 0, function
             return res.status(404).send("User not found");
         }
         req.body.user = {
+            id: user[0].id,
             email: user[0].email,
-            firstName: user[0].firstName,
-            lastName: user[0].lastName,
+            firstName: user[0].firstname,
+            lastName: user[0].lastname,
             token: validationToken[0].token,
         };
         next();
@@ -146,9 +146,8 @@ app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 app.post("/logout", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { token } = req.body.user;
     try {
-        const userInfo = (yield client.query("DELETE FROM tokens WHERE token = $1", [token])).rows;
-        console.log(userInfo);
-        res.end();
+        yield client.query("DELETE FROM tokens WHERE token = $1", [token]);
+        res.status(200).send("User Logged out");
     }
     catch (error) {
         console.log(error);
@@ -171,6 +170,117 @@ app.get("/validate-email", (req, res) => __awaiter(void 0, void 0, void 0, funct
 app.get("/validate-token", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).send(req.body.user);
 }));
+app.post("/order", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.body.user;
+    const { productOrders, fullName, address, zipCode, state, paymentMethod, } = req.body.data;
+    // Check for valid data
+    if (!productOrders ||
+        productOrders.length === 0 ||
+        !fullName ||
+        !address ||
+        !zipCode ||
+        !state ||
+        !paymentMethod) {
+        return res.status(400).send({ error: "Bad request" });
+    }
+    //Rrtrieve data for product verification
+    const validateProducts = (yield client.query("SELECT id FROM products WHERE id = ANY($1)", [
+        productOrders.map((order) => order.orderId),
+    ])).rows;
+    // fail the request if one or more products are missing
+    if (validateProducts.length !== productOrders.length) {
+        return res.status(400).send({ error: "Bad request" });
+    }
+    try {
+        yield client.query("BEGIN");
+        const orderId = (0, uuid_1.v4)();
+        yield client.query(`INSERT INTO orders (
+        order_id,
+        user_id,
+        full_name,
+        address,
+        zip_code,
+        state,
+        payment_method
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7)`, [orderId, id, fullName, address, zipCode, state, paymentMethod]).rows;
+        productOrders.forEach((order) => __awaiter(void 0, void 0, void 0, function* () {
+            yield client.query(`INSERT INTO order_products (
+        order_relation_id,
+        product_id,
+        quantity
+      ) VALUES ($1, $2, $3)`, [orderId, order.orderId, order.quantity]);
+        }));
+        yield client.query("COMMIT");
+        res.status(201).send("Created resource");
+    }
+    catch (error) {
+        yield client.query("ROLLBACK");
+        res
+            .status(500)
+            .send({ error: "Internal server error, couldn't finish transaction" });
+    }
+    res.end();
+}));
+app.get("/orders-list", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.body.user;
+    const query = `
+  SELECT
+  jsonb_build_object(
+    'order_id', o.order_id,
+    'full_name', o.full_name,
+    'address', o.address,
+    'zip_code', o.zip_code,
+    'state', o.state,
+    'payment_method', o.payment_method,
+    'order_date', o.order_date,
+    'products', jsonb_agg(
+      jsonb_build_object(
+        'img', p.img,
+        'title', p.title,
+        'price', p.price,
+        'quantity', op.quantity
+      )
+    )
+  ) AS order_data
+  FROM orders o
+  JOIN order_products op ON o.order_id = op.order_relation_id
+  JOIN products p ON op.product_id = p.id
+  WHERE o.user_id = $1
+  GROUP BY o.order_id`;
+    try {
+        const orderData = (yield client.query(query, [id])).rows;
+        res.status(200).send(orderData.map((order) => order.order_data));
+    }
+    catch (error) {
+        console.error("Error fetching orders:", error);
+        res.status(500).json({ error: "An error occurred while fetching orders" });
+    }
+}));
+app.delete("/order-cancel", authorize, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.body.user;
+    const { order_id } = req.body;
+    if (!order_id) {
+        return res.status(400).send({ error: "Bad request" });
+    }
+    try {
+        const validateOrder = (yield client.query(`SELECT * FROM orders WHERE order_id = $1`, [order_id])).rows;
+        if (!validateOrder || validateOrder.length === 0) {
+            return res.status(400).send({ error: "Bad request" });
+        }
+        yield client.query("BEGIN");
+        yield client.query(`DELETE FROM order_products WHERE order_relation_id = $1`, [order_id]);
+        yield client.query(`DELETE FROM orders WHERE order_id = $1`, [order_id]);
+        yield client.query("COMMIT");
+        res.status(204).send("Order successfully cancelled");
+    }
+    catch (error) {
+        yield client.query("ROLLBACK");
+        console.error("Error canceling order:", error);
+        res.status(500).json({
+            error: "An error occurred while attempting to cancel the order",
+        });
+    }
+}));
 app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield client.query("SELECT * FROM products");
@@ -184,23 +294,24 @@ app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* (
             .json({ error: "An error occurred while fetching products" });
     }
 }));
-app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const searchQuery = req.query.search;
-    try {
-        const result = yield client.query("SELECT * FROM products WHERE name ILIKE $1", [`%${searchQuery}%`]);
-        const products = result.rows;
-        res.status(200).json(products);
-    }
-    catch (error) {
-        console.error("Error fetching products:", error);
-        res
-            .status(500)
-            .json({ error: "An error occurred while fetching products" });
-    }
-}));
+// app.get("/search", async (req: Request, res: Response) => {
+//   const searchQuery = req.query.search;
+//   try {
+//     const result = await client.query(
+//       "SELECT * FROM products WHERE name ILIKE $1",
+//       [`%${searchQuery}%`]
+//     );
+//     const products = result.rows;
+//     res.status(200).json(products);
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     res
+//       .status(500)
+//       .json({ error: "An error occurred while fetching products" });
+//   }
+// });
 app.get("/products/:title", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const title = req.params.title;
-    console.log(title);
     try {
         const { rows } = yield client.query("SELECT * FROM products WHERE title = $1", [title]);
         const product = rows[0];
@@ -208,11 +319,11 @@ app.get("/products/:title", (req, res) => __awaiter(void 0, void 0, void 0, func
             res.json([product]);
         }
         else {
-            res.status(404).json({ error: "Produkten hittades inte" });
+            res.status(404).json({ error: "Product not found" });
         }
     }
     catch (error) {
         console.error("Error: " + error);
-        res.status(500).json({ error: "fel inträffade vid hämtning av produkten" });
+        res.status(500).json({ error: "error while fetching products" });
     }
 }));
